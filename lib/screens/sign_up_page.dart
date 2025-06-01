@@ -11,12 +11,11 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   String _email = '';
-  String _password = '';
-  String _confirmPassword = '';
   bool _isLoading = false;
 
-  // Create instance of AuthService
   final AuthenticationService authenticationService = AuthenticationService();
 
   Future<void> _trySignUp() async {
@@ -29,13 +28,19 @@ class _SignUpPageState extends State<SignUpPage> {
     });
 
     try {
-      await authenticationService.signUp(email: _email, password: _password, confirmPassword: _confirmPassword);
+      await authenticationService.signUp(
+        email: _email,
+        password: _passwordController.text,
+        confirmPassword: _confirmPasswordController.text,
+      );
 
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, '/success');
     } on ApiException catch (e) {
       _showErrorDialog(e.message);
     } catch (e) {
+      // log error
+      print('Sign Up Error: $e');
       _showErrorDialog('An unexpected error occurred. Please try again.');
     } finally {
       if (mounted) {
@@ -60,6 +65,13 @@ class _SignUpPageState extends State<SignUpPage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -95,6 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 // Password field
                 TextFormField(
+                  controller: _passwordController,
                   decoration: const InputDecoration(
                     labelText: 'Password',
                     prefixIcon: Icon(Icons.lock),
@@ -107,12 +120,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => _password = value!,
                 ),
                 const SizedBox(height: 16),
 
                 // Confirm Password field
                 TextFormField(
+                  controller: _confirmPasswordController,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
                     prefixIcon: Icon(Icons.lock_outline),
@@ -120,12 +133,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   obscureText: true,
                   validator: (value) {
-                    if (value == null || value != _password) {
+                    if (value == null || value != _passwordController.text) {
                       return 'Passwords do not match.';
                     }
                     return null;
                   },
-                  onSaved: (value) => _confirmPassword = value!,
                 ),
                 const SizedBox(height: 24),
 
