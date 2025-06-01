@@ -1,31 +1,63 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import '../constants/shared_preferences_key.dart';
+import '../models/common/api_exception.dart';
 
 class ApiService {
   String get baseUrl => dotenv.env['BASE_URL'] ?? '';
 
-  Future<http.Response> post({
+  Future<Map<String, dynamic>?> post({
     required String endpoint,
-    Map<String, dynamic>? body,
-    Map<String, String>? headers,
+    required Map<String, dynamic> body,
   }) async {
-    final url = Uri.parse(baseUrl + endpoint);
+    final uri = Uri.parse('$baseUrl$endpoint');
 
-    final defaultHeaders = {
-      'Content-Type': 'application/json',
-    };
+    print('[ApiService] POST $uri');
+    print('[ApiService] Request body: ${jsonEncode(body)}');
 
-    if (headers != null) {
-      defaultHeaders.addAll(headers);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString(SharedPreferencesKey.authToken);
+      final userId = prefs.getString(SharedPreferencesKey.userId);
+      final headers = {
+        'Content-Type': 'application/json',
+        if (token != null) 'Authorization': 'Bearer $token',
+        if (userId != null) 'X-User-Id': userId,
+      };
+      print('[ApiService] Request headers: $headers');
+
+      final response = await http.post(
+        uri,
+        headers: headers,
+        body: jsonEncode(body),
+      );
+
+      print('[ApiService] Response status: ${response.statusCode}');
+      print('[ApiService] Response body: ${response.body}');
+
+      Map<String, dynamic>? decoded;
+      try {
+        decoded = jsonDecode(response.body);
+      } catch (_) {
+        decoded = null;
+      }
+
+      String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return decoded;
+      } else {
+        throw ApiException(
+          message: errorMessage,
+          code: response.statusCode,
+        );
+      }
+    } catch (e) {
+      print('[ApiService] Exception: $e');
+      if (e is ApiException) rethrow;
+      throw ApiException(message: 'Unexpected error', code: -1);
     }
-
-    final response = await http.post(
-      url,
-      headers: defaultHeaders,
-      body: jsonEncode(body),
-    );
-
-    return response;
   }
 }
