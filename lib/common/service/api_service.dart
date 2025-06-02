@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../constants/shared_preferences_key.dart';
-import '../models/common/api_exception.dart';
+import '../model/shared_preferences//shared_preferences_key.dart';
+import '../model/exception/api_exception.dart';
 
 class ApiService {
   String get baseUrl => dotenv.env['BASE_URL'] ?? '';
@@ -45,13 +45,14 @@ class ApiService {
       }
 
       String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
+      int errorCode = decoded?['errorCode'] ?? response.statusCode;
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return decoded;
       } else {
         throw ApiException(
           message: errorMessage,
-          code: response.statusCode,
+          code: errorCode,
         );
       }
     } catch (e) {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guess_buddy_app/endpoints/prediction_endpoints.dart';
-import 'package:guess_buddy_app/services/prediction_service.dart';
-import '../services/api_service.dart';
-import '../models/common/api_exception.dart';
+import 'package:guess_buddy_app/prediction/model/endpoint/prediction_endpoints.dart';
+import 'package:guess_buddy_app/prediction/model/request/RequestCreatePrediction.dart';
+import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
+import '../../common/service/api_service.dart';
+import '../../common/model/exception/api_exception.dart';
 
 class AddPredictionScreen extends StatefulWidget {
   const AddPredictionScreen({super.key});
@@ -28,20 +29,14 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
     });
 
     try {
-      await predictionService.create(
-        title: _title,
-        description: _description,
-      );
+      await predictionService.create(requestCreatePrediction: RequestCreatePrediction(title: _title, description: _description));
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Prediction submitted successfully!')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Prediction submitted successfully!')));
       _formKey.currentState!.reset();
     } on ApiException catch (e) {
       _showErrorDialog(e.message);
     } catch (e) {
-      print('Prediction Error: $e');
       _showErrorDialog('An unexpected error occurred. Please try again.');
     } finally {
       if (mounted) {
@@ -55,16 +50,12 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Submission Failed'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Submission Failed'),
+            content: Text(message),
+            actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK'))],
           ),
-        ],
-      ),
     );
   }
 
@@ -78,10 +69,7 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Title',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return 'Please enter a title.';
@@ -92,10 +80,7 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
                 maxLines: 3,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -110,9 +95,7 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _isSubmitting ? null : _submitPrediction,
-                  child: _isSubmitting
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text('Submit Prediction'),
+                  child: _isSubmitting ? const CircularProgressIndicator(color: Colors.white) : const Text('Submit Prediction'),
                 ),
               ),
             ],

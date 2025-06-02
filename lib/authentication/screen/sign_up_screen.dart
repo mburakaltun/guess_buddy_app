@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../services/authentication_service.dart';
-import '../models/common/api_exception.dart';
+import '../model/request/request_sign_up_user.dart';
+import '../service/authentication_service.dart';
+import '../../common/model/exception/api_exception.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -14,11 +15,12 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
   String _email = '';
+  String _username = '';
   bool _isLoading = false;
 
   final AuthenticationService authenticationService = AuthenticationService();
 
-  Future<void> _trySignUp() async {
+  Future<void> _signUp() async {
     if (!_formKey.currentState!.validate()) return;
 
     _formKey.currentState!.save();
@@ -29,9 +31,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
     try {
       await authenticationService.signUp(
-        email: _email,
-        password: _passwordController.text,
-        confirmPassword: _confirmPasswordController.text,
+        RequestSignUpUser(
+          email: _email,
+          username: _username,
+          password: _passwordController.text,
+          confirmPassword: _confirmPasswordController.text,
+        ),
       );
 
       if (!mounted) return;
@@ -105,6 +110,22 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 16),
 
+                // Username field
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Username',
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a username.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _username = value!.trim(),
+                ),
+
                 // Password field
                 TextFormField(
                   controller: _passwordController,
@@ -140,14 +161,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
                 const SizedBox(height: 24),
-
-                _isLoading
-                    ? const CircularProgressIndicator()
-                    : SizedBox(
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _trySignUp,
-                    child: const Text('Sign Up'),
+                    onPressed: _isLoading ? null : _signUp,
+                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text('Sign Up'),
                   ),
                 ),
                 const SizedBox(height: 16),

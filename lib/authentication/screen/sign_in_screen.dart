@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/common/api_exception.dart';
-import '../services/authentication_service.dart';
+import '../model/request/request_sign_in_user.dart';
+import '../../common/model/exception/api_exception.dart';
+import '../service/authentication_service.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -12,20 +13,20 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
-  String _email = '';
-  String _password = '';
+  String _email = 'mburakaltun@gmail.com';
+  String _password = 'abcd1234';
   bool _isLoading = false;
 
   final AuthenticationService authenticationService = AuthenticationService();
 
-  void _trySignIn() async {
+  void _signIn() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
       setState(() => _isLoading = true);
 
       try {
-        await authenticationService.signIn(email: _email, password: _password);
+        await authenticationService.signIn(RequestSignInUser(email: _email, password: _password));
 
         if (!mounted) return;
         Navigator.pushReplacementNamed(context, '/dashboard');
@@ -46,16 +47,12 @@ class _SignInPageState extends State<SignInPage> {
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Sign In Failed'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK'),
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Sign In Failed'),
+            content: Text(message),
+            actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('OK'))],
           ),
-        ],
-      ),
     );
   }
 
@@ -97,7 +94,13 @@ class _SignInPageState extends State<SignInPage> {
                   onSaved: (value) => _password = value!,
                 ),
                 const SizedBox(height: 24),
-                SizedBox(width: double.infinity, child: ElevatedButton(onPressed: _trySignIn, child: const Text('Sign In'))),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _isLoading ? null : _signIn,
+                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text('Sign In'),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 TextButton(
                   onPressed: () {

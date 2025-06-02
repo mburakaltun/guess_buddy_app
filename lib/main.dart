@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:guess_buddy_app/screens/dashboard_screen.dart';
-import 'package:guess_buddy_app/screens/sign_in_page.dart';
-import 'package:guess_buddy_app/screens/sign_up_page.dart';
+import 'package:guess_buddy_app/authentication/screen/sign_in_screen.dart';
+import 'package:guess_buddy_app/authentication/screen/sign_up_screen.dart';
 import 'package:guess_buddy_app/screens/success_page.dart';
 
 Future<void> main() async {
