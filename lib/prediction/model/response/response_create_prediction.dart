@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 class ResponseCreatePrediction {
-  final Long predictionId;
+  final int predictionId;
 
   ResponseCreatePrediction({
     required this.predictionId,
@@ -9,7 +7,7 @@ class ResponseCreatePrediction {
 
   factory ResponseCreatePrediction.fromJson(Map<String, dynamic> json) {
     return ResponseCreatePrediction(
-      predictionId: json['predictionId'] as Long,
+      predictionId: json['predictionId'] as int,
     );
   }
 }

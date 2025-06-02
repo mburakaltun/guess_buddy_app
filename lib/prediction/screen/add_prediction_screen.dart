@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/prediction/model/endpoint/prediction_endpoints.dart';
-import 'package:guess_buddy_app/prediction/model/request/RequestCreatePrediction.dart';
+import 'package:guess_buddy_app/prediction/model/request/request_create_prediction.dart';
 import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
 import '../../common/service/api_service.dart';
 import '../../common/model/exception/api_exception.dart';
@@ -29,10 +29,18 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
     });
 
     try {
-      await predictionService.create(requestCreatePrediction: RequestCreatePrediction(title: _title, description: _description));
+      await predictionService.createPrediction(
+        requestCreatePrediction: RequestCreatePrediction(
+          title: _title,
+          description: _description,
+        ),
+      );
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Prediction submitted successfully!')));
+      FocusScope.of(context).unfocus();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Prediction submitted successfully!')),
+      );
       _formKey.currentState!.reset();
     } on ApiException catch (e) {
       _showErrorDialog(e.message);
