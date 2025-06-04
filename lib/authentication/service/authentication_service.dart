@@ -20,17 +20,15 @@ class AuthenticationService {
   }
 
   Future<void> signIn(RequestSignInUser request) async {
-    final responseMap = await _apiService.post(
+    final response = await _apiService.post(
       endpoint: AuthEndpoints.signIn,
       body: request.toJson(),
     );
 
-    if (responseMap == null || responseMap['data'] == null) return;
-
-    final response = ResponseSignInUser.fromJson(responseMap['data']);
+    ResponseSignInUser responseSignInUser = ResponseSignInUser.fromJson(response!);
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(SharedPreferencesKey.authToken, response.authenticationToken);
-    await prefs.setString(SharedPreferencesKey.userId, response.userId);
+    await prefs.setString(SharedPreferencesKey.authToken, responseSignInUser.authenticationToken);
+    await prefs.setString(SharedPreferencesKey.userId, responseSignInUser.userId);
   }
 }
