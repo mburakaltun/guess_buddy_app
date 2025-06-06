@@ -30,5 +30,6 @@ class AuthenticationService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(SharedPreferencesKey.authToken, responseSignInUser.authenticationToken);
     await prefs.setString(SharedPreferencesKey.userId, responseSignInUser.userId);
+    await prefs.setString(SharedPreferencesKey.username, responseSignInUser.username);
   }
 }

@@ -7,6 +7,8 @@ class PredictionDTO {
   final String description;
   final double averageScore;
   final int voteCount;
+  final int userScore;
+  final String creatorUsername;
 
   PredictionDTO({
     required this.id,
@@ -17,6 +19,8 @@ class PredictionDTO {
     required this.description,
     required this.averageScore,
     required this.voteCount,
+    required this.userScore,
+    required this.creatorUsername,
   });
 
   factory PredictionDTO.fromJson(Map<String, dynamic> json) {
@@ -29,6 +33,8 @@ class PredictionDTO {
       description: json['description'],
       averageScore: json['averageScore'],
       voteCount: json['voteCount'] ?? 0,
+      userScore: json['userScore'] ?? 0,
+      creatorUsername: json['creatorUsername'] ?? '',
     );
   }
 
@@ -42,6 +48,8 @@ class PredictionDTO {
       'description': description,
       'averageScore': averageScore,
       'voteCount': voteCount,
+      'userScore': userScore,
+      'creatorUsername': creatorUsername,
     };
   }
 }

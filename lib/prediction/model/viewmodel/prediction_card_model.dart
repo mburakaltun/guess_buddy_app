@@ -8,6 +8,8 @@ class PredictionCardModel {
   final double averageScore;
   final String createdDate;
   final int creatorUserId;
+  final int userScore;
+  final String creatorUsername;
 
   PredictionCardModel({
     required this.id,
@@ -17,6 +19,8 @@ class PredictionCardModel {
     required this.averageScore,
     required this.createdDate,
     required this.creatorUserId,
+    required this.userScore,
+    required this.creatorUsername,
   });
 
   factory PredictionCardModel.fromDto(PredictionDTO dto) {
@@ -28,6 +32,8 @@ class PredictionCardModel {
       averageScore: dto.averageScore,
       createdDate: dto.createdDate,
       creatorUserId: dto.creatorUserId,
+      userScore: dto.userScore,
+      creatorUsername: dto.creatorUsername,
     );
   }
 }

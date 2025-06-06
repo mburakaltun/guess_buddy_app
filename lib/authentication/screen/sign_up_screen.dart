@@ -125,6 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                   onSaved: (value) => _username = value!.trim(),
                 ),
+                const SizedBox(height: 16),
 
                 // Password field
                 TextFormField(
