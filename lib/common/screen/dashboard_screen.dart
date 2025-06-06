@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guess_buddy_app/screens/users_screen.dart';
+import 'package:guess_buddy_app/common/screen/users_screen.dart';
 import 'home_screen.dart';
-import '../prediction/screen/add_prediction_screen.dart';
+import '../../prediction/screen/add_prediction_screen.dart';
 import 'voting_pending_screen.dart';
-import 'profile_screen.dart';
+import '../../user/screen/profile_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

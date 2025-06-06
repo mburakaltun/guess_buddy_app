@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:guess_buddy_app/screens/dashboard_screen.dart';
+import 'package:guess_buddy_app/common/screen/dashboard_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_in_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_screen.dart';
-import 'package:guess_buddy_app/screens/success_page.dart';
+import 'package:guess_buddy_app/authentication/screen/sign_up_success_screen.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
@@ -73,7 +73,7 @@ class GuessBuddyApp extends StatelessWidget {
         '/signin': (context) => const SignInPage(),
         '/signup': (context) => const SignUpPage(),
         '/dashboard': (context) => const DashboardScreen(),
-        '/success': (context) => const SuccessPage(),
+        '/success': (context) => const SignUpSuccessScreen(),
       },
     );
   }

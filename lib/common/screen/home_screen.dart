@@ -5,9 +5,9 @@ import 'package:guess_buddy_app/prediction/model/request/request_get_predictions
 import 'package:guess_buddy_app/common/model/exception/api_exception.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../common/model/shared_preferences/shared_preferences_key.dart';
-import '../prediction/model/dto/prediction_dto.dart';
-import '../vote/screen/vote_prediction_screen.dart';
+import '../model/shared_preferences/shared_preferences_key.dart';
+import '../../prediction/model/dto/prediction_dto.dart';
+import '../../vote/screen/vote_prediction_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
