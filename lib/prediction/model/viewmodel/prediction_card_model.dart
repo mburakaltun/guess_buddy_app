@@ -23,7 +23,7 @@ class PredictionCardModel {
     required this.creatorUsername,
   });
 
-  factory PredictionCardModel.fromDto(PredictionDTO dto) {
+  factory PredictionCardModel.fromDto(PredictionDto dto) {
     return PredictionCardModel(
       id: dto.id,
       title: dto.title,

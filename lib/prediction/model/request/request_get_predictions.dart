@@ -1,17 +1,15 @@
-class RequestGetPredictions {
-  final int page;
-  final int size;
+import 'package:guess_buddy_app/common/model/request/pageable_request.dart';
 
+class RequestGetPredictions extends PageableRequest {
   RequestGetPredictions({
-    required this.page,
-    required this.size,
-  }) : assert(page >= 0, 'Page must be greater than or equal to 0'),
-        assert(size >= 1, 'Size must be greater than or equal to 1');
+    required super.page,
+    required super.size,
+  });
 
   factory RequestGetPredictions.fromJson(Map<String, dynamic> json) {
     return RequestGetPredictions(
-      page: json['page'] as int,
-      size: json['size'] as int,
+      page: json['page'],
+      size: json['size'],
     );
   }
 

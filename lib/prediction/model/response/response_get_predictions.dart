@@ -2,14 +2,14 @@ import 'package:guess_buddy_app/common/model/response/pageable_response.dart';
 import '../dto/prediction_dto.dart';
 
 class ResponseGetPredictions extends PageableResponse {
-  final List<PredictionDTO> predictionDTOList;
+  final List<PredictionDto> predictionDtoList;
 
   ResponseGetPredictions({
     super.number,
     super.totalElements,
     super.totalPages,
     super.isLast,
-    required this.predictionDTOList,
+    required this.predictionDtoList,
   });
 
   factory ResponseGetPredictions.fromJson(Map<String, dynamic> json) {
@@ -20,8 +20,8 @@ class ResponseGetPredictions extends PageableResponse {
       totalElements: pageableResponse.totalElements,
       totalPages: pageableResponse.totalPages,
       isLast: pageableResponse.isLast,
-      predictionDTOList: (json['predictionDTOList'] as List)
-          .map((itemJson) => PredictionDTO.fromJson(itemJson as Map<String, dynamic>))
+      predictionDtoList: (json['predictionDtoList'] as List)
+          .map((itemJson) => PredictionDto.fromJson(itemJson as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -29,7 +29,7 @@ class ResponseGetPredictions extends PageableResponse {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = super.toJson();
-    json['predictionDTOList'] = predictionDTOList.map((item) => item.toJson()).toList();
+    json['predictionDtoList'] = predictionDtoList.map((item) => item.toJson()).toList();
     return json;
   }
 }

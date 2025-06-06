@@ -105,6 +105,7 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
                   );
                 }),
               ),
+
               if (selectedScore != null) const Padding(padding: EdgeInsets.only(top: 16.0)),
             ],
           ),

@@ -13,6 +13,7 @@ class LanguageSelectionScreen extends StatefulWidget {
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   String _selectedLang = 'en';
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -21,21 +22,77 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   }
 
   Future<void> _loadLanguage() async {
+    setState(() => _isLoading = true);
     final lang = await LanguageHelper.getLanguage();
     setState(() {
       _selectedLang = lang;
+      _isLoading = false;
     });
   }
 
   Future<void> _onLanguageSelected(String lang) async {
+    setState(() => _isLoading = true);
     await LanguageHelper.setLanguage(lang);
     setState(() {
       _selectedLang = lang;
+      _isLoading = false;
     });
     if (context.mounted) {
       GuessBuddyApp.setLocale(context, Locale(lang));
     }
-    Navigator.pop(context, lang);
+  }
+
+  Widget _buildLanguageOption({
+    required String title,
+    required String languageKey,
+    required String flagEmoji,
+  }) {
+    final isSelected = _selectedLang == languageKey;
+
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: isSelected ? 2 : 0.5,
+      color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.1) : null,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () => _onLanguageSelected(languageKey),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          child: Row(
+            children: [
+              Text(
+                flagEmoji,
+                style: const TextStyle(fontSize: 24),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+              ),
+              if (isSelected)
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).secondaryHeaderColor,
+                  ),
+                  child: const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -43,19 +100,29 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.message.languageSelectionTitle),
+        elevation: 0,
       ),
-      body: ListView(
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            title: Text(context.message.languageSelectionEnglish),
-            trailing: _selectedLang == context.message.languageSelectionEnglishKey ? const Icon(Icons.check) : null,
-            onTap: () => _onLanguageSelected(context.message.languageSelectionEnglishKey),
-          ),
-          const Divider(height: 0),
-          ListTile(
-            title: Text(context.message.languageSelectionTurkish),
-            trailing: _selectedLang == context.message.languageSelectionTurkishKey ? const Icon(Icons.check) : null,
-            onTap: () => _onLanguageSelected(context.message.languageSelectionTurkishKey),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: [
+                _buildLanguageOption(
+                  title: context.message.languageSelectionEnglish,
+                  languageKey: context.message.languageSelectionEnglishKey,
+                  flagEmoji: "🇺🇸",
+                ),
+                _buildLanguageOption(
+                  title: context.message.languageSelectionTurkish,
+                  languageKey: context.message.languageSelectionTurkishKey,
+                  flagEmoji: "🇹🇷",
+                ),
+              ],
+            ),
           ),
         ],
       ),

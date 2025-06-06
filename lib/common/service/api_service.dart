@@ -39,10 +39,12 @@ class ApiService {
       } else {
         String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
         String errorCode = decoded?['errorCode'] ?? response.statusCode;
+        print('API Error: $errorMessage (Code: $errorCode)');
         throw ApiException(errorCode: errorCode, errorMessage: errorMessage);
       }
     } catch (e) {
       if (e is ApiException) rethrow;
+      print('Unexpected error: $e');
       throw ApiException(errorCode: '-1', errorMessage: 'Unexpected error');
     }
   }
@@ -77,10 +79,12 @@ class ApiService {
       } else {
         String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
         String errorCode = decoded?['errorCode'] ?? response.statusCode;
+        print('API Error: $errorMessage (Code: $errorCode)');
         throw ApiException(errorCode: errorCode, errorMessage: errorMessage);
       }
     } catch (e) {
       if (e is ApiException) rethrow;
+      print('Unexpected error: $e');
       throw ApiException(errorCode: '-1', errorMessage: 'Unexpected error');
     }
   }

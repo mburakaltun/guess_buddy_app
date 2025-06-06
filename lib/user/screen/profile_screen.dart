@@ -51,98 +51,152 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(SharedPreferencesKey.userId);
 
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SignInPage()), (Route<dynamic> route) => false);
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const SignInPage()),
+            (Route<dynamic> route) => false);
   }
 
   void _showLogoutDialog() {
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text(context.message.profileSignOutDialogTitle),
-            content: Text(context.message.profileSignOutDialogContent),
-            actions: [
-              TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.profileSignOutDialogCancel)),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _logout();
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent, foregroundColor: Colors.white),
-                child: Text(context.message.profileSignOutDialogConfirm),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: Text(context.message.profileSignOutDialogTitle),
+        content: Text(context.message.profileSignOutDialogContent),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.message.profileSignOutDialogCancel),
           ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _logout();
+            },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent, foregroundColor: Colors.white),
+            child: Text(context.message.profileSignOutDialogConfirm),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem({
+    required IconData icon,
+    required String title,
+    Color? iconColor,
+    Color? textColor,
+    VoidCallback? onTap,
+  }) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      elevation: 0.5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ListTile(
+        leading: Icon(icon, color: iconColor ?? Theme.of(context).primaryColor),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16,
+            color: textColor,
+            fontWeight: textColor != null ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        trailing: const Icon(Icons.chevron_right, size: 22),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  Widget _buildErrorState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.error_outline,
+            size: 64,
+            color: Colors.redAccent.withOpacity(0.8),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            error!,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: _loadProfile,
+            icon: const Icon(Icons.refresh),
+            label: Text(context.message.generalTryAgain),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child:
-            isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : error != null
-                ? Center(child: Text(error!))
-                : Column(
-                  children: [
-                    const SizedBox(height: 32),
-                    CircleAvatar(radius: 48, backgroundImage: AssetImage('assets/avatar_placeholder.png')),
-                    const SizedBox(height: 16),
-                    Text(profile?.username ?? '', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 4),
-                    Text(profile?.email ?? '', style: const TextStyle(fontSize: 16, color: Colors.grey)),
-                    const SizedBox(height: 24),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          ListTile(
-                            leading: const Icon(Icons.edit),
-                            title: Text(context.message.profileEdit),
-                            onTap: () {
-                            },
-                          ),
-                          const Divider(height: 0),
-                          ListTile(
-                            leading: const Icon(Icons.settings),
-                            title: Text(context.message.profileSettings),
-                            onTap: () {
-                            },
-                          ),
-                          const Divider(height: 0),
-                          ListTile(
-                            leading: const Icon(Icons.info_outline),
-                            title: Text(context.message.profileAbout),
-                            onTap: () {
-                            },
-                          ),
-                          const Divider(height: 0),
-                          ListTile(
-                            leading: const Icon(Icons.language),
-                            title: Text(context.message.profileLanguage),
-                            onTap: () async {
-                              await Navigator.push<String>(
-                                context,
-                                MaterialPageRoute(builder: (context) => const LanguageSelectionScreen()),
-                              );
-                            },
-                          ),
-                          const Divider(height: 0),
-                        ],
-                      ),
-                    ),
-                    const Divider(height: 0),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 0.0),
-                      child: ListTile(
-                        leading: const Icon(Icons.logout, color: Colors.redAccent),
-                        title: Text(context.message.profileSignOut, style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold)),
-                        onTap: _showLogoutDialog,
-                      ),
-                    ),
-                  ],
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : error != null
+          ? _buildErrorState()
+          : Column(
+        children: [
+          const SizedBox(height: 16),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: [
+                _buildMenuItem(
+                  icon: Icons.edit,
+                  title: context.message.profileEdit,
+                  onTap: () {},
                 ),
+                _buildMenuItem(
+                  icon: Icons.settings,
+                  title: context.message.profileSettings,
+                  onTap: () {},
+                ),
+                _buildMenuItem(
+                  icon: Icons.info_outline,
+                  title: context.message.profileAbout,
+                  onTap: () {},
+                ),
+                _buildMenuItem(
+                  icon: Icons.language,
+                  title: context.message.profileLanguage,
+                  onTap: () async {
+                    await Navigator.push<String>(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                        const LanguageSelectionScreen(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 8),
+                const Divider(indent: 16, endIndent: 16),
+                const SizedBox(height: 8),
+                _buildMenuItem(
+                  icon: Icons.logout,
+                  title: context.message.profileSignOut,
+                  iconColor: Colors.redAccent,
+                  textColor: Colors.redAccent,
+                  onTap: _showLogoutDialog,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

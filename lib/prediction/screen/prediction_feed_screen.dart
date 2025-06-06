@@ -93,7 +93,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
       final request = RequestGetPredictions(page: page, size: _pageSize);
       final response = await _predictionService.getPredictions(requestGetPredictions: request);
       setState(() {
-        final newPredictions = response.predictionDTOList.map(_mapPredictionDtoToCardModel).toList();
+        final newPredictions = response.predictionDtoList.map(_mapPredictionDtoToCardModel).toList();
         if (refresh) {
           predictions = newPredictions;
         } else {
@@ -118,7 +118,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
     }
   }
 
-  PredictionCardModel _mapPredictionDtoToCardModel(PredictionDTO dto) {
+  PredictionCardModel _mapPredictionDtoToCardModel(PredictionDto dto) {
     return PredictionCardModel(
       id: dto.id,
       title: dto.title,
@@ -143,94 +143,194 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
   }
 
   Widget _buildPredictionCard(PredictionCardModel prediction, bool isOtherUser) {
-    return GestureDetector(
-      onTap:
-          isOtherUser
-              ? () async {
-                final result = await Navigator.push(context, MaterialPageRoute(builder: (_) => VotePredictionScreen(prediction: prediction)));
-                if (result == true) {
-                  await _onRefresh();
+    final bool hasVotes = prediction.voteCount > 0;
+    final bool isPositive = prediction.averageScore >= 2.5;
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 3,
+      shadowColor: Colors.black26,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap:
+            isOtherUser
+                ? () async {
+                  final result = await Navigator.push(context, MaterialPageRoute(builder: (_) => VotePredictionScreen(prediction: prediction)));
+                  if (result == true) {
+                    await _onRefresh();
+                  }
                 }
-              }
-              : null,
-      child: Stack(
-        children: [
-          Card(
-            margin: const EdgeInsets.only(bottom: 16.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            elevation: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
+                : null,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header with username and date
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(prediction.title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 4),
-                  Text('@${prediction.creatorUsername}', style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey)),
-                  const SizedBox(height: 8),
-                  Text(prediction.description),
-                  const SizedBox(height: 8),
-                  Text(prediction.createdDate, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(Icons.how_to_vote, size: 18),
-                              const SizedBox(width: 4),
-                              Text(context.message.predictionFeedVoteCount(prediction.voteCount))
-                            ],
-                          ),
-                          const SizedBox(height: 16),
-                          Row(
-                            children: [
-                              if (prediction.voteCount == 0) ...[
-                                const Icon(Icons.hourglass_empty, color: Colors.grey),
-                                const SizedBox(width: 6),
-                                Text(
-                                  context.message.predictionFeedNotVotedYet,
-                                  style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
-                                ),
-                              ] else ...[
-                                Icon(
-                                  prediction.averageScore >= 2.5 ? Icons.check_circle : Icons.cancel,
-                                  color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
-                                ),
-                                const SizedBox(width: 6),
-                                Text(
-                                  prediction.averageScore >= 2.5
-                                      ? context.message.predictionFeedPositive
-                                      : context.message.predictionFeedNegative,
-                                  style: TextStyle(
-                                    color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ],
-                          ),
+                  CircleAvatar(
+                    backgroundColor: theme.primaryColor.withOpacity(0.2),
+                    child: Text(
+                      prediction.creatorUsername.isNotEmpty ? prediction.creatorUsername[0].toUpperCase() : '?',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: theme.primaryColor),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('@${prediction.creatorUsername}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey)),
+                        Text(prediction.createdDate, style: TextStyle(fontSize: 12, color: Colors.grey.shade500)),
+                      ],
+                    ),
+                  ),
+                  if (isOtherUser)
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(color: theme.primaryColor.withOpacity(0.1), borderRadius: BorderRadius.circular(8)),
+                      child: Icon(Icons.how_to_vote, size: 16, color: theme.primaryColor),
+                    ),
+                ],
+              ),
 
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Icon(Icons.star, color: Colors.amber, size: 18),
-                          const SizedBox(width: 4),
-                          Text(context.message.predictionFeedScore(prediction.averageScore.toStringAsFixed(1))),
-                        ],
+              const SizedBox(height: 16),
+
+              // Title
+              Text(prediction.title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+
+              const SizedBox(height: 8),
+
+              // Description
+              Text(prediction.description, style: const TextStyle(fontSize: 15)),
+
+              const Divider(height: 24),
+
+              // Stats row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Vote count
+                  Row(
+                    children: [
+                      Icon(Icons.people, size: 18, color: theme.colorScheme.onSurface.withOpacity(0.7)),
+                      const SizedBox(width: 6),
+                      Text(
+                        context.message.predictionFeedVoteCount(prediction.voteCount),
+                        style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.7), fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
+
+                  // Status indicator and score
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color:
+                          isDarkMode
+                              ? hasVotes
+                                  ? (isPositive ? Colors.green.shade900.withOpacity(0.4) : Colors.red.shade900.withOpacity(0.4))
+                                  : theme.cardColor
+                              : hasVotes
+                              ? (isPositive ? Colors.green.shade50 : Colors.red.shade50)
+                              : Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: hasVotes ? (isPositive ? Colors.green.shade700 : Colors.red.shade700) : theme.dividerColor, width: 1),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          hasVotes ? (isPositive ? Icons.check_circle : Icons.cancel) : Icons.hourglass_empty,
+                          size: 16,
+                          color: hasVotes ? (isPositive ? Colors.green.shade400 : Colors.red.shade400) : theme.disabledColor,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          hasVotes
+                              ? (isPositive ? context.message.predictionFeedPositive : context.message.predictionFeedNegative)
+                              : context.message.predictionFeedNotVotedYet,
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: hasVotes ? (isPositive ? Colors.green.shade400 : Colors.red.shade400) : theme.disabledColor,
+                          ),
+                        ),
+                        if (hasVotes) ...[
+                          const SizedBox(width: 6),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: isDarkMode ? theme.colorScheme.surface : Colors.grey.shade100,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: theme.dividerColor),
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.star, color: Colors.amber, size: 14),
+                                const SizedBox(width: 2),
+                                Text(
+                                  prediction.averageScore.toStringAsFixed(1),
+                                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
+            ],
           ),
-          if (isOtherUser) const Positioned(top: 8, right: 8, child: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey)),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildErrorState() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            const SizedBox(height: 16),
+            Text(_error!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed: _initializeUserAndFetchPredictions,
+              icon: const Icon(Icons.refresh),
+              label: Text(context.message.predictionFeedTryAgain),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.content_paste_off, size: 64, color: Colors.grey.shade400),
+            const SizedBox(height: 16),
+            Text(context.message.predictionFeedNoPredictions, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.grey.shade700)),
+          ],
+        ),
       ),
     );
   }
@@ -238,22 +338,20 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading && predictions.isEmpty) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-    if (_error != null && predictions.isEmpty) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(_error!),
-              const SizedBox(height: 12),
-              ElevatedButton(onPressed: _initializeUserAndFetchPredictions, child: Text(context.message.predictionFeedTryAgain)),
-            ],
+            children: [CircularProgressIndicator(), SizedBox(height: 16), Text("Loading predictions...")],
           ),
         ),
       );
     }
+
+    if (_error != null && predictions.isEmpty) {
+      return Scaffold(body: _buildErrorState());
+    }
+
     if (_userId == null) {
       return Scaffold(body: Center(child: Text(context.message.predictionFeedUserNotFound)));
     }
@@ -261,7 +359,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
     return Scaffold(
       body:
           predictions.isEmpty && !_isLoading && !_isPaginating
-              ? Center(child: Text(context.message.predictionFeedNoPredictions))
+              ? _buildEmptyState()
               : RefreshIndicator(
                 onRefresh: _onRefresh,
                 child: ListView.builder(

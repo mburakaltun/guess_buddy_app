@@ -1,13 +1,15 @@
 {
   "@@locale": "tr",
   "generalError": "Beklenmeyen bir hata oluştu.",
+  "generalTryAgain": "Lütfen tekrar deneyin.",
+
   "signIn": "Giriş Yap",
   "signInEmail": "E-posta",
   "signInEmailHint": "Lütfen geçerli bir e-posta girin.",
   "signInPassword": "Şifre",
   "signInPasswordHint": "Şifre en az 6 karakter olmalı.",
   "signInFailed": "Giriş Başarısız",
-  "signInDontHaveAccount": "Hesabınız yok mu? Kayıt Ol",
+  "signInDontHaveAccount": "Hesabınız yok mu?",
 
   "signUp": "Kayıt Ol",
   "signUpEmail": "E-posta",
@@ -19,14 +21,14 @@
   "signUpPasswordHint": "Şifre en az 6 karakter olmalı.",
   "signUpConfirmPassword": "Şifreyi Onayla",
   "signUpConfirmPasswordHint": "Şifreler eşleşmiyor.",
-  "signUpAlreadyHaveAccount": "Zaten hesabınız var mı? Giriş Yap",
+  "signUpAlreadyHaveAccount": "Zaten hesabınız var mı?",
   "ok": "Tamam",
   "signUpSuccessTitle": "Kayıt Başarılı",
   "signUpSuccessMessage": "Hesabınız başarıyla oluşturuldu. Artık giriş yapabilirsiniz.",
   "goToSignIn": "Giriş Yap'a Git",
 
   "dashboardHome": "Ana Menü",
-  "dashboardUsers": "Dereceler",
+  "dashboardRanking": "Sıralama",
   "dashboardAddPrediction": "Ekle",
   "dashboardVotingPending": "Oylamalar",
   "dashboardProfile": "Profil",
@@ -65,10 +67,14 @@
   "votePredictionHowMuchAgree": "Ne kadar katılıyorsunuz?",
   "votePredictionSuccess": "Oyunuz başarıyla gönderildi",
   "votePredictionFailed": "Oy verme başarısız",
+  "votePredictionVoteRecorded": "Oyunuz kaydedildi.",
+  "votePredictionVoteInProgress": "Oyunuz işleniyor. Lütfen bekleyin.",
 
   "languageSelectionTitle": "Dil Seçimi",
   "languageSelectionEnglish": "İngilizce",
   "languageSelectionEnglishKey": "en",
   "languageSelectionTurkish": "Türkçe",
-  "languageSelectionTurkishKey": "tr"
+  "languageSelectionTurkishKey": "tr",
+
+  "usersNoUsersFound": "Kullanıcı bulunamadı."
 }

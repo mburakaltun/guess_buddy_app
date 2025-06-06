@@ -16,7 +16,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = const [PredictionFeedScreen(), UsersScreen(), AddPredictionScreen(), VotingPendingScreen(), ProfileScreen()];
+  final List<Widget> _screens = const [PredictionFeedScreen(), RankingsScreen(), AddPredictionScreen(), VotingPendingScreen(), ProfileScreen()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -28,7 +28,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     final titles = [
       context.message.dashboardHome,
-      context.message.dashboardUsers,
+      context.message.dashboardRanking,
       context.message.dashboardAddPrediction,
       context.message.dashboardVotingPending,
       context.message.dashboardProfile,
@@ -36,11 +36,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     final navItems = [
       BottomNavigationBarItem(icon: const Icon(Icons.home), label: context.message.dashboardHome),
-      BottomNavigationBarItem(icon: const Icon(Icons.group), label: context.message.dashboardUsers),
+      BottomNavigationBarItem(icon: const Icon(Icons.leaderboard), label: context.message.dashboardRanking),
       BottomNavigationBarItem(icon: const Icon(Icons.add_box), label: context.message.dashboardAddPrediction),
       BottomNavigationBarItem(icon: const Icon(Icons.how_to_vote), label: context.message.dashboardVotingPending),
       BottomNavigationBarItem(icon: const Icon(Icons.person), label: context.message.dashboardProfile),
     ];
+
 
     return Scaffold(
       appBar: AppBar(title: Text(titles[_selectedIndex])),

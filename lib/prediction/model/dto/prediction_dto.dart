@@ -1,4 +1,4 @@
-class PredictionDTO {
+class PredictionDto {
   final int id;
   final String createdDate;
   final String? updatedDate;
@@ -10,7 +10,7 @@ class PredictionDTO {
   final int userScore;
   final String creatorUsername;
 
-  PredictionDTO({
+  PredictionDto({
     required this.id,
     required this.createdDate,
     this.updatedDate,
@@ -23,8 +23,8 @@ class PredictionDTO {
     required this.creatorUsername,
   });
 
-  factory PredictionDTO.fromJson(Map<String, dynamic> json) {
-    return PredictionDTO(
+  factory PredictionDto.fromJson(Map<String, dynamic> json) {
+    return PredictionDto(
       id: json['id'],
       createdDate: json['createdDate'],
       updatedDate: json['updatedDate'],

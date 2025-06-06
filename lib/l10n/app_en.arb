@@ -1,13 +1,15 @@
 {
   "@@locale": "en",
   "generalError": "An unexpected error occurred.",
+  "generalTryAgain": "Please try again.",
+
   "signIn": "Sign In",
   "signInEmail": "Email",
   "signInEmailHint": "Please enter a valid email.",
   "signInPassword": "Password",
   "signInPasswordHint": "Password must be at least 6 characters.",
   "signInFailed": "Sign In Failed",
-  "signInDontHaveAccount": "Don't have an account? Sign Up",
+  "signInDontHaveAccount": "Don't have an account?",
 
   "signUp": "Sign Up",
   "signUpEmail": "Email",
@@ -19,15 +21,15 @@
   "signUpPasswordHint": "Password must be at least 6 characters.",
   "signUpConfirmPassword": "Confirm Password",
   "signUpConfirmPasswordHint": "Passwords do not match.",
-  "signUpAlreadyHaveAccount": "Already have an account? Sign In",
+  "signUpAlreadyHaveAccount": "Already have an account?",
   "ok": "OK",
   "signUpSuccessTitle": "Sign Up Successful",
   "signUpSuccessMessage": "Your account has been created successfully. You can now sign in.",
   "goToSignIn": "Go to Sign In",
 
   "dashboardHome": "Home",
-  "dashboardUsers": "Users",
-  "dashboardAddPrediction": "Add Prediction",
+  "dashboardRanking": "Rankings",
+  "dashboardAddPrediction": "Add",
   "dashboardVotingPending": "Voting Pending",
   "dashboardProfile": "Profile",
 
@@ -65,10 +67,15 @@
   "votePredictionHowMuchAgree": "How much do you agree?",
   "votePredictionSuccess": "Vote submitted successfully",
   "votePredictionFailed": "Failed to vote",
+  "votePredictionVoteRecorded": "Your vote has been recorded.",
+  "votePredictionVoteInProgress": "Your vote is being processed. Please wait.",
 
   "languageSelectionTitle": "Language Selection",
   "languageSelectionEnglish": "English",
   "languageSelectionEnglishKey": "en",
   "languageSelectionTurkish": "Turkish",
-  "languageSelectionTurkishKey": "tr"
+  "languageSelectionTurkishKey": "tr",
+
+  "usersNoUsersFound": "No users found."
+
 }
