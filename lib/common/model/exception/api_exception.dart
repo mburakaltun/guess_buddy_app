@@ -1,9 +1,9 @@
 class ApiException implements Exception {
-  final String message;
-  final int code;
+  final String errorCode;
+  final String errorMessage;
 
-  ApiException({required this.message, required this.code});
+  ApiException({required this.errorMessage, required this.errorCode});
 
   @override
-  String toString() => 'ApiException($code): $message';
+  String toString() => 'ApiException($errorCode): $errorMessage';
 }

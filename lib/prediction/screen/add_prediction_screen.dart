@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guess_buddy_app/prediction/model/endpoint/prediction_endpoints.dart';
+import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_create_prediction.dart';
 import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
-import '../../common/service/api_service.dart';
 import '../../common/model/exception/api_exception.dart';
 
 class AddPredictionScreen extends StatefulWidget {
@@ -29,23 +28,16 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
     });
 
     try {
-      await predictionService.createPrediction(
-        requestCreatePrediction: RequestCreatePrediction(
-          title: _title,
-          description: _description,
-        ),
-      );
+      await predictionService.createPrediction(requestCreatePrediction: RequestCreatePrediction(title: _title, description: _description));
 
       if (!mounted) return;
       FocusScope.of(context).unfocus();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Prediction submitted successfully!')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.addPredictionSuccess)));
       _formKey.currentState!.reset();
     } on ApiException catch (e) {
-      _showErrorDialog(e.message);
+      _showErrorDialog(e.errorMessage);
     } catch (e) {
-      _showErrorDialog('An unexpected error occurred. Please try again.');
+      _showErrorDialog(context.message.generalError);
     } finally {
       if (mounted) {
         setState(() {
@@ -60,9 +52,9 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Submission Failed'),
+            title: Text(context.message.addPredictionFailed),
             content: Text(message),
-            actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK'))],
+            actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.ok))],
           ),
     );
   }
@@ -77,10 +69,10 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
+                decoration: InputDecoration(labelText: context.message.addPredictionTitle, border: const OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a title.';
+                    return context.message.addPredictionTitleHint;
                   }
                   return null;
                 },
@@ -88,11 +80,11 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
+                decoration: InputDecoration(labelText: context.message.addPredictionDescription, border: const OutlineInputBorder()),
                 maxLines: 3,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a description.';
+                    return context.message.addPredictionDescriptionHint;
                   }
                   return null;
                 },
@@ -103,7 +95,7 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _isSubmitting ? null : _submitPrediction,
-                  child: _isSubmitting ? const CircularProgressIndicator(color: Colors.white) : const Text('Submit Prediction'),
+                  child: _isSubmitting ? const CircularProgressIndicator(color: Colors.white) : Text(context.message.addPredictionSubmit),
                 ),
               ),
             ],

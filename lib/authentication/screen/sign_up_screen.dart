@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import '../model/request/request_sign_up_user.dart';
 import '../service/authentication_service.dart';
 import '../../common/model/exception/api_exception.dart';
@@ -31,22 +32,15 @@ class _SignUpPageState extends State<SignUpPage> {
 
     try {
       await authenticationService.signUp(
-        RequestSignUpUser(
-          email: _email,
-          username: _username,
-          password: _passwordController.text,
-          confirmPassword: _confirmPasswordController.text,
-        ),
+        RequestSignUpUser(email: _email, username: _username, password: _passwordController.text, confirmPassword: _confirmPasswordController.text),
       );
 
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, '/success');
     } on ApiException catch (e) {
-      _showErrorDialog(e.message);
+      _showErrorDialog(e.errorMessage);
     } catch (e) {
-      // log error
-      print('Sign Up Error: $e');
-      _showErrorDialog('An unexpected error occurred. Please try again.');
+      _showErrorDialog(context.message.generalError);
     } finally {
       if (mounted) {
         setState(() {
@@ -59,16 +53,12 @@ class _SignUpPageState extends State<SignUpPage> {
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Sign Up Failed'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      builder:
+          (context) => AlertDialog(
+            title: Text(context.message.signUpFailed),
+            content: Text(message),
+            actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.ok))],
           ),
-        ],
-      ),
     );
   }
 
@@ -82,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up')),
+      appBar: AppBar(title: Text(context.message.signUp)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -90,19 +80,12 @@ class _SignUpPageState extends State<SignUpPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // Email field
                 TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email),
-                    border: OutlineInputBorder(),
-                  ),
+                  decoration: InputDecoration(labelText: context.message.signUpEmail, prefixIcon: Icon(Icons.email), border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if (value == null ||
-                        value.isEmpty ||
-                        !value.contains('@')) {
-                      return 'Please enter a valid email.';
+                    if (value == null || value.isEmpty || !value.contains('@')) {
+                      return context.message.signUpEmailHint;
                     }
                     return null;
                   },
@@ -110,16 +93,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 16),
 
-                // Username field
                 TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Username',
-                    prefixIcon: Icon(Icons.person),
-                    border: OutlineInputBorder(),
-                  ),
+                  decoration: InputDecoration(labelText: context.message.signUpUsername, prefixIcon: Icon(Icons.person), border: OutlineInputBorder()),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a username.';
+                      return context.message.signUpUsernameHint;
                     }
                     return null;
                   },
@@ -127,36 +105,26 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 16),
 
-                // Password field
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock),
-                    border: OutlineInputBorder(),
-                  ),
+                  decoration: InputDecoration(labelText: context.message.signUpPassword, prefixIcon: Icon(Icons.lock), border: OutlineInputBorder()),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.length < 6) {
-                      return 'Password must be at least 6 characters.';
+                      return context.message.signUpPasswordHint;
                     }
                     return null;
                   },
                 ),
                 const SizedBox(height: 16),
 
-                // Confirm Password field
                 TextFormField(
                   controller: _confirmPasswordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Confirm Password',
-                    prefixIcon: Icon(Icons.lock_outline),
-                    border: OutlineInputBorder(),
-                  ),
+                  decoration: InputDecoration(labelText: context.message.signUpConfirmPassword, prefixIcon: Icon(Icons.lock_outline), border: OutlineInputBorder()),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value != _passwordController.text) {
-                      return 'Passwords do not match.';
+                      return context.message.signUpConfirmPasswordHint;
                     }
                     return null;
                   },
@@ -166,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _signUp,
-                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text('Sign Up'),
+                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : Text(context.message.signUp),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -175,7 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/signin');
                   },
-                  child: const Text('Already have an account? Sign In'),
+                  child: Text(context.message.signUpAlreadyHaveAccount),
                 ),
               ],
             ),

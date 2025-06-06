@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/prediction/model/viewmodel/prediction_card_model.dart';
 import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_get_predictions.dart';
@@ -56,7 +57,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
 
     if (userId == null) {
       setState(() {
-        _error = 'Kullanıcı bilgisi bulunamadı.';
+        _error = context.message.predictionFeedUserNotFound;
       });
       return;
     }
@@ -103,11 +104,11 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
       });
     } on ApiException catch (e) {
       setState(() {
-        _error = e.message;
+        _error = e.errorMessage;
       });
     } catch (e) {
       setState(() {
-        _error = 'Beklenmedik bir hata oluştu.';
+        _error = context.message.generalError;
       });
     } finally {
       setState(() {
@@ -143,17 +144,15 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
 
   Widget _buildPredictionCard(PredictionCardModel prediction, bool isOtherUser) {
     return GestureDetector(
-      onTap: isOtherUser
-          ? () async {
-        final result = await Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => VotePredictionScreen(prediction: prediction)),
-        );
-        if (result == true) {
-          await _onRefresh();
-        }
-      }
-          : null,
+      onTap:
+          isOtherUser
+              ? () async {
+                final result = await Navigator.push(context, MaterialPageRoute(builder: (_) => VotePredictionScreen(prediction: prediction)));
+                if (result == true) {
+                  await _onRefresh();
+                }
+              }
+              : null,
       child: Stack(
         children: [
           Card(
@@ -183,7 +182,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
                             children: [
                               const Icon(Icons.how_to_vote, size: 18),
                               const SizedBox(width: 4),
-                              Text('${prediction.voteCount} oy'),
+                              Text(context.message.predictionFeedVoteCount(prediction.voteCount))
                             ],
                           ),
                           const SizedBox(height: 16),
@@ -195,11 +194,8 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
                               ),
                               const SizedBox(width: 6),
                               Text(
-                                prediction.averageScore >= 2.5 ? 'Olumlu Tahmin' : 'Olumsuz Tahmin',
-                                style: TextStyle(
-                                  color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                prediction.averageScore >= 2.5 ? context.message.predictionFeedPositive : context.message.predictionFeedNegative,
+                                style: TextStyle(color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -209,7 +205,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
                         children: [
                           const Icon(Icons.star, color: Colors.amber, size: 18),
                           const SizedBox(width: 4),
-                          Text('${prediction.averageScore.toStringAsFixed(1)} / 5'),
+                          Text(context.message.predictionFeedScore(prediction.averageScore.toStringAsFixed(1))),
                         ],
                       ),
                     ],
@@ -218,8 +214,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
               ),
             ),
           ),
-          if (isOtherUser)
-            const Positioned(top: 8, right: 8, child: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey)),
+          if (isOtherUser) const Positioned(top: 8, right: 8, child: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey)),
         ],
       ),
     );
@@ -238,38 +233,36 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
             children: [
               Text(_error!),
               const SizedBox(height: 12),
-              ElevatedButton(onPressed: _initializeUserAndFetchPredictions, child: const Text('Tekrar Dene')),
+              ElevatedButton(onPressed: _initializeUserAndFetchPredictions, child: Text(context.message.predictionFeedTryAgain)),
             ],
           ),
         ),
       );
     }
     if (_userId == null) {
-      return const Scaffold(body: Center(child: Text("Kullanıcı bilgisi alınamadı.")));
+      return Scaffold(body: Center(child: Text(context.message.predictionFeedUserNotFound)));
     }
 
     return Scaffold(
-      body: predictions.isEmpty && !_isLoading && !_isPaginating
-          ? const Center(child: Text('Henüz tahmin bulunmamaktadır.'))
-          : RefreshIndicator(
-        onRefresh: _onRefresh,
-        child: ListView.builder(
-          controller: _scrollController,
-          padding: const EdgeInsets.all(16.0),
-          itemCount: predictions.length + (_hasMore ? 1 : 0),
-          itemBuilder: (context, index) {
-            if (index == predictions.length) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Center(child: CircularProgressIndicator()),
-              );
-            }
-            final prediction = predictions[index];
-            final isOtherUser = _userId != null && prediction.creatorUserId.toString() != _userId;
-            return _buildPredictionCard(prediction, isOtherUser);
-          },
-        ),
-      ),
+      body:
+          predictions.isEmpty && !_isLoading && !_isPaginating
+              ? Center(child: Text(context.message.predictionFeedNoPredictions))
+              : RefreshIndicator(
+                onRefresh: _onRefresh,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  padding: const EdgeInsets.all(16.0),
+                  itemCount: predictions.length + (_hasMore ? 1 : 0),
+                  itemBuilder: (context, index) {
+                    if (index == predictions.length) {
+                      return const Padding(padding: EdgeInsets.symmetric(vertical: 16.0), child: Center(child: CircularProgressIndicator()));
+                    }
+                    final prediction = predictions[index];
+                    final isOtherUser = _userId != null && prediction.creatorUserId.toString() != _userId;
+                    return _buildPredictionCard(prediction, isOtherUser);
+                  },
+                ),
+              ),
     );
   }
 }

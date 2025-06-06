@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 import '../model/request/request_sign_in_user.dart';
 import '../../common/model/exception/api_exception.dart';
@@ -32,10 +33,10 @@ class _SignInPageState extends State<SignInPage> {
         Navigator.pushReplacementNamed(context, '/dashboard');
       } on ApiException catch (e) {
         if (!mounted) return;
-        _showErrorDialog(e.message ?? 'Authentication failed.');
+        _showErrorDialog(e.errorMessage);
       } catch (e) {
         if (!mounted) return;
-        _showErrorDialog('An unexpected error occurred.');
+        _showErrorDialog(context.message.generalError);
       } finally {
         if (mounted) {
           setState(() => _isLoading = false);
@@ -49,9 +50,9 @@ class _SignInPageState extends State<SignInPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Sign In Failed'),
+            title: Text(context.message.signInFailed),
             content: Text(message),
-            actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('OK'))],
+            actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(context.message.ok))],
           ),
     );
   }
@@ -59,7 +60,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign In')),
+      appBar: AppBar(title: Text(context.message.signIn)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -68,26 +69,24 @@ class _SignInPageState extends State<SignInPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Email field
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.email), border: OutlineInputBorder()),
+                  decoration: InputDecoration(labelText: context.message.signInEmail, prefixIcon: Icon(Icons.email), border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty || !value.contains('@')) {
-                      return 'Please enter a valid email.';
+                      return context.message.signInEmailHint;
                     }
                     return null;
                   },
                   onSaved: (value) => _email = value!.trim(),
                 ),
                 const SizedBox(height: 16),
-                // Password field
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Password', prefixIcon: Icon(Icons.lock), border: OutlineInputBorder()),
+                  decoration: InputDecoration(labelText: context.message.signInPassword, prefixIcon: Icon(Icons.lock), border: OutlineInputBorder()),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.length < 6) {
-                      return 'Password must be at least 6 characters.';
+                      return context.message.signInPasswordHint;
                     }
                     return null;
                   },
@@ -98,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _signIn,
-                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text('Sign In'),
+                    child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : Text(context.message.signIn),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -106,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/signup');
                   },
-                  child: const Text("Don't have an account? Sign Up"),
+                  child: Text(context.message.signInDontHaveAccount),
                 ),
               ],
             ),

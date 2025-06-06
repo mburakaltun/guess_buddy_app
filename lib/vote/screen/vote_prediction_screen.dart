@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/prediction/model/viewmodel/prediction_card_model.dart';
 import 'package:guess_buddy_app/vote/service/vote_service.dart';
 import '../model/request/request_vote_prediction.dart';
+import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 class VotePredictionScreen extends StatefulWidget {
   final PredictionCardModel prediction;
@@ -34,27 +35,18 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
     });
 
     try {
-      await _voteService.votePrediction(
-        requestVotePrediction: RequestVotePrediction(
-          predictionId: widget.prediction.id,
-          score: score,
-        ),
-      );
+      await _voteService.votePrediction(requestVotePrediction: RequestVotePrediction(predictionId: widget.prediction.id, score: score));
       setState(() {
         hasVoted = true;
       });
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Vote submitted successfully')),
-        );
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.votePredictionSuccess)));
       }
     } catch (e) {
       setState(() {
         selectedScore = previousScore;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to vote')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.votePredictionFailed)));
     } finally {
       setState(() {
         isVoting = false;
@@ -74,10 +66,7 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Vote for Prediction'),
-          centerTitle: true,
-        ),
+        appBar: AppBar(title: Text(context.message.votePredictionTitle), centerTitle: true),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -90,29 +79,17 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        prediction.title,
-                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
+                      Text(prediction.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 10),
-                      Text(
-                        prediction.description,
-                        style: const TextStyle(fontSize: 16),
-                      ),
+                      Text(prediction.description, style: const TextStyle(fontSize: 16)),
                       const SizedBox(height: 12),
-                      Text(
-                        'Published: ${prediction.createdDate}',
-                        style: const TextStyle(color: Colors.grey),
-                      ),
+                      Text(context.message.votePredictionPublished(prediction.createdDate), style: const TextStyle(color: Colors.grey)),
                     ],
                   ),
                 ),
               ),
               const SizedBox(height: 30),
-              const Text(
-                "How much do you agree?",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
+              Text(context.message.votePredictionHowMuchAgree, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -123,21 +100,12 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
                     child: AnimatedOpacity(
                       opacity: isVoting && selectedScore != score ? 0.6 : 1.0,
                       duration: const Duration(milliseconds: 200),
-                      child: Icon(
-                        Icons.star,
-                        size: 36,
-                        color: selectedScore != null && score <= selectedScore!
-                            ? Colors.amber
-                            : Colors.grey.shade400,
-                      ),
+                      child: Icon(Icons.star, size: 36, color: selectedScore != null && score <= selectedScore! ? Colors.amber : Colors.grey.shade400),
                     ),
                   );
                 }),
               ),
-              if (selectedScore != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                ),
+              if (selectedScore != null) const Padding(padding: EdgeInsets.only(top: 16.0)),
             ],
           ),
         ),
