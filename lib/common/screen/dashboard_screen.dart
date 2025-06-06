@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/screen/users_screen.dart';
-import 'home_screen.dart';
+import '../../prediction/screen/prediction_feed_screen.dart';
 import '../../prediction/screen/add_prediction_screen.dart';
 import 'voting_pending_screen.dart';
 import '../../user/screen/profile_screen.dart';
@@ -16,7 +16,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = const [
-    HomeScreen(),
+    PredictionFeedScreen(),
     UsersScreen(),
     AddPredictionScreen(),
     VotingPendingScreen(),
