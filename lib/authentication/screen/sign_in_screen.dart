@@ -13,8 +13,8 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
-  String _email = 'mburakaltun@gmail.com';
-  String _password = 'abcd1234';
+  String _email = '';
+  String _password = '';
   bool _isLoading = false;
 
   final AuthenticationService authenticationService = AuthenticationService();
