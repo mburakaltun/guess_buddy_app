@@ -1,4 +1,4 @@
 class VoteEndpoints {
-  static const String base = '/vote';
-  static const String votePrediction = '$base/votePrediction';
+  static const String base = '/votes';
+  static const String votePrediction = '$base';
 }

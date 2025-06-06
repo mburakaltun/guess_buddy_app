@@ -188,17 +188,32 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
                           const SizedBox(height: 16),
                           Row(
                             children: [
-                              Icon(
-                                prediction.averageScore >= 2.5 ? Icons.check_circle : Icons.cancel,
-                                color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                prediction.averageScore >= 2.5 ? context.message.predictionFeedPositive : context.message.predictionFeedNegative,
-                                style: TextStyle(color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red, fontWeight: FontWeight.bold),
-                              ),
+                              if (prediction.voteCount == 0) ...[
+                                const Icon(Icons.hourglass_empty, color: Colors.grey),
+                                const SizedBox(width: 6),
+                                Text(
+                                  context.message.predictionFeedNotVotedYet,
+                                  style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                                ),
+                              ] else ...[
+                                Icon(
+                                  prediction.averageScore >= 2.5 ? Icons.check_circle : Icons.cancel,
+                                  color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  prediction.averageScore >= 2.5
+                                      ? context.message.predictionFeedPositive
+                                      : context.message.predictionFeedNegative,
+                                  style: TextStyle(
+                                    color: prediction.averageScore >= 2.5 ? Colors.green : Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ],
                           ),
+
                         ],
                       ),
                       Row(

@@ -47,6 +47,7 @@
   "predictionFeedPositive": "Olumlu Tahmin",
   "predictionFeedNegative": "Olumsuz Tahmin",
   "predictionFeedScore": "{score} / 5",
+  "predictionFeedNotVotedYet": "Henüz oy kullanılmadı",
 
   "profileEdit": "Profili Düzenle",
   "profileSettings": "Ayarlar",
