@@ -8,6 +8,7 @@
   "signInPasswordHint": "Password must be at least 6 characters.",
   "signInFailed": "Sign In Failed",
   "signInDontHaveAccount": "Don't have an account? Sign Up",
+
   "signUp": "Sign Up",
   "signUpEmail": "Email",
   "signUpEmailHint": "Please enter a valid email.",
@@ -23,11 +24,13 @@
   "signUpSuccessTitle": "Sign Up Successful",
   "signUpSuccessMessage": "Your account has been created successfully. You can now sign in.",
   "goToSignIn": "Go to Sign In",
+
   "dashboardHome": "Home",
   "dashboardUsers": "Users",
   "dashboardAddPrediction": "Add Prediction",
   "dashboardVotingPending": "Voting Pending",
   "dashboardProfile": "Profile",
+
   "addPredictionTitle": "Title",
   "addPredictionTitleHint": "Please enter a title.",
   "addPredictionDescription": "Description",
@@ -35,6 +38,7 @@
   "addPredictionSubmit": "Submit Prediction",
   "addPredictionSuccess": "Prediction submitted successfully!",
   "addPredictionFailed": "Submission Failed",
+
   "predictionFeedUserNotFound": "User information not found.",
   "predictionFeedUnexpectedError": "An unexpected error occurred.",
   "predictionFeedTryAgain": "Try Again",
@@ -43,6 +47,7 @@
   "predictionFeedPositive": "Positive Prediction",
   "predictionFeedNegative": "Negative Prediction",
   "predictionFeedScore": "{score} / 5",
+
   "profileEdit": "Edit Profile",
   "profileSettings": "Settings",
   "profileAbout": "About",
@@ -52,9 +57,17 @@
   "profileSignOutDialogCancel": "Cancel",
   "profileSignOutDialogConfirm": "Sign Out",
   "profileLoadFailed": "Failed to load profile",
+  "profileLanguage": "Language",
+
   "votePredictionTitle": "Vote for Prediction",
   "votePredictionPublished": "Published: {date}",
   "votePredictionHowMuchAgree": "How much do you agree?",
   "votePredictionSuccess": "Vote submitted successfully",
-  "votePredictionFailed": "Failed to vote"
+  "votePredictionFailed": "Failed to vote",
+
+  "languageSelectionTitle": "Language Selection",
+  "languageSelectionEnglish": "English",
+  "languageSelectionEnglishKey": "en",
+  "languageSelectionTurkish": "Turkish",
+  "languageSelectionTurkishKey": "tr"
 }

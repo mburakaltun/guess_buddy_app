@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/shared_preferences//shared_preferences_key.dart';
 import '../model/exception/api_exception.dart';
+import '../utility/language_utility.dart';
 
 class ApiService {
   String get baseUrl => dotenv.env['BASE_URL'] ?? '';
@@ -15,8 +16,10 @@ class ApiService {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString(SharedPreferencesKey.authToken);
       final userId = prefs.getString(SharedPreferencesKey.userId);
+      final lang = await LanguageHelper.getLanguage();
       final headers = {
         'Content-Type': 'application/json',
+        'Accept-Language': lang,
         if (token != null) 'Authorization': 'Bearer $token',
         if (userId != null) 'X-User-Id': userId
       };
@@ -51,8 +54,10 @@ class ApiService {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString(SharedPreferencesKey.authToken);
       final userId = prefs.getString(SharedPreferencesKey.userId);
+      final lang = await LanguageHelper.getLanguage();
       final headers = {
         'Content-Type': 'application/json',
+        'Accept-Language': lang,
         if (token != null) 'Authorization': 'Bearer $token',
         if (userId != null) 'X-User-Id': userId
       };

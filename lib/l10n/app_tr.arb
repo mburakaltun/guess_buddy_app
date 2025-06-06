@@ -8,6 +8,7 @@
   "signInPasswordHint": "Şifre en az 6 karakter olmalı.",
   "signInFailed": "Giriş Başarısız",
   "signInDontHaveAccount": "Hesabınız yok mu? Kayıt Ol",
+
   "signUp": "Kayıt Ol",
   "signUpEmail": "E-posta",
   "signUpEmailHint": "Lütfen geçerli bir e-posta girin.",
@@ -23,11 +24,13 @@
   "signUpSuccessTitle": "Kayıt Başarılı",
   "signUpSuccessMessage": "Hesabınız başarıyla oluşturuldu. Artık giriş yapabilirsiniz.",
   "goToSignIn": "Giriş Yap'a Git",
-  "dashboardHome": "Ana Sayfa",
-  "dashboardUsers": "Kullanıcılar",
-  "dashboardAddPrediction": "Tahmin Ekle",
-  "dashboardVotingPending": "Oylama Bekliyor",
+
+  "dashboardHome": "Ana Menü",
+  "dashboardUsers": "Dereceler",
+  "dashboardAddPrediction": "Ekle",
+  "dashboardVotingPending": "Oylamalar",
   "dashboardProfile": "Profil",
+
   "addPredictionTitle": "Başlık",
   "addPredictionTitleHint": "Lütfen bir başlık girin.",
   "addPredictionDescription": "Açıklama",
@@ -35,6 +38,7 @@
   "addPredictionSubmit": "Tahmini Gönder",
   "addPredictionSuccess": "Tahmin başarıyla gönderildi!",
   "addPredictionFailed": "Gönderim Başarısız",
+
   "predictionFeedUserNotFound": "Kullanıcı bilgisi bulunamadı.",
   "predictionFeedUnexpectedError": "Beklenmedik bir hata oluştu.",
   "predictionFeedTryAgain": "Tekrar Dene",
@@ -43,6 +47,7 @@
   "predictionFeedPositive": "Olumlu Tahmin",
   "predictionFeedNegative": "Olumsuz Tahmin",
   "predictionFeedScore": "{score} / 5",
+
   "profileEdit": "Profili Düzenle",
   "profileSettings": "Ayarlar",
   "profileAbout": "Hakkında",
@@ -52,9 +57,17 @@
   "profileSignOutDialogCancel": "İptal",
   "profileSignOutDialogConfirm": "Çıkış Yap",
   "profileLoadFailed": "Profil yüklenemedi",
+  "profileLanguage": "Dil",
+
   "votePredictionTitle": "Tahmin için Oy Ver",
   "votePredictionPublished": "Yayınlanma: {date}",
   "votePredictionHowMuchAgree": "Ne kadar katılıyorsunuz?",
   "votePredictionSuccess": "Oyunuz başarıyla gönderildi",
-  "votePredictionFailed": "Oy verme başarısız"
+  "votePredictionFailed": "Oy verme başarısız",
+
+  "languageSelectionTitle": "Dil Seçimi",
+  "languageSelectionEnglish": "İngilizce",
+  "languageSelectionEnglishKey": "en",
+  "languageSelectionTurkish": "Türkçe",
+  "languageSelectionTurkishKey": "tr"
 }

@@ -6,14 +6,47 @@ import 'package:guess_buddy_app/common/screen/dashboard_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_in_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_success_screen.dart';
+import 'package:guess_buddy_app/common/utility/language_utility.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
   runApp(const GuessBuddyApp());
 }
 
-class GuessBuddyApp extends StatelessWidget {
+class GuessBuddyApp extends StatefulWidget {
   const GuessBuddyApp({super.key});
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    final _GuessBuddyAppState? state = context.findAncestorStateOfType<_GuessBuddyAppState>();
+    state?.setLocale(newLocale);
+  }
+
+  @override
+  State<GuessBuddyApp> createState() => _GuessBuddyAppState();
+}
+
+class _GuessBuddyAppState extends State<GuessBuddyApp> {
+  Locale? _locale;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLocale();
+  }
+
+  Future<void> _loadLocale() async {
+    final lang = await LanguageHelper.getLanguage();
+    setState(() {
+      _locale = Locale(lang);
+    });
+  }
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +54,7 @@ class GuessBuddyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'GuessBuddy',
+      locale: _locale,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

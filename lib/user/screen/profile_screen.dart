@@ -7,6 +7,8 @@ import 'package:guess_buddy_app/user/model/request/request_get_user_profile.dart
 import 'package:guess_buddy_app/user/model/response/response_get_user_profile.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
+import 'language_selection_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -99,7 +101,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             leading: const Icon(Icons.edit),
                             title: Text(context.message.profileEdit),
                             onTap: () {
-                              // Navigate to edit profile
                             },
                           ),
                           const Divider(height: 0),
@@ -107,7 +108,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             leading: const Icon(Icons.settings),
                             title: Text(context.message.profileSettings),
                             onTap: () {
-                              // Navigate to settings
                             },
                           ),
                           const Divider(height: 0),
@@ -115,15 +115,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             leading: const Icon(Icons.info_outline),
                             title: Text(context.message.profileAbout),
                             onTap: () {
-                              // Navigate to about
                             },
                           ),
+                          const Divider(height: 0),
+                          ListTile(
+                            leading: const Icon(Icons.language),
+                            title: Text(context.message.profileLanguage),
+                            onTap: () async {
+                              await Navigator.push<String>(
+                                context,
+                                MaterialPageRoute(builder: (context) => const LanguageSelectionScreen()),
+                              );
+                            },
+                          ),
+                          const Divider(height: 0),
                         ],
                       ),
                     ),
                     const Divider(height: 0),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 24.0),
+                      padding: const EdgeInsets.only(bottom: 0.0),
                       child: ListTile(
                         leading: const Icon(Icons.logout, color: Colors.redAccent),
                         title: Text(context.message.profileSignOut, style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold)),

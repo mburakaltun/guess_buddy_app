@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
+import 'package:guess_buddy_app/common/utility/language_utility.dart';
+import '../../main.dart';
 import '../model/request/request_sign_up_user.dart';
 import '../service/authentication_service.dart';
 import '../../common/model/exception/api_exception.dart';
@@ -18,8 +20,33 @@ class _SignUpPageState extends State<SignUpPage> {
   String _email = '';
   String _username = '';
   bool _isLoading = false;
+  String _selectedLang = 'en';
 
   final AuthenticationService authenticationService = AuthenticationService();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguage();
+  }
+
+  Future<void> _loadLanguage() async {
+    final lang = await LanguageHelper.getLanguage();
+    setState(() {
+      _selectedLang = lang;
+    });
+  }
+
+  Future<void> _changeLanguage(String? lang) async {
+    if (lang == null) return;
+    await LanguageHelper.setLanguage(lang);
+    setState(() {
+      _selectedLang = lang;
+    });
+    if (context.mounted) {
+      GuessBuddyApp.setLocale(context, Locale(lang));
+    }
+  }
 
   Future<void> _signUp() async {
     if (!_formKey.currentState!.validate()) return;
@@ -55,10 +82,28 @@ class _SignUpPageState extends State<SignUpPage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text(context.message.signUpFailed),
-            content: Text(message),
-            actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.ok))],
-          ),
+        title: Text(context.message.signUpFailed),
+        content: Text(message),
+        actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.ok))],
+      ),
+    );
+  }
+
+  Widget _languageDropdown() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: DropdownButton<String>(
+        value: _selectedLang,
+        underline: const SizedBox(),
+        icon: const Icon(Icons.language),
+        items: [
+          DropdownMenuItem(value: context.message.languageSelectionEnglishKey, child: Text(context.message.languageSelectionEnglish)),
+          DropdownMenuItem(value: context.message.languageSelectionTurkishKey, child: Text(context.message.languageSelectionTurkish)),
+        ],
+        onChanged: _changeLanguage,
+        style: Theme.of(context).textTheme.bodyMedium,
+        dropdownColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
     );
   }
 
@@ -80,6 +125,8 @@ class _SignUpPageState extends State<SignUpPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                _languageDropdown(),
+                const SizedBox(height: 16),
                 TextFormField(
                   decoration: InputDecoration(labelText: context.message.signUpEmail, prefixIcon: Icon(Icons.email), border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
@@ -92,7 +139,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   onSaved: (value) => _email = value!.trim(),
                 ),
                 const SizedBox(height: 16),
-
                 TextFormField(
                   decoration: InputDecoration(labelText: context.message.signUpUsername, prefixIcon: Icon(Icons.person), border: OutlineInputBorder()),
                   validator: (value) {
@@ -104,7 +150,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   onSaved: (value) => _username = value!.trim(),
                 ),
                 const SizedBox(height: 16),
-
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(labelText: context.message.signUpPassword, prefixIcon: Icon(Icons.lock), border: OutlineInputBorder()),
@@ -117,7 +162,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
                 const SizedBox(height: 16),
-
                 TextFormField(
                   controller: _confirmPasswordController,
                   decoration: InputDecoration(labelText: context.message.signUpConfirmPassword, prefixIcon: Icon(Icons.lock_outline), border: OutlineInputBorder()),
@@ -138,7 +182,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 const SizedBox(height: 16),
-
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/signin');
