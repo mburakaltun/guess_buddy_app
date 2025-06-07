@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
+import '../../common/utility/dialog_utility.dart';
 import '../../main.dart';
 import '../model/request/request_sign_up_user.dart';
 import '../service/authentication_service.dart';
@@ -84,10 +85,13 @@ class _SignUpPageState extends State<SignUpPage> {
 
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, Routes.signUpSuccess);
-    } on ApiException catch (e) {
-      _showErrorDialog(e.errorMessage);
     } catch (e) {
-      _showErrorDialog(context.message.generalError);
+      if (!mounted) return;
+      DialogUtility.handleApiError(
+        context: context,
+        error: e,
+        title: context.message.signUpFailed,
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -95,22 +99,6 @@ class _SignUpPageState extends State<SignUpPage> {
         });
       }
     }
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.signUpFailed),
-        content: Text(message),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(context.message.ok)
-          )
-        ],
-      ),
-    );
   }
 
   Widget _languageDropdown() {

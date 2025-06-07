@@ -3,6 +3,7 @@ import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_create_prediction.dart';
 import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
 import '../../common/model/exception/api_exception.dart';
+import '../../common/utility/dialog_utility.dart';
 
 class AddPredictionScreen extends StatefulWidget {
   const AddPredictionScreen({super.key});
@@ -59,10 +60,12 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
       _titleController.clear();
       _descriptionController.clear();
       _formKey.currentState!.reset();
-    } on ApiException catch (e) {
-      _showErrorDialog(e.errorMessage);
     } catch (e) {
-      _showErrorDialog(context.message.generalError);
+      DialogUtility.handleApiError(
+        context: context,
+        error: e,
+        title: context.message.addPredictionFailed,
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -70,22 +73,6 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
         });
       }
     }
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.addPredictionFailed),
-        content: Text(message),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(context.message.ok)
-          )
-        ],
-      ),
-    );
   }
 
   @override

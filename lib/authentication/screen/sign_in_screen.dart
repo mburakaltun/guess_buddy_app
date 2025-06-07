@@ -3,6 +3,7 @@ import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
 
+import '../../common/utility/dialog_utility.dart';
 import '../../main.dart';
 import '../model/request/request_sign_in_user.dart';
 import '../../common/model/exception/api_exception.dart';
@@ -71,34 +72,19 @@ class _SignInPageState extends State<SignInPage> {
 
         if (!mounted) return;
         Navigator.pushReplacementNamed(context, Routes.dashboard);
-      } on ApiException catch (e) {
-        if (!mounted) return;
-        _showErrorDialog(e.errorMessage);
       } catch (e) {
         if (!mounted) return;
-        _showErrorDialog(context.message.generalError);
+        DialogUtility.handleApiError(
+          context: context,
+          error: e,
+          title: context.message.signInFailed,
+        );
       } finally {
         if (mounted) {
           setState(() => _isLoading = false);
         }
       }
     }
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.signInFailed),
-        content: Text(message),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(context.message.ok)
-          )
-        ],
-      ),
-    );
   }
 
   Widget _languageDropdown() {

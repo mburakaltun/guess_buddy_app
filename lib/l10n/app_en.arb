@@ -39,7 +39,7 @@
   "addPredictionDescriptionHint": "Please enter a description.",
   "addPredictionSubmit": "Submit Prediction",
   "addPredictionSuccess": "Prediction submitted successfully!",
-  "addPredictionFailed": "Submission Failed",
+  "addPredictionFailed": "Failed to submit prediction.",
 
   "predictionFeedUserNotFound": "User information not found.",
   "predictionFeedUnexpectedError": "An unexpected error occurred.",

@@ -39,7 +39,7 @@
   "addPredictionDescriptionHint": "Lütfen bir açıklama girin.",
   "addPredictionSubmit": "Tahmini Gönder",
   "addPredictionSuccess": "Tahmin başarıyla gönderildi!",
-  "addPredictionFailed": "Gönderim Başarısız",
+  "addPredictionFailed": "Tahmin kaydedilemedi.",
 
   "predictionFeedUserNotFound": "Kullanıcı bilgisi bulunamadı.",
   "predictionFeedUnexpectedError": "Beklenmedik bir hata oluştu.",

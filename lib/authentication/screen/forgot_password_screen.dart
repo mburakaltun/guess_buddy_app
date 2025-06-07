@@ -4,6 +4,7 @@ import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/common/model/exception/api_exception.dart';
 import 'package:guess_buddy_app/authentication/service/authentication_service.dart';
+import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -49,42 +50,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         _isLoading = false;
       });
 
-    } on ApiException catch (e) {
-      if (!mounted) return;
     } catch (e) {
       if (!mounted) return;
     } finally {
       if (mounted && !_isSuccess) {
         setState(() => _isLoading = false);
       }
-      _showSuccessMessage(context.message.forgotPasswordResetLinkSent);
+      DialogUtility.showSuccessDialog(
+          context: context,
+          title: context.message.forgotPassword,
+          message: context.message.forgotPasswordResetLinkSent,
+          onDismiss: () => Navigator.pushReplacementNamed(context, Routes.signIn)
+      );
     }
-  }
-
-  void _showSuccessMessage(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 3),
-      ),
-    );
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.forgotPasswordFailed),
-        content: Text(message),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(context.message.ok)
-          )
-        ],
-      ),
-    );
   }
 
   @override
