@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:guess_buddy_app/authentication/model/request/request_send_forgot_password_email.dart';
+import 'package:guess_buddy_app/authentication/model/request/request_complete_forgot_password.dart';
 import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
-import 'package:guess_buddy_app/common/model/exception/api_exception.dart';
 import 'package:guess_buddy_app/authentication/service/authentication_service.dart';
 import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+class CompleteForgotPasswordScreen extends StatefulWidget {
+  final String token;
+
+  const CompleteForgotPasswordScreen({
+    super.key,
+    required this.token,
+  });
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  State<CompleteForgotPasswordScreen> createState() => _CompleteForgotPasswordScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _CompleteForgotPasswordScreenState extends State<CompleteForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   final _authenticationService = AuthenticationService();
 
-  String _email = '';
+  String _password = '';
   bool _isLoading = false;
-  bool _isSuccess = false;
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -35,33 +42,36 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
     setState(() {
       _isLoading = true;
-      _isSuccess = false;
     });
 
     try {
-      await _authenticationService.startForgotPassword(
-          RequestStartForgotPassword(email: _email)
+      await _authenticationService.completeForgotPassword(
+        RequestCompleteForgotPassword(
+          token: widget.token,
+          newPassword: _password,
+        ),
       );
 
       if (!mounted) return;
 
-      setState(() {
-        _isSuccess = true;
-        _isLoading = false;
-      });
-
+      DialogUtility.showSuccessDialog(
+        context: context,
+        title: context.message.forgotPassword,
+        message: "Your password has been successfully reset.",
+        onDismiss: () => Navigator.pushReplacementNamed(context, Routes.signIn),
+      );
     } catch (e) {
       if (!mounted) return;
+
+      DialogUtility.handleApiError(
+        context: context,
+        error: e,
+        title: context.message.forgotPasswordFailed,
+      );
     } finally {
-      if (mounted && !_isSuccess) {
+      if (mounted) {
         setState(() => _isLoading = false);
       }
-      DialogUtility.showSuccessDialog(
-          context: context,
-          title: context.message.forgotPassword,
-          message: context.message.forgotPasswordResetLinkSent,
-          onDismiss: () => Navigator.pushReplacementNamed(context, Routes.signIn)
-      );
     }
   }
 
@@ -69,7 +79,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.message.forgotPassword),
+        title: Text(context.message.forgotPasswordTitle),
         centerTitle: true,
         elevation: 0,
       ),
@@ -95,7 +105,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                     // Title
                     Text(
-                      context.message.forgotPasswordTitle,
+                      "Create New Password",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -105,7 +115,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                     // Description
                     Text(
-                      context.message.forgotPasswordDescription,
+                      "Enter your new password below",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.grey[600],
                       ),
@@ -113,29 +123,66 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                     const SizedBox(height: 32),
 
-                    // Email field
+                    // New Password field
                     TextFormField(
-                      controller: _emailController,
+                      controller: _passwordController,
                       decoration: InputDecoration(
-                        labelText: context.message.forgotPasswordEmail,
-                        prefixIcon: const Icon(Icons.email),
+                        labelText: "New Password",
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 16,
-                        ),
                       ),
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.done,
+                      obscureText: _obscurePassword,
                       validator: (value) {
-                        if (value == null || value.isEmpty || !value.contains('@')) {
-                          return context.message.forgotPasswordEmailHint;
+                        if (value == null || value.isEmpty) {
+                          return "Please enter a password";
+                        }
+                        if (value.length < 6) {
+                          return "Password must be at least 6 characters";
                         }
                         return null;
                       },
-                      onSaved: (value) => _email = value!.trim(),
+                      onSaved: (value) => _password = value!,
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Confirm Password field
+                    TextFormField(
+                      controller: _confirmPasswordController,
+                      decoration: InputDecoration(
+                        labelText: context.message.signUpConfirmPassword,
+                        prefixIcon: const Icon(Icons.lock_outline),
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscureConfirmPassword ? Icons.visibility : Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _obscureConfirmPassword = !_obscureConfirmPassword;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      obscureText: _obscureConfirmPassword,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please confirm your password";
+                        }
+                        if (value != _passwordController.text) {
+                          return context.message.signUpConfirmPasswordHint;
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 32),
 
@@ -159,37 +206,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         ),
                       )
                           : Text(
-                        context.message.forgotPasswordSubmit,
+                        "Reset Password",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // Back to login link
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          context.message.forgotPasswordRemembered,
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, Routes.signIn);
-                          },
-                          child: Text(
-                            context.message.signIn,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),

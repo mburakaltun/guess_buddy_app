@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_buddy_app/authentication/screen/complete_forgot_password_screen.dart';
 import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/screen/dashboard_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_in_screen.dart';
@@ -9,8 +10,10 @@ import 'package:guess_buddy_app/authentication/screen/sign_up_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_success_screen.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
 import 'package:guess_buddy_app/prediction/screen/add_prediction_screen.dart';
+import 'package:app_links/app_links.dart';
+import 'dart:async';
 
-import 'authentication/screen/forgot_password_screen.dart';
+import 'authentication/screen/start_forgot_password_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,11 +35,21 @@ class GuessBuddyApp extends StatefulWidget {
 
 class _GuessBuddyAppState extends State<GuessBuddyApp> {
   Locale? _locale;
+  final AppLinks _appLinks = AppLinks();
+  StreamSubscription<Uri>? _linkSubscription;
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   void initState() {
     super.initState();
     _loadLocale();
+    _initDeepLinks();
+  }
+
+  @override
+  void dispose() {
+    _linkSubscription?.cancel();
+    super.dispose();
   }
 
   Future<void> _loadLocale() async {
@@ -44,6 +57,53 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
     setState(() {
       _locale = Locale(lang);
     });
+  }
+
+  Future<void> _initDeepLinks() async {
+    // Get the initial link that opened the app
+    try {
+      final appLink = await _appLinks.getInitialAppLink();
+      if (appLink != null) {
+        print("Initial app link: $appLink");
+        _handleDeepLink(appLink);
+      }
+    } catch (e) {
+      print("Error getting initial app link: $e");
+    }
+
+    // Listen for links while the app is running
+    _linkSubscription = _appLinks.uriLinkStream.listen((uri) {
+      print("Got app link while running: $uri");
+      _handleDeepLink(uri);
+    }, onError: (e) {
+      print("Error listening to app links: $e");
+    });
+  }
+
+  void _handleDeepLink(Uri uri) {
+    print("Handling deep link: $uri");
+    print("Scheme: ${uri.scheme}, Host: ${uri.host}, Path: ${uri.path}");
+
+    // For custom scheme: guessbuddy://reset-password?token=xyz
+    // For https scheme: https://guessbuddy.com/reset-password?token=xyz
+    if ((uri.scheme == "guessbuddy" && uri.host == "reset-password") ||
+        ((uri.scheme == "http" || uri.scheme == "https") &&
+            uri.host == "guessbuddy.com" && uri.path == "/reset-password")) {
+
+      final token = uri.queryParameters['token'];
+      print("Reset password token: $token");
+
+      if (token != null && token.isNotEmpty) {
+        // Wait a moment to ensure the app is fully loaded
+        Future.delayed(const Duration(milliseconds: 300), () {
+          _navigatorKey.currentState?.pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => CompleteForgotPasswordScreen(token: token),
+            ),
+          );
+        });
+      }
+    }
   }
 
   void setLocale(Locale locale) {
@@ -58,6 +118,7 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
 
     return MaterialApp(
       title: 'GuessBuddy',
+      navigatorKey: _navigatorKey,
       locale: _locale,
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -103,7 +164,24 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
         Routes.dashboard: (context) => const DashboardScreen(),
         Routes.signUpSuccess: (context) => const SignUpSuccessScreen(),
         Routes.addPrediction: (context) => const AddPredictionScreen(),
-        Routes.forgotPassword: (context) => const ForgotPasswordScreen(),
+        Routes.forgotPassword: (context) => const StartForgotPasswordScreen(),
+        '/reset-password': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as Map<String, String>?;
+          final token = args?['token'] ?? '';
+          return CompleteForgotPasswordScreen(token: token);
+        },
+      },
+      onGenerateRoute: (settings) {
+        // Handle dynamic routes
+        if (settings.name?.startsWith('/reset-password') == true) {
+          final uri = Uri.parse(settings.name!);
+          final token = uri.queryParameters['token'] ?? '';
+          return MaterialPageRoute(
+            builder: (context) => CompleteForgotPasswordScreen(token: token),
+            settings: settings,
+          );
+        }
+        return null;
       },
     );
   }
