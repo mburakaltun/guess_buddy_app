@@ -46,6 +46,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -99,3 +101,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  android: "true" # Set to true to generate Android icons
+  ios: "true"     # Set to true to generate iOS icons
+  image_path: "assets/icon/app_icon.png" # Path to your icon image
+  min_sdk_android: 21 # Optional: minimum Android SDK to support (default is 21)
+  remove_alpha_ios: true # Optional: Removes alpha channel for iOS (recommended)
+  ios_app_icon_name: "AppIcon" # Optional: The name of the Assets.xcassets icon set (default is AppIcon)
