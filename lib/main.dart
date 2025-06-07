@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/screen/dashboard_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_in_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_screen.dart';
 import 'package:guess_buddy_app/authentication/screen/sign_up_success_screen.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
+import 'package:guess_buddy_app/prediction/screen/add_prediction_screen.dart';
+
+import 'authentication/screen/forgot_password_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,12 +96,14 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
         textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white70)),
       ),
       themeMode: ThemeMode.dark,
-      initialRoute: '/signin',
+      initialRoute: Routes.signIn,
       routes: {
-        '/signin': (context) => const SignInPage(),
-        '/signup': (context) => const SignUpPage(),
-        '/dashboard': (context) => const DashboardScreen(),
-        '/success': (context) => const SignUpSuccessScreen(),
+        Routes.signIn: (context) => const SignInPage(),
+        Routes.signUp: (context) => const SignUpPage(),
+        Routes.dashboard: (context) => const DashboardScreen(),
+        Routes.signUpSuccess: (context) => const SignUpSuccessScreen(),
+        Routes.addPrediction: (context) => const AddPredictionScreen(),
+        Routes.forgotPassword: (context) => const ForgotPasswordScreen(),
       },
     );
   }

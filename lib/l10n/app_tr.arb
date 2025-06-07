@@ -43,7 +43,6 @@
 
   "predictionFeedUserNotFound": "Kullanıcı bilgisi bulunamadı.",
   "predictionFeedUnexpectedError": "Beklenmedik bir hata oluştu.",
-  "predictionFeedTryAgain": "Tekrar Dene",
   "predictionFeedNoPredictions": "Henüz tahmin bulunmamaktadır.",
   "predictionFeedVoteCount": "{count} oy",
   "predictionFeedPositive": "Olumlu Tahmin",
@@ -82,5 +81,16 @@
 
   "usersNoUsersFound": "Kullanıcı bulunamadı.",
   "usersLoadingUsers": "Kullanıcılar yükleniyor...",
-  "usersPredictions": "Tahmin"
+  "usersPredictions": "Tahmin",
+
+  "forgotPassword": "Şifremi Unuttum",
+  "forgotPasswordWithQuestionMark": "Şifreni mi unuttun?",
+  "forgotPasswordTitle": "Şifreni Sıfırla",
+  "forgotPasswordDescription": "E-posta adresini gir ve sana şifre sıfırlama bağlantısı gönderelim.",
+  "forgotPasswordEmail": "E-posta",
+  "forgotPasswordEmailHint": "Lütfen geçerli bir e-posta adresi girin",
+  "forgotPasswordSubmit": "Sıfırlama Bağlantısı Gönder",
+  "forgotPasswordFailed": "Şifre Sıfırlama Başarısız",
+  "forgotPasswordResetLinkSent": "E-posta adresiniz sistemimizde mevcutsa, şifre sıfırlama bağlantısı gönderilmiştir.",
+  "forgotPasswordRemembered": "Şifreni hatırladın mı?"
 }

@@ -5,9 +5,9 @@ import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_get_user_predictions.dart';
 import 'package:guess_buddy_app/common/model/exception/api_exception.dart';
 
-
 class MyPredictionsScreen extends StatefulWidget {
-  const MyPredictionsScreen({super.key});
+  final Function(int)? onNavigate;
+  const MyPredictionsScreen({super.key, this.onNavigate});
 
   @override
   State<MyPredictionsScreen> createState() => _MyPredictionsScreenState();
@@ -289,7 +289,7 @@ class _MyPredictionsScreenState extends State<MyPredictionsScreen> {
             ElevatedButton.icon(
               onPressed: () => _fetchPredictions(page: 0, refresh: true),
               icon: const Icon(Icons.refresh),
-              label: Text(context.message.predictionFeedTryAgain),
+              label: Text(context.message.generalTryAgain),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -318,8 +318,10 @@ class _MyPredictionsScreenState extends State<MyPredictionsScreen> {
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: () {
-                // Navigate to Add Prediction tab
-                // You might need a callback from parent widget to change tabs
+                // Navigate to "Add Prediction" tab (index 2) instead of pushing a new route
+                if (widget.onNavigate != null) {
+                  widget.onNavigate!(2); // 2 is the index for AddPredictionScreen in your tabs
+                }
               },
               icon: const Icon(Icons.add),
               label: Text(context.message.myPredictionsCreate),
@@ -337,13 +339,13 @@ class _MyPredictionsScreenState extends State<MyPredictionsScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading && predictions.isEmpty) {
-      return Center(
+      return const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text(context.message.myPredictionsLoadingPredictions)
+            Text("Loading your predictions...")
           ],
         ),
       );

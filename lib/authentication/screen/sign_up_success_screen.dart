@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 class SignUpSuccessScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class SignUpSuccessScreen extends StatelessWidget {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/signin');
+                  Navigator.pushReplacementNamed(context, Routes.signIn);
                 },
                 child: Text(context.message.goToSignIn),
               ),

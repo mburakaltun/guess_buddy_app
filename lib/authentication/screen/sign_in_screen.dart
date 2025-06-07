@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
 
@@ -69,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
         await authenticationService.signIn(RequestSignInUser(email: _email, password: _password));
 
         if (!mounted) return;
-        Navigator.pushReplacementNamed(context, '/dashboard');
+        Navigator.pushReplacementNamed(context, Routes.dashboard);
       } on ApiException catch (e) {
         if (!mounted) return;
         _showErrorDialog(e.errorMessage);
@@ -208,10 +209,10 @@ class _SignInPageState extends State<SignInPage> {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          // Implement forgot password
+                          Navigator.pushNamed(context, Routes.forgotPassword);
                         },
                         child: Text(
-                          'Forgot Password?',
+                          context.message.forgotPasswordWithQuestionMark,
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                           ),
@@ -261,7 +262,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/signup');
+                            Navigator.pushReplacementNamed(context, Routes.signUp);
                           },
                           child: Text(
                             context.message.signUp,

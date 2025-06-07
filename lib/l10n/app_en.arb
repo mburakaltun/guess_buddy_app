@@ -43,7 +43,6 @@
 
   "predictionFeedUserNotFound": "User information not found.",
   "predictionFeedUnexpectedError": "An unexpected error occurred.",
-  "predictionFeedTryAgain": "Try Again",
   "predictionFeedNoPredictions": "No predictions yet.",
   "predictionFeedVoteCount": "{count} votes",
   "predictionFeedPositive": "Positive Prediction",
@@ -82,5 +81,16 @@
 
   "usersNoUsersFound": "No users found.",
   "usersLoadingUsers": "Loading users...",
-  "usersPredictions": "Predictions"
+  "usersPredictions": "Predictions",
+
+  "forgotPassword": "Forgot Password",
+  "forgotPasswordWithQuestionMark": "Forgot Password?",
+  "forgotPasswordTitle": "Reset Your Password",
+  "forgotPasswordDescription": "Enter your email address and we'll send you a link to reset your password.",
+  "forgotPasswordEmail": "Email",
+  "forgotPasswordEmailHint": "Please enter a valid email address",
+  "forgotPasswordSubmit": "Send Reset Link",
+  "forgotPasswordFailed": "Password Reset Failed",
+  "forgotPasswordResetLinkSent": "If your email exists in our system, a password reset link has been sent.",
+  "forgotPasswordRemembered": "Remembered your password?"
 }

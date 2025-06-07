@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
 import '../../main.dart';
@@ -82,7 +83,7 @@ class _SignUpPageState extends State<SignUpPage> {
       );
 
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, '/success');
+      Navigator.pushReplacementNamed(context, Routes.signUpSuccess);
     } on ApiException catch (e) {
       _showErrorDialog(e.errorMessage);
     } catch (e) {
@@ -316,7 +317,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/signin');
+                            Navigator.pushReplacementNamed(context, Routes.signIn);
                           },
                           child: Text(
                             context.message.signIn,

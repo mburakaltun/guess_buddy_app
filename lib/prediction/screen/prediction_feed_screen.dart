@@ -307,7 +307,7 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
             ElevatedButton.icon(
               onPressed: _initializeUserAndFetchPredictions,
               icon: const Icon(Icons.refresh),
-              label: Text(context.message.predictionFeedTryAgain),
+              label: Text(context.message.generalTryAgain),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

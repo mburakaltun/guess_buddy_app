@@ -16,7 +16,19 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = const [PredictionFeedScreen(), RankingsScreen(), AddPredictionScreen(), MyPredictionsScreen(), ProfileScreen()];
+  final List<Widget> _screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _screens.addAll([
+      const PredictionFeedScreen(),
+      const RankingsScreen(),
+      const AddPredictionScreen(),
+      MyPredictionsScreen(onNavigate: _onItemTapped),
+      const ProfileScreen()
+    ]);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
