@@ -198,7 +198,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       textInputAction: TextInputAction.next,
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null || value.length < 3) {
                           return context.message.signUpUsernameHint;
                         }
                         return null;
@@ -234,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       obscureText: _obscurePassword,
                       textInputAction: TextInputAction.next,
                       validator: (value) {
-                        if (value == null || value.length < 6) {
+                        if (value == null || value.length < 8) {
                           return context.message.signUpPasswordHint;
                         }
                         return null;

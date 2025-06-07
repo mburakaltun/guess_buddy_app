@@ -16,9 +16,9 @@
   "signUpEmailHint": "Please enter a valid email.",
   "signUpFailed": "Sign Up Failed",
   "signUpUsername": "Username",
-  "signUpUsernameHint": "Please enter a username.",
+  "signUpUsernameHint": "Username must be between 3 and 32 characters.",
   "signUpPassword": "Password",
-  "signUpPasswordHint": "Password must be at least 6 characters.",
+  "signUpPasswordHint": "Password must be at least 8 characters.",
   "signUpConfirmPassword": "Confirm Password",
   "signUpConfirmPasswordHint": "Passwords do not match.",
   "signUpAlreadyHaveAccount": "Already have an account?",
@@ -30,7 +30,7 @@
   "dashboardHome": "Home",
   "dashboardRanking": "Rankings",
   "dashboardAddPrediction": "Add",
-  "dashboardVotingPending": "Voting Pending",
+  "dashboardMyPredicts": "Predicts",
   "dashboardProfile": "Profile",
 
   "addPredictionTitle": "Title",
@@ -76,6 +76,11 @@
   "languageSelectionTurkish": "Turkish",
   "languageSelectionTurkishKey": "tr",
 
-  "usersNoUsersFound": "No users found."
+  "myPredictionsEmpty": "You have no predictions yet.",
+  "myPredictionsCreate": "Create Prediction",
+  "myPredictionsLoadingPredictions": "Loading predictions...",
 
+  "usersNoUsersFound": "No users found.",
+  "usersLoadingUsers": "Loading users...",
+  "usersPredictions": "Predictions"
 }

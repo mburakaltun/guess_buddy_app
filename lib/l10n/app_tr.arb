@@ -16,9 +16,9 @@
   "signUpEmailHint": "Lütfen geçerli bir e-posta girin.",
   "signUpFailed": "Kayıt Başarısız",
   "signUpUsername": "Kullanıcı Adı",
-  "signUpUsernameHint": "Lütfen bir kullanıcı adı girin.",
+  "signUpUsernameHint": "Kullanıcı Adı 3 ile 32 karakter arasında olmalı.",
   "signUpPassword": "Şifre",
-  "signUpPasswordHint": "Şifre en az 6 karakter olmalı.",
+  "signUpPasswordHint": "Şifre en az 8 karakter olmalı.",
   "signUpConfirmPassword": "Şifreyi Onayla",
   "signUpConfirmPasswordHint": "Şifreler eşleşmiyor.",
   "signUpAlreadyHaveAccount": "Zaten hesabınız var mı?",
@@ -30,7 +30,7 @@
   "dashboardHome": "Ana Menü",
   "dashboardRanking": "Sıralama",
   "dashboardAddPrediction": "Ekle",
-  "dashboardVotingPending": "Oylamalar",
+  "dashboardMyPredicts": "Tahminlerim",
   "dashboardProfile": "Profil",
 
   "addPredictionTitle": "Başlık",
@@ -76,5 +76,11 @@
   "languageSelectionTurkish": "Türkçe",
   "languageSelectionTurkishKey": "tr",
 
-  "usersNoUsersFound": "Kullanıcı bulunamadı."
+  "myPredictionsEmpty": "Henüz tahmininiz yok.",
+  "myPredictionsCreate": "Tahmin Oluştur",
+  "myPredictionsLoadingPredictions": "Tahminler yükleniyor...",
+
+  "usersNoUsersFound": "Kullanıcı bulunamadı.",
+  "usersLoadingUsers": "Kullanıcılar yükleniyor...",
+  "usersPredictions": "Tahmin"
 }

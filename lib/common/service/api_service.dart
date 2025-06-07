@@ -38,7 +38,7 @@ class ApiService {
         return decoded?['data'] ?? decoded;
       } else {
         String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
-        String errorCode = decoded?['errorCode'] ?? response.statusCode;
+        String errorCode = decoded?['errorCode'] ?? response.statusCode.toString();
         print('API Error: $errorMessage (Code: $errorCode)');
         throw ApiException(errorCode: errorCode, errorMessage: errorMessage);
       }
@@ -78,7 +78,7 @@ class ApiService {
         return decoded?['data'] ?? decoded;
       } else {
         String errorMessage = decoded?['errorMessage'] ?? 'An error occurred.';
-        String errorCode = decoded?['errorCode'] ?? response.statusCode;
+        String errorCode = decoded?['errorCode'] ?? response.statusCode.toString();
         print('API Error: $errorMessage (Code: $errorCode)');
         throw ApiException(errorCode: errorCode, errorMessage: errorMessage);
       }

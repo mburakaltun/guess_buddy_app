@@ -200,7 +200,7 @@ class _RankingsScreenState extends State<RankingsScreen> {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    '${user.successfulPredictionCount} / ${user.totalPredictionCount} predictions',
+                    '${user.successfulPredictionCount} / ${user.totalPredictionCount} ${context.message.usersPredictions}',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey[600],
@@ -263,13 +263,13 @@ class _RankingsScreenState extends State<RankingsScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading && _users.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text("Loading users..."),
+            Text(context.message.usersLoadingUsers)
           ],
         ),
       );
