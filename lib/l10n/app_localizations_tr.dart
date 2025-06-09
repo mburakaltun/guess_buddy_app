@@ -257,6 +257,47 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profilePasswordChangeFailed => 'Şifre değiştirilemedi';
 
   @override
+  String get profileDeleteAccount => 'Hesabı Sil';
+
+  @override
+  String get profileDeleteAccountDialogTitle => 'Hesap Silinsin mi?';
+
+  @override
+  String get profileDeleteAccountDialogContent =>
+      'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinecektir.';
+
+  @override
+  String get profileDeleteAccountDialogCancel => 'İptal';
+
+  @override
+  String get profileDeleteAccountDialogProceed => 'Devam Et';
+
+  @override
+  String get profileDeleteAccountConfirmationTitle => 'Son Onaylama';
+
+  @override
+  String get profileDeleteAccountConfirmationContent =>
+      'Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.';
+
+  @override
+  String get profileDeleteAccountConfirmationPhrase =>
+      'hesabımı kalıcı olarak sil';
+
+  @override
+  String profileDeleteAccountConfirmationInstruction(String phrase) {
+    return 'Onaylamak için lütfen \"$phrase\" yazın:';
+  }
+
+  @override
+  String get profileDeleteAccountConfirmationError => 'Onay metni eşleşmiyor';
+
+  @override
+  String get profileDeleteAccountConfirmationSubmit => 'Hesabı Sil';
+
+  @override
+  String get profileDeleteAccountFailed => 'Hesap silinemedi';
+
+  @override
   String get votePredictionTitle => 'Tahmin için Oy Ver';
 
   @override

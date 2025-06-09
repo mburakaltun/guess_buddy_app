@@ -578,6 +578,78 @@ abstract class AppLocalizations {
   /// **'Failed to change password'**
   String get profilePasswordChangeFailed;
 
+  /// No description provided for @profileDeleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get profileDeleteAccount;
+
+  /// No description provided for @profileDeleteAccountDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account?'**
+  String get profileDeleteAccountDialogTitle;
+
+  /// No description provided for @profileDeleteAccountDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.'**
+  String get profileDeleteAccountDialogContent;
+
+  /// No description provided for @profileDeleteAccountDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileDeleteAccountDialogCancel;
+
+  /// No description provided for @profileDeleteAccountDialogProceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed'**
+  String get profileDeleteAccountDialogProceed;
+
+  /// No description provided for @profileDeleteAccountConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Final Confirmation'**
+  String get profileDeleteAccountConfirmationTitle;
+
+  /// No description provided for @profileDeleteAccountConfirmationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.'**
+  String get profileDeleteAccountConfirmationContent;
+
+  /// No description provided for @profileDeleteAccountConfirmationPhrase.
+  ///
+  /// In en, this message translates to:
+  /// **'delete my account permanently'**
+  String get profileDeleteAccountConfirmationPhrase;
+
+  /// No description provided for @profileDeleteAccountConfirmationInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Please type \"{phrase}\" to confirm:'**
+  String profileDeleteAccountConfirmationInstruction(String phrase);
+
+  /// No description provided for @profileDeleteAccountConfirmationError.
+  ///
+  /// In en, this message translates to:
+  /// **'The confirmation text doesn\'t match'**
+  String get profileDeleteAccountConfirmationError;
+
+  /// No description provided for @profileDeleteAccountConfirmationSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get profileDeleteAccountConfirmationSubmit;
+
+  /// No description provided for @profileDeleteAccountFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete account'**
+  String get profileDeleteAccountFailed;
+
   /// No description provided for @votePredictionTitle.
   ///
   /// In en, this message translates to:

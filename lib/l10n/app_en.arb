@@ -86,6 +86,26 @@
   "profilePasswordChangeSubmit": "Change Password",
   "profilePasswordChangeSuccess": "Password changed successfully",
   "profilePasswordChangeFailed": "Failed to change password",
+  "profileDeleteAccount": "Delete Account",
+  "profileDeleteAccountDialogTitle": "Delete Account?",
+  "profileDeleteAccountDialogContent": "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.",
+  "profileDeleteAccountDialogCancel": "Cancel",
+  "profileDeleteAccountDialogProceed": "Proceed",
+
+  "profileDeleteAccountConfirmationTitle": "Final Confirmation",
+  "profileDeleteAccountConfirmationContent": "This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.",
+  "profileDeleteAccountConfirmationPhrase": "delete my account permanently",
+  "profileDeleteAccountConfirmationInstruction": "Please type \"{phrase}\" to confirm:",
+  "@profileDeleteAccountConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileDeleteAccountConfirmationError": "The confirmation text doesn't match",
+  "profileDeleteAccountConfirmationSubmit": "Delete Account",
+  "profileDeleteAccountFailed": "Failed to delete account",
 
   "votePredictionTitle": "Vote for Prediction",
   "votePredictionPublished": "Published: {date}",

@@ -258,6 +258,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePasswordChangeFailed => 'Failed to change password';
 
   @override
+  String get profileDeleteAccount => 'Delete Account';
+
+  @override
+  String get profileDeleteAccountDialogTitle => 'Delete Account?';
+
+  @override
+  String get profileDeleteAccountDialogContent =>
+      'Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.';
+
+  @override
+  String get profileDeleteAccountDialogCancel => 'Cancel';
+
+  @override
+  String get profileDeleteAccountDialogProceed => 'Proceed';
+
+  @override
+  String get profileDeleteAccountConfirmationTitle => 'Final Confirmation';
+
+  @override
+  String get profileDeleteAccountConfirmationContent =>
+      'This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.';
+
+  @override
+  String get profileDeleteAccountConfirmationPhrase =>
+      'delete my account permanently';
+
+  @override
+  String profileDeleteAccountConfirmationInstruction(String phrase) {
+    return 'Please type \"$phrase\" to confirm:';
+  }
+
+  @override
+  String get profileDeleteAccountConfirmationError =>
+      'The confirmation text doesn\'t match';
+
+  @override
+  String get profileDeleteAccountConfirmationSubmit => 'Delete Account';
+
+  @override
+  String get profileDeleteAccountFailed => 'Failed to delete account';
+
+  @override
   String get votePredictionTitle => 'Vote for Prediction';
 
   @override

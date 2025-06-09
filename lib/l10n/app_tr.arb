@@ -86,6 +86,26 @@
   "profilePasswordChangeSubmit": "Şifreyi Değiştir",
   "profilePasswordChangeSuccess": "Şifre başarıyla değiştirildi",
   "profilePasswordChangeFailed": "Şifre değiştirilemedi",
+  "profileDeleteAccount": "Hesabı Sil",
+  "profileDeleteAccountDialogTitle": "Hesap Silinsin mi?",
+  "profileDeleteAccountDialogContent": "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinecektir.",
+  "profileDeleteAccountDialogCancel": "İptal",
+  "profileDeleteAccountDialogProceed": "Devam Et",
+
+  "profileDeleteAccountConfirmationTitle": "Son Onaylama",
+  "profileDeleteAccountConfirmationContent": "Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.",
+  "profileDeleteAccountConfirmationPhrase": "hesabımı kalıcı olarak sil",
+  "profileDeleteAccountConfirmationInstruction": "Onaylamak için lütfen \"{phrase}\" yazın:",
+  "@profileDeleteAccountConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileDeleteAccountConfirmationError": "Onay metni eşleşmiyor",
+  "profileDeleteAccountConfirmationSubmit": "Hesabı Sil",
+  "profileDeleteAccountFailed": "Hesap silinemedi",
 
   "votePredictionTitle": "Tahmin için Oy Ver",
   "votePredictionPublished": "Yayınlanma: {date}",
