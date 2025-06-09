@@ -1,70 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
-import 'package:guess_buddy_app/prediction/model/request/request_create_prediction.dart';
-import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
-import '../../common/model/exception/api_exception.dart';
-import '../../common/utility/dialog_utility.dart';
+import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
+import 'package:guess_buddy_app/user/model/response/response_get_user_profile.dart';
+import 'package:guess_buddy_app/user/service/user_service.dart';
 
-class AddPredictionScreen extends StatefulWidget {
-  const AddPredictionScreen({super.key});
+class EditProfileScreen extends StatefulWidget {
+  final ResponseGetUserProfile profile;
+
+  const EditProfileScreen({super.key, required this.profile});
 
   @override
-  State<AddPredictionScreen> createState() => _AddPredictionPageState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
-class _AddPredictionPageState extends State<AddPredictionScreen> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _titleController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _userService = UserService();
 
-  String _title = '';
-  String _description = '';
   bool _isSubmitting = false;
 
-  final PredictionService predictionService = PredictionService();
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.text = widget.profile.username ?? '';
+    _emailController.text = widget.profile.email ?? '';
+  }
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
+    _usernameController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
-  Future<void> _submitPrediction() async {
+  Future<void> _updateProfile() async {
     if (!_formKey.currentState!.validate()) return;
-    _formKey.currentState!.save();
 
     setState(() {
       _isSubmitting = true;
     });
 
     try {
-      await predictionService.createPrediction(
-          requestCreatePrediction: RequestCreatePrediction(
-              title: _title,
-              description: _description
-          )
-      );
+      // Replace with your actual API call
+/*      await _userService.updateUserProfile(
+        username: _usernameController.text.trim(),
+        email: _emailController.text.trim(),
+      );*/
 
       if (!mounted) return;
-      FocusScope.of(context).unfocus();
 
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(context.message.addPredictionSuccess),
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.green,
-          )
+        SnackBar(
+          content: Text(context.message.profileUpdateSuccess),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.green,
+        ),
       );
 
-      _titleController.clear();
-      _descriptionController.clear();
-      _formKey.currentState!.reset();
+      Navigator.pop(context, true); // Return true to indicate successful update
     } catch (e) {
       DialogUtility.handleApiError(
         context: context,
         error: e,
-        title: context.message.addPredictionFailed,
+        title: context.message.profileUpdateFailed,
       );
     } finally {
       if (mounted) {
@@ -78,6 +78,10 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(context.message.profileEdit),
+        elevation: 0,
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -88,18 +92,19 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Username field
                   Text(
-                    context.message.addPredictionTitle,
+                    context.message.profileUsername,
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   TextFormField(
-                    controller: _titleController,
+                    controller: _usernameController,
                     decoration: InputDecoration(
-                      hintText: context.message.addPredictionTitleHint,
+                      hintText: context.message.profileUsernameHint,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -111,49 +116,54 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return context.message.addPredictionTitleHint;
+                        return context.message.profileUsernameRequired;
                       }
                       return null;
                     },
-                    onSaved: (value) => _title = value!.trim(),
                   ),
 
                   const SizedBox(height: 24),
 
-                  // Description field
+                  // Email field
                   Text(
-                    context.message.addPredictionDescription,
+                    context.message.profileEmail,
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   TextFormField(
-                    controller: _descriptionController,
+                    controller: _emailController,
                     decoration: InputDecoration(
-                      hintText: context.message.addPredictionDescriptionHint,
+                      hintText: context.message.profileEmailHint,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      contentPadding: const EdgeInsets.all(16),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 16,
+                      ),
                     ),
-                    maxLines: 5,
+                    keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.done,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return context.message.addPredictionDescriptionHint;
+                        return context.message.profileEmailRequired;
+                      }
+                      // Basic email validation
+                      if (!value.contains('@') || !value.contains('.')) {
+                        return context.message.profileEmailInvalid;
                       }
                       return null;
                     },
-                    onSaved: (value) => _description = value!.trim(),
                   ),
 
                   const SizedBox(height: 32),
 
                   // Submit button
                   ElevatedButton(
-                    onPressed: _isSubmitting ? null : _submitPrediction,
+                    onPressed: _isSubmitting ? null : _updateProfile,
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       minimumSize: const Size(double.infinity, 50),
@@ -172,7 +182,7 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
                       ),
                     )
                         : Text(
-                      context.message.addPredictionSubmit,
+                      context.message.profileUpdateSubmit,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,

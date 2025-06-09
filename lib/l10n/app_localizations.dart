@@ -281,7 +281,7 @@ abstract class AppLocalizations {
   /// No description provided for @addPredictionTitleHint.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a title.'**
+  /// **'Enter your prediction title'**
   String get addPredictionTitleHint;
 
   /// No description provided for @addPredictionDescription.
@@ -293,7 +293,7 @@ abstract class AppLocalizations {
   /// No description provided for @addPredictionDescriptionHint.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a description.'**
+  /// **'Describe your prediction in detail'**
   String get addPredictionDescriptionHint;
 
   /// No description provided for @addPredictionSubmit.
@@ -427,6 +427,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get profileLanguage;
+
+  /// No description provided for @profileUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get profileUsername;
+
+  /// No description provided for @profileUsernameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your username'**
+  String get profileUsernameHint;
+
+  /// No description provided for @profileUsernameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Username is required'**
+  String get profileUsernameRequired;
+
+  /// No description provided for @profileEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get profileEmail;
+
+  /// No description provided for @profileEmailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address'**
+  String get profileEmailHint;
+
+  /// No description provided for @profileEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get profileEmailRequired;
+
+  /// No description provided for @profileEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get profileEmailInvalid;
+
+  /// No description provided for @profileUpdateSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Profile'**
+  String get profileUpdateSubmit;
+
+  /// No description provided for @profileUpdateSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdateSuccess;
+
+  /// No description provided for @profileUpdateFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update profile'**
+  String get profileUpdateFailed;
+
+  /// No description provided for @profileChangePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get profileChangePassword;
+
+  /// No description provided for @profileCurrentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get profileCurrentPassword;
+
+  /// No description provided for @profileCurrentPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password'**
+  String get profileCurrentPasswordHint;
+
+  /// No description provided for @profileCurrentPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password is required'**
+  String get profileCurrentPasswordRequired;
+
+  /// No description provided for @profileNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get profileNewPassword;
+
+  /// No description provided for @profileNewPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new password'**
+  String get profileNewPasswordHint;
+
+  /// No description provided for @profileNewPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'New password is required'**
+  String get profileNewPasswordRequired;
+
+  /// No description provided for @profilePasswordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get profilePasswordTooShort;
+
+  /// No description provided for @profileConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get profileConfirmPassword;
+
+  /// No description provided for @profileConfirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your new password'**
+  String get profileConfirmPasswordHint;
+
+  /// No description provided for @profileConfirmPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get profileConfirmPasswordRequired;
+
+  /// No description provided for @profilePasswordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get profilePasswordsDoNotMatch;
+
+  /// No description provided for @profilePasswordChangeSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get profilePasswordChangeSubmit;
+
+  /// No description provided for @profilePasswordChangeSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get profilePasswordChangeSuccess;
+
+  /// No description provided for @profilePasswordChangeFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to change password'**
+  String get profilePasswordChangeFailed;
 
   /// No description provided for @votePredictionTitle.
   ///

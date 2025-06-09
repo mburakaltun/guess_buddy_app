@@ -101,13 +101,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addPredictionTitle => 'Başlık';
 
   @override
-  String get addPredictionTitleHint => 'Lütfen bir başlık girin.';
+  String get addPredictionTitleHint => 'Tahmin başlığınızı girin';
 
   @override
   String get addPredictionDescription => 'Açıklama';
 
   @override
-  String get addPredictionDescriptionHint => 'Lütfen bir açıklama girin.';
+  String get addPredictionDescriptionHint =>
+      'Tahmininizi ayrıntılı olarak açıklayın';
 
   @override
   String get addPredictionSubmit => 'Tahmini Gönder';
@@ -179,6 +180,81 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileLanguage => 'Dil';
+
+  @override
+  String get profileUsername => 'Kullanıcı Adı';
+
+  @override
+  String get profileUsernameHint => 'Kullanıcı adınızı girin';
+
+  @override
+  String get profileUsernameRequired => 'Kullanıcı adı gereklidir';
+
+  @override
+  String get profileEmail => 'E-posta';
+
+  @override
+  String get profileEmailHint => 'E-posta adresinizi girin';
+
+  @override
+  String get profileEmailRequired => 'E-posta gereklidir';
+
+  @override
+  String get profileEmailInvalid => 'Lütfen geçerli bir e-posta adresi girin';
+
+  @override
+  String get profileUpdateSubmit => 'Profili Güncelle';
+
+  @override
+  String get profileUpdateSuccess => 'Profil başarıyla güncellendi';
+
+  @override
+  String get profileUpdateFailed => 'Profil güncellenemedi';
+
+  @override
+  String get profileChangePassword => 'Şifre Değiştir';
+
+  @override
+  String get profileCurrentPassword => 'Mevcut Şifre';
+
+  @override
+  String get profileCurrentPasswordHint => 'Mevcut şifrenizi girin';
+
+  @override
+  String get profileCurrentPasswordRequired => 'Mevcut şifre gereklidir';
+
+  @override
+  String get profileNewPassword => 'Yeni Şifre';
+
+  @override
+  String get profileNewPasswordHint => 'Yeni şifrenizi girin';
+
+  @override
+  String get profileNewPasswordRequired => 'Yeni şifre gereklidir';
+
+  @override
+  String get profilePasswordTooShort => 'Şifre en az 8 karakter olmalıdır';
+
+  @override
+  String get profileConfirmPassword => 'Şifreyi Onayla';
+
+  @override
+  String get profileConfirmPasswordHint => 'Yeni şifrenizi onaylayın';
+
+  @override
+  String get profileConfirmPasswordRequired => 'Lütfen şifrenizi onaylayın';
+
+  @override
+  String get profilePasswordsDoNotMatch => 'Şifreler eşleşmiyor';
+
+  @override
+  String get profilePasswordChangeSubmit => 'Şifreyi Değiştir';
+
+  @override
+  String get profilePasswordChangeSuccess => 'Şifre başarıyla değiştirildi';
+
+  @override
+  String get profilePasswordChangeFailed => 'Şifre değiştirilemedi';
 
   @override
   String get votePredictionTitle => 'Tahmin için Oy Ver';

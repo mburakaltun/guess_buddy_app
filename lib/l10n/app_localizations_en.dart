@@ -101,13 +101,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPredictionTitle => 'Title';
 
   @override
-  String get addPredictionTitleHint => 'Please enter a title.';
+  String get addPredictionTitleHint => 'Enter your prediction title';
 
   @override
   String get addPredictionDescription => 'Description';
 
   @override
-  String get addPredictionDescriptionHint => 'Please enter a description.';
+  String get addPredictionDescriptionHint =>
+      'Describe your prediction in detail';
 
   @override
   String get addPredictionSubmit => 'Submit Prediction';
@@ -179,6 +180,82 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileLanguage => 'Language';
+
+  @override
+  String get profileUsername => 'Username';
+
+  @override
+  String get profileUsernameHint => 'Enter your username';
+
+  @override
+  String get profileUsernameRequired => 'Username is required';
+
+  @override
+  String get profileEmail => 'Email';
+
+  @override
+  String get profileEmailHint => 'Enter your email address';
+
+  @override
+  String get profileEmailRequired => 'Email is required';
+
+  @override
+  String get profileEmailInvalid => 'Please enter a valid email address';
+
+  @override
+  String get profileUpdateSubmit => 'Update Profile';
+
+  @override
+  String get profileUpdateSuccess => 'Profile updated successfully';
+
+  @override
+  String get profileUpdateFailed => 'Failed to update profile';
+
+  @override
+  String get profileChangePassword => 'Change Password';
+
+  @override
+  String get profileCurrentPassword => 'Current Password';
+
+  @override
+  String get profileCurrentPasswordHint => 'Enter your current password';
+
+  @override
+  String get profileCurrentPasswordRequired => 'Current password is required';
+
+  @override
+  String get profileNewPassword => 'New Password';
+
+  @override
+  String get profileNewPasswordHint => 'Enter your new password';
+
+  @override
+  String get profileNewPasswordRequired => 'New password is required';
+
+  @override
+  String get profilePasswordTooShort =>
+      'Password must be at least 8 characters';
+
+  @override
+  String get profileConfirmPassword => 'Confirm Password';
+
+  @override
+  String get profileConfirmPasswordHint => 'Confirm your new password';
+
+  @override
+  String get profileConfirmPasswordRequired => 'Please confirm your password';
+
+  @override
+  String get profilePasswordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get profilePasswordChangeSubmit => 'Change Password';
+
+  @override
+  String get profilePasswordChangeSuccess => 'Password changed successfully';
+
+  @override
+  String get profilePasswordChangeFailed => 'Failed to change password';
 
   @override
   String get votePredictionTitle => 'Vote for Prediction';
