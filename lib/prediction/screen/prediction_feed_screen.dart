@@ -338,11 +338,11 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading && predictions.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [CircularProgressIndicator(), SizedBox(height: 16), Text("Loading predictions...")],
+            children: [CircularProgressIndicator(), SizedBox(height: 16), Text(context.message.predictionFeedLoadingPredictions)],
           ),
         ),
       );

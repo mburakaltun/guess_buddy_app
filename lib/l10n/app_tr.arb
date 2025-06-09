@@ -49,6 +49,7 @@
   "predictionFeedNegative": "Olumsuz Tahmin",
   "predictionFeedScore": "{score} / 5",
   "predictionFeedNotVotedYet": "Henüz oy kullanılmadı",
+  "predictionFeedLoadingPredictions": "Tahminler yükleniyor...",
 
   "profileEdit": "Profili Düzenle",
   "profileSettings": "Ayarlar",

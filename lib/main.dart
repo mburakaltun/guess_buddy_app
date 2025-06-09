@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_buddy_app/authentication/screen/complete_forgot_password_screen.dart';
 import 'package:guess_buddy_app/common/constants/routes.dart';
 import 'package:guess_buddy_app/common/screen/dashboard_screen.dart';
@@ -14,6 +13,7 @@ import 'package:app_links/app_links.dart';
 import 'dart:async';
 
 import 'authentication/screen/start_forgot_password_screen.dart';
+import 'l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

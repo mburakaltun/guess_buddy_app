@@ -49,6 +49,7 @@
   "predictionFeedNegative": "Negative Prediction",
   "predictionFeedScore": "{score} / 5",
   "predictionFeedNotVotedYet": "Not voted yet",
+  "predictionFeedLoadingPredictions": "Loading predictions...",
 
   "profileEdit": "Edit Profile",
   "profileSettings": "Settings",
