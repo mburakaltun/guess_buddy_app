@@ -125,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(context.message.profileDeleteAccountDialogTitle),
         content: Text(context.message.profileDeleteAccountDialogContent),
         actions: [
-          OutlinedButton(
+          ElevatedButton(
             onPressed: () => Navigator.pop(context),
             child: Text(context.message.profileDeleteAccountDialogCancel),
           ),
