@@ -138,5 +138,24 @@
   "forgotPasswordSubmit": "Sıfırlama Bağlantısı Gönder",
   "forgotPasswordFailed": "Şifre Sıfırlama Başarısız",
   "forgotPasswordResetLinkSent": "E-posta adresiniz sistemimizde mevcutsa, şifre sıfırlama bağlantısı gönderilmiştir.",
-  "forgotPasswordRemembered": "Şifreni hatırladın mı?"
+  "forgotPasswordRemembered": "Şifreni hatırladın mı?",
+
+  "aboutTitle": "Hakkında",
+  "aboutVersion": "Sürüm {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutVersionUnavailable": "Bilinmiyor",
+  "aboutDescription": "Guess Buddy Hakkında",
+  "aboutDescriptionContent": "Guess Buddy, kullanıcıların gelecekteki olaylar hakkında tahminlerde bulunabilecekleri ve başkalarının tahminlerine oy verebilecekleri bir sosyal tahmin platformudur. Zaman içindeki doğruluğunuzu takip edin ve diğer kullanıcılarla nasıl karşılaştırıldığınızı görün.",
+  "aboutLinks": "Bağlantılar",
+  "aboutPrivacyPolicy": "Gizlilik Politikası",
+  "aboutTermsOfService": "Kullanım Şartları",
+  "aboutSupport": "Yardım ve Destek",
+  "aboutCopyright": "© 2023-2024 Guess Buddy. Tüm hakları saklıdır.",
+  "aboutLaunchUrlFailed": "Bağlantı açılamadı"
 }

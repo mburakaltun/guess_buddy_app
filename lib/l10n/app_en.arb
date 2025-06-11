@@ -91,7 +91,6 @@
   "profileDeleteAccountDialogContent": "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.",
   "profileDeleteAccountDialogCancel": "Cancel",
   "profileDeleteAccountDialogProceed": "Proceed",
-
   "profileDeleteAccountConfirmationTitle": "Final Confirmation",
   "profileDeleteAccountConfirmationContent": "This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.",
   "profileDeleteAccountConfirmationPhrase": "delete my account permanently",
@@ -138,5 +137,24 @@
   "forgotPasswordSubmit": "Send Reset Link",
   "forgotPasswordFailed": "Password Reset Failed",
   "forgotPasswordResetLinkSent": "If your email exists in our system, a password reset link has been sent.",
-  "forgotPasswordRemembered": "Remembered your password?"
+  "forgotPasswordRemembered": "Remembered your password?",
+
+  "aboutTitle": "About",
+  "aboutVersion": "Version {version}",
+  "aboutDescriptionContent": "Guess Buddy is a social prediction platform where users can make predictions about future events and vote on others' predictions. Track your accuracy over time and see how you compare to other users.",
+  "aboutLinks": "Links",
+  "aboutPrivacyPolicy": "Privacy Policy",
+  "aboutTermsOfService": "Terms of Service",
+  "aboutSupport": "Help & Support",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutVersionUnavailable": "Unknown",
+  "aboutDescription": "About Guess Buddy",
+  "aboutCopyright": "© 2023-2024 Guess Buddy. All rights reserved.",
+  "aboutLaunchUrlFailed": "Couldn't open link"
 }

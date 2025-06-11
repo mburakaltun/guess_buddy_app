@@ -386,4 +386,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get forgotPasswordRemembered => 'Şifreni hatırladın mı?';
+
+  @override
+  String get aboutTitle => 'Hakkında';
+
+  @override
+  String aboutVersion(String version) {
+    return 'Sürüm $version';
+  }
+
+  @override
+  String get aboutDescriptionContent =>
+      'Guess Buddy, kullanıcıların gelecekteki olaylar hakkında tahminlerde bulunabilecekleri ve başkalarının tahminlerine oy verebilecekleri bir sosyal tahmin platformudur. Zaman içindeki doğruluğunuzu takip edin ve diğer kullanıcılarla nasıl karşılaştırıldığınızı görün.';
+
+  @override
+  String get aboutLinks => 'Bağlantılar';
+
+  @override
+  String get aboutPrivacyPolicy => 'Gizlilik Politikası';
+
+  @override
+  String get aboutTermsOfService => 'Kullanım Şartları';
+
+  @override
+  String get aboutSupport => 'Yardım ve Destek';
+
+  @override
+  String get aboutVersionUnavailable => 'Bilinmiyor';
+
+  @override
+  String get aboutDescription => 'Guess Buddy Hakkında';
+
+  @override
+  String get aboutCopyright => '© 2023-2024 Guess Buddy. Tüm hakları saklıdır.';
+
+  @override
+  String get aboutLaunchUrlFailed => 'Bağlantı açılamadı';
 }

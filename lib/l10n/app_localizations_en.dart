@@ -387,4 +387,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forgotPasswordRemembered => 'Remembered your password?';
+
+  @override
+  String get aboutTitle => 'About';
+
+  @override
+  String aboutVersion(String version) {
+    return 'Version $version';
+  }
+
+  @override
+  String get aboutDescriptionContent =>
+      'Guess Buddy is a social prediction platform where users can make predictions about future events and vote on others\' predictions. Track your accuracy over time and see how you compare to other users.';
+
+  @override
+  String get aboutLinks => 'Links';
+
+  @override
+  String get aboutPrivacyPolicy => 'Privacy Policy';
+
+  @override
+  String get aboutTermsOfService => 'Terms of Service';
+
+  @override
+  String get aboutSupport => 'Help & Support';
+
+  @override
+  String get aboutVersionUnavailable => 'Unknown';
+
+  @override
+  String get aboutDescription => 'About Guess Buddy';
+
+  @override
+  String get aboutCopyright => '© 2023-2024 Guess Buddy. All rights reserved.';
+
+  @override
+  String get aboutLaunchUrlFailed => 'Couldn\'t open link';
 }

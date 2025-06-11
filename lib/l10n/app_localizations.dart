@@ -817,6 +817,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remembered your password?'**
   String get forgotPasswordRemembered;
+
+  /// No description provided for @aboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutTitle;
+
+  /// No description provided for @aboutVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String aboutVersion(String version);
+
+  /// No description provided for @aboutDescriptionContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Guess Buddy is a social prediction platform where users can make predictions about future events and vote on others\' predictions. Track your accuracy over time and see how you compare to other users.'**
+  String get aboutDescriptionContent;
+
+  /// No description provided for @aboutLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get aboutLinks;
+
+  /// No description provided for @aboutPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get aboutPrivacyPolicy;
+
+  /// No description provided for @aboutTermsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get aboutTermsOfService;
+
+  /// No description provided for @aboutSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support'**
+  String get aboutSupport;
+
+  /// No description provided for @aboutVersionUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get aboutVersionUnavailable;
+
+  /// No description provided for @aboutDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'About Guess Buddy'**
+  String get aboutDescription;
+
+  /// No description provided for @aboutCopyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2023-2024 Guess Buddy. All rights reserved.'**
+  String get aboutCopyright;
+
+  /// No description provided for @aboutLaunchUrlFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open link'**
+  String get aboutLaunchUrlFailed;
 }
 
 class _AppLocalizationsDelegate

@@ -9,6 +9,7 @@ import 'package:guess_buddy_app/user/model/response/response_get_user_profile.da
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 import '../../common/utility/dialog_utility.dart';
+import 'about_screen.dart';
 import 'change_password_screen.dart';
 import 'language_selection_screen.dart';
 
@@ -124,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(context.message.profileDeleteAccountDialogTitle),
         content: Text(context.message.profileDeleteAccountDialogContent),
         actions: [
-          TextButton(
+          OutlinedButton(
             onPressed: () => Navigator.pop(context),
             child: Text(context.message.profileDeleteAccountDialogCancel),
           ),
@@ -272,8 +273,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           },
                         ),
                         _buildMenuItem(icon: Icons.settings, title: context.message.profileSettings, onTap: () {}),
-                        _buildMenuItem(icon: Icons.info_outline, title: context.message.profileAbout, onTap: () {}),
                         _buildMenuItem(
+                          icon: Icons.info_outline,
+                          title: context.message.profileAbout,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AboutScreen(),
+                              ),
+                            );
+                          },
+                        ),                        _buildMenuItem(
                           icon: Icons.language,
                           title: context.message.profileLanguage,
                           onTap: () async {
