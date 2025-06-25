@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
-import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
 import 'package:guess_buddy_app/user/model/response/response_get_user_profile.dart';
-import 'package:guess_buddy_app/user/service/user_service.dart';
+
+import '../../common/utility/dialog_utility.dart';
+import '../model/request/request_change_username.dart';
+import '../model/request/request_get_user_profile.dart';
+import '../service/user_service.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  final ResponseGetUserProfile profile;
-
-  const EditProfileScreen({super.key, required this.profile});
+  const EditProfileScreen({super.key});
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -16,183 +17,166 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
   final _userService = UserService();
 
-  bool _isSubmitting = false;
+  bool _isLoading = false;
+  bool _isLoadingProfile = true;
+  String? _error;
+  ResponseGetUserProfile? _profile;
 
   @override
   void initState() {
     super.initState();
-    _usernameController.text = widget.profile.username ?? '';
-    _emailController.text = widget.profile.email ?? '';
+    _loadProfile();
+  }
+
+  Future<void> _loadProfile() async {
+    setState(() {
+      _isLoadingProfile = true;
+      _error = null;
+    });
+
+    try {
+      RequestGetUserProfile request = RequestGetUserProfile();
+      final profile = await _userService.getUserProfile(request);
+
+      setState(() {
+        _profile = profile;
+        _usernameController.text = profile.username;
+        _isLoadingProfile = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = context.message.profileLoadFailed;
+        _isLoadingProfile = false;
+      });
+    }
   }
 
   @override
   void dispose() {
     _usernameController.dispose();
-    _emailController.dispose();
     super.dispose();
   }
 
-  Future<void> _updateProfile() async {
+  Future<void> _saveProfile() async {
     if (!_formKey.currentState!.validate()) return;
 
-    setState(() {
-      _isSubmitting = true;
-    });
+    setState(() => _isLoading = true);
 
     try {
-      // Replace with your actual API call
-/*      await _userService.updateUserProfile(
-        username: _usernameController.text.trim(),
-        email: _emailController.text.trim(),
-      );*/
+      final request = RequestChangeUsername(newUsername: _usernameController.text.trim());
+
+      final response = await _userService.changeUsername(request);
 
       if (!mounted) return;
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(context.message.profileUpdateSuccess),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.green,
-        ),
-      );
-
-      Navigator.pop(context, true); // Return true to indicate successful update
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.profileUpdateSuccess)));
+      Navigator.pop(context, true);
     } catch (e) {
-      DialogUtility.handleApiError(
-        context: context,
-        error: e,
-        title: context.message.profileUpdateFailed,
-      );
+      if (!mounted) return;
+      DialogUtility.handleApiError(context: context, error: e, title: context.message.profileUpdateError);
     } finally {
       if (mounted) {
-        setState(() {
-          _isSubmitting = false;
-        });
+        setState(() => _isLoading = false);
       }
     }
+  }
+
+  Widget _buildErrorState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.error_outline, size: 64, color: Colors.redAccent.withOpacity(0.8)),
+          const SizedBox(height: 16),
+          Text(_error!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: _loadProfile,
+            icon: const Icon(Icons.refresh),
+            label: Text(context.message.generalTryAgain),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.message.profileEdit),
         elevation: 0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Username field
-                  Text(
-                    context.message.profileUsername,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextFormField(
-                    controller: _usernameController,
-                    decoration: InputDecoration(
-                      hintText: context.message.profileUsernameHint,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 16,
-                      ),
-                    ),
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return context.message.profileUsernameRequired;
-                      }
-                      return null;
-                    },
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Email field
-                  Text(
-                    context.message.profileEmail,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      hintText: context.message.profileEmailHint,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 16,
-                      ),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return context.message.profileEmailRequired;
-                      }
-                      // Basic email validation
-                      if (!value.contains('@') || !value.contains('.')) {
-                        return context.message.profileEmailInvalid;
-                      }
-                      return null;
-                    },
-                  ),
-
-                  const SizedBox(height: 32),
-
-                  // Submit button
-                  ElevatedButton(
-                    onPressed: _isSubmitting ? null : _updateProfile,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      minimumSize: const Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      elevation: 2,
-                    ),
-                    child: _isSubmitting
-                        ? const SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2.5,
-                      ),
-                    )
-                        : Text(
-                      context.message.profileUpdateSubmit,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: Text(
+          context.message.profileEdit,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).textTheme.titleLarge?.color,
           ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: _isLoadingProfile
+          ? const Center(child: CircularProgressIndicator())
+          : _error != null
+          ? _buildErrorState()
+          : Form(
+        key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.teal.withOpacity(0.2),
+              child: const Icon(Icons.person, size: 50, color: Colors.teal),
+            ),
+            const SizedBox(height: 24),
+            TextFormField(
+              controller: _usernameController,
+              decoration: InputDecoration(labelText: context.message.profileUsername, prefixIcon: const Icon(Icons.person_outline)),
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return context.message.profileUsernameRequired;
+                }
+                if (value.length < 3) {
+                  return context.message.profileUsernameTooShort;
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+            // Display email as read-only field
+            TextFormField(
+              initialValue: _profile?.email,
+              readOnly: true,
+              enabled: false,
+              decoration: InputDecoration(labelText: context.message.profileEmail, prefixIcon: const Icon(Icons.email_outlined)),
+            ),
+            const SizedBox(height: 32),
+            // Save button moved to the form body
+            ElevatedButton(
+              onPressed: _isLoading ? null : _saveProfile,
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+              child: _isLoading
+                  ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                  : Text(context.message.profileSave),
+            ),
+            const SizedBox(height: 16),
+            // Instructions text
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+            ),
+          ],
         ),
       ),
     );

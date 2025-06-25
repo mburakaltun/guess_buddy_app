@@ -191,6 +191,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileUsernameRequired => 'Kullanıcı adı gereklidir';
 
   @override
+  String get profileUsernameTooShort =>
+      'Kullanıcı adı en az 3 karakter olmalıdır';
+
+  @override
+  String get profileSave => 'Değişiklikleri Kaydet';
+
+  @override
+  String get profileUpdateSuccess => 'Profil başarıyla güncellendi';
+
+  @override
+  String get profileUpdateError => 'Profil güncellenemedi';
+
+  @override
   String get profileEmail => 'E-posta';
 
   @override
@@ -204,9 +217,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileUpdateSubmit => 'Profili Güncelle';
-
-  @override
-  String get profileUpdateSuccess => 'Profil başarıyla güncellendi';
 
   @override
   String get profileUpdateFailed => 'Profil güncellenemedi';

@@ -446,6 +446,30 @@ abstract class AppLocalizations {
   /// **'Username is required'**
   String get profileUsernameRequired;
 
+  /// No description provided for @profileUsernameTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be at least 3 characters'**
+  String get profileUsernameTooShort;
+
+  /// No description provided for @profileSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get profileSave;
+
+  /// No description provided for @profileUpdateSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdateSuccess;
+
+  /// No description provided for @profileUpdateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update profile'**
+  String get profileUpdateError;
+
   /// No description provided for @profileEmail.
   ///
   /// In en, this message translates to:
@@ -475,12 +499,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update Profile'**
   String get profileUpdateSubmit;
-
-  /// No description provided for @profileUpdateSuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile updated successfully'**
-  String get profileUpdateSuccess;
 
   /// No description provided for @profileUpdateFailed.
   ///

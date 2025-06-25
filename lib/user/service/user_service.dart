@@ -1,7 +1,9 @@
 import 'package:guess_buddy_app/user/model/endpoint/user_endpoints.dart';
 
 import '../../common/service/api_service.dart';
+import '../model/request/request_change_username.dart';
 import '../model/request/request_get_user_profile.dart';
+import '../model/response/response_change_username.dart';
 import '../model/response/response_get_user_profile.dart';
 
 class UserService {
@@ -15,5 +17,10 @@ class UserService {
       params: request.toJson(),
     );
     return ResponseGetUserProfile.fromJson(response!);
+  }
+
+  Future<ResponseChangeUsername> changeUsername(RequestChangeUsername request) async {
+    final responseData = await _apiService.put(endpoint: UserEndpoints.changeUsername, body: request.toJson());
+    return ResponseChangeUsername.fromJson(responseData!);
   }
 }

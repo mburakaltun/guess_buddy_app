@@ -191,6 +191,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUsernameRequired => 'Username is required';
 
   @override
+  String get profileUsernameTooShort =>
+      'Username must be at least 3 characters';
+
+  @override
+  String get profileSave => 'Save Changes';
+
+  @override
+  String get profileUpdateSuccess => 'Profile updated successfully';
+
+  @override
+  String get profileUpdateError => 'Failed to update profile';
+
+  @override
   String get profileEmail => 'Email';
 
   @override
@@ -204,9 +217,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileUpdateSubmit => 'Update Profile';
-
-  @override
-  String get profileUpdateSuccess => 'Profile updated successfully';
 
   @override
   String get profileUpdateFailed => 'Failed to update profile';

@@ -259,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           icon: Icons.edit,
                           title: context.message.profileEdit,
                           onTap: () async {
-                            final updated = await Navigator.push<bool>(context, MaterialPageRoute(builder: (context) => EditProfileScreen(profile: profile!)));
+                            final updated = await Navigator.push<bool>(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
                             if (updated == true) {
                               _loadProfile(); // Reload profile if updated
                             }

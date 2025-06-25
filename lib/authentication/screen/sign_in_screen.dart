@@ -6,7 +6,6 @@ import 'package:guess_buddy_app/common/utility/language_utility.dart';
 import '../../common/utility/dialog_utility.dart';
 import '../../main.dart';
 import '../model/request/request_sign_in_user.dart';
-import '../../common/model/exception/api_exception.dart';
 import '../service/authentication_service.dart';
 
 class SignInPage extends StatefulWidget {
