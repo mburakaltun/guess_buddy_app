@@ -44,7 +44,7 @@ class DialogUtility {
         contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
         titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
               child: Container(
@@ -120,7 +120,8 @@ class DialogUtility {
         contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
         titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Center(
               child: Container(

@@ -70,8 +70,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       final response = await _userService.changeUsername(request);
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.profileUpdateSuccess)));
-      Navigator.pop(context, true);
+      await DialogUtility.showSuccessDialog(
+          context: context,
+          title: context.message.profileUpdateSuccessTitle,
+          message: context.message.profileUpdateSuccessMessage,
+          onDismiss: () => Navigator.pop(context)
+      );
     } catch (e) {
       if (!mounted) return;
       DialogUtility.handleApiError(context: context, error: e, title: context.message.profileUpdateError);

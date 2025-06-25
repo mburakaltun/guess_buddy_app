@@ -290,8 +290,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.';
 
   @override
-  String get profileDeleteAccountConfirmationPhrase =>
-      'hesabımı kalıcı olarak sil';
+  String get profileDeleteAccountConfirmationPhrase => 'HESABIMI SİL';
 
   @override
   String profileDeleteAccountConfirmationInstruction(String phrase) {
@@ -525,4 +524,18 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get passwordChangeRequirements =>
       'Şifre en az 8 karakter uzunluğunda olmalıdır.';
+
+  @override
+  String get passwordChangeSuccessTitle => 'Şifre Değiştirme Başarılı';
+
+  @override
+  String get passwordChangeSuccessMessage =>
+      'Şifreniz başarıyla değiştirildi. Yeni şifrenizle giriş yapabilirsiniz.';
+
+  @override
+  String get profileUpdateSuccessTitle => 'Profil Güncelleme Başarılı';
+
+  @override
+  String get profileUpdateSuccessMessage =>
+      'Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi.';
 }

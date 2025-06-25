@@ -97,7 +97,7 @@
 
   "profileDeleteAccountConfirmationTitle": "Son Onaylama",
   "profileDeleteAccountConfirmationContent": "Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.",
-  "profileDeleteAccountConfirmationPhrase": "hesabımı kalıcı olarak sil",
+  "profileDeleteAccountConfirmationPhrase": "HESABIMI SİL",
   "profileDeleteAccountConfirmationInstruction": "Onaylamak için lütfen \"{phrase}\" yazın:",
   "@profileDeleteAccountConfirmationInstruction": {
     "placeholders": {
@@ -191,5 +191,9 @@
   "passwordChangeSubmit": "Şifreyi Değiştir",
   "passwordChangeSuccess": "Şifre başarıyla değiştirildi",
   "passwordChangeError": "Şifre değiştirilemedi",
-  "passwordChangeRequirements": "Şifre en az 8 karakter uzunluğunda olmalıdır."
+  "passwordChangeRequirements": "Şifre en az 8 karakter uzunluğunda olmalıdır.",
+  "passwordChangeSuccessTitle": "Şifre Değiştirme Başarılı",
+  "passwordChangeSuccessMessage": "Şifreniz başarıyla değiştirildi. Yeni şifrenizle giriş yapabilirsiniz.",
+  "profileUpdateSuccessTitle": "Profil Güncelleme Başarılı",
+  "profileUpdateSuccessMessage": "Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi."
 }

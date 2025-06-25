@@ -47,8 +47,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       await _userService.changePassword(request);
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.passwordChangeSuccess)));
-      Navigator.pop(context);
+      await DialogUtility.showSuccessDialog(
+        context: context,
+        title: context.message.passwordChangeSuccessTitle,
+        message: context.message.passwordChangeSuccessMessage,
+        onDismiss: () => Navigator.pop(context),
+      );
     } catch (e) {
       if (!mounted) return;
       DialogUtility.handleApiError(context: context, error: e, title: context.message.passwordChangeError);

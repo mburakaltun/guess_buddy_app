@@ -96,7 +96,7 @@
   "profileDeleteAccountDialogProceed": "Proceed",
   "profileDeleteAccountConfirmationTitle": "Final Confirmation",
   "profileDeleteAccountConfirmationContent": "This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.",
-  "profileDeleteAccountConfirmationPhrase": "delete my account permanently",
+  "profileDeleteAccountConfirmationPhrase": "DELETE MY ACCOUNT",
   "profileDeleteAccountConfirmationInstruction": "Please type \"{phrase}\" to confirm:",
   "@profileDeleteAccountConfirmationInstruction": {
     "placeholders": {
@@ -191,5 +191,9 @@
   "passwordChangeSubmit": "Change Password",
   "passwordChangeSuccess": "Password changed successfully",
   "passwordChangeError": "Failed to change password",
-  "passwordChangeRequirements": "Password must be at least 8 characters long."
+  "passwordChangeRequirements": "Password must be at least 8 characters long.",
+  "passwordChangeSuccessTitle": "Password Changed Successfully",
+  "passwordChangeSuccessMessage": "Your password has been changed successfully. You can now log in with your new password.",
+  "profileUpdateSuccessTitle": "Profile Updated Successfully",
+  "profileUpdateSuccessMessage": "Your profile has been updated successfully."
 }

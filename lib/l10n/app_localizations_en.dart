@@ -291,8 +291,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.';
 
   @override
-  String get profileDeleteAccountConfirmationPhrase =>
-      'delete my account permanently';
+  String get profileDeleteAccountConfirmationPhrase => 'DELETE MY ACCOUNT';
 
   @override
   String profileDeleteAccountConfirmationInstruction(String phrase) {
@@ -527,4 +526,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordChangeRequirements =>
       'Password must be at least 8 characters long.';
+
+  @override
+  String get passwordChangeSuccessTitle => 'Password Changed Successfully';
+
+  @override
+  String get passwordChangeSuccessMessage =>
+      'Your password has been changed successfully. You can now log in with your new password.';
+
+  @override
+  String get profileUpdateSuccessTitle => 'Profile Updated Successfully';
+
+  @override
+  String get profileUpdateSuccessMessage =>
+      'Your profile has been updated successfully.';
 }

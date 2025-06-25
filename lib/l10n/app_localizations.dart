@@ -641,7 +641,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileDeleteAccountConfirmationPhrase.
   ///
   /// In en, this message translates to:
-  /// **'delete my account permanently'**
+  /// **'DELETE MY ACCOUNT'**
   String get profileDeleteAccountConfirmationPhrase;
 
   /// No description provided for @profileDeleteAccountConfirmationInstruction.
@@ -1075,6 +1075,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be at least 8 characters long.'**
   String get passwordChangeRequirements;
+
+  /// No description provided for @passwordChangeSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Changed Successfully'**
+  String get passwordChangeSuccessTitle;
+
+  /// No description provided for @passwordChangeSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been changed successfully. You can now log in with your new password.'**
+  String get passwordChangeSuccessMessage;
+
+  /// No description provided for @profileUpdateSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Updated Successfully'**
+  String get profileUpdateSuccessTitle;
+
+  /// No description provided for @profileUpdateSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile has been updated successfully.'**
+  String get profileUpdateSuccessMessage;
 }
 
 class _AppLocalizationsDelegate
