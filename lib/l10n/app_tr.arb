@@ -160,5 +160,19 @@
   "aboutTermsOfService": "Kullanım Şartları",
   "aboutSupport": "Yardım ve Destek",
   "aboutCopyright": "© 2023-2024 Guess Buddy. Tüm hakları saklıdır.",
-  "aboutLaunchUrlFailed": "Bağlantı açılamadı"
+  "aboutLaunchUrlFailed": "Bağlantı açılamadı",
+
+  "passwordChangeTitle": "Şifre Değiştir",
+  "passwordChangeCurrent": "Mevcut Şifre",
+  "passwordChangeNew": "Yeni Şifre",
+  "passwordChangeConfirm": "Yeni Şifreyi Onayla",
+  "passwordChangeCurrentRequired": "Mevcut şifre gerekli",
+  "passwordChangeNewRequired": "Yeni şifre gerekli",
+  "passwordChangeNewTooShort": "Yeni şifre en az 8 karakter olmalıdır",
+  "passwordChangeConfirmRequired": "Lütfen yeni şifrenizi onaylayın",
+  "passwordChangeConfirmMismatch": "Şifreler eşleşmiyor",
+  "passwordChangeSubmit": "Şifreyi Değiştir",
+  "passwordChangeSuccess": "Şifre başarıyla değiştirildi",
+  "passwordChangeError": "Şifre değiştirilemedi",
+  "passwordChangeRequirements": "Şifre en az 8 karakter uzunluğunda olmalıdır."
 }

@@ -432,4 +432,45 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get aboutLaunchUrlFailed => 'Bağlantı açılamadı';
+
+  @override
+  String get passwordChangeTitle => 'Şifre Değiştir';
+
+  @override
+  String get passwordChangeCurrent => 'Mevcut Şifre';
+
+  @override
+  String get passwordChangeNew => 'Yeni Şifre';
+
+  @override
+  String get passwordChangeConfirm => 'Yeni Şifreyi Onayla';
+
+  @override
+  String get passwordChangeCurrentRequired => 'Mevcut şifre gerekli';
+
+  @override
+  String get passwordChangeNewRequired => 'Yeni şifre gerekli';
+
+  @override
+  String get passwordChangeNewTooShort =>
+      'Yeni şifre en az 8 karakter olmalıdır';
+
+  @override
+  String get passwordChangeConfirmRequired => 'Lütfen yeni şifrenizi onaylayın';
+
+  @override
+  String get passwordChangeConfirmMismatch => 'Şifreler eşleşmiyor';
+
+  @override
+  String get passwordChangeSubmit => 'Şifreyi Değiştir';
+
+  @override
+  String get passwordChangeSuccess => 'Şifre başarıyla değiştirildi';
+
+  @override
+  String get passwordChangeError => 'Şifre değiştirilemedi';
+
+  @override
+  String get passwordChangeRequirements =>
+      'Şifre en az 8 karakter uzunluğunda olmalıdır.';
 }

@@ -433,4 +433,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutLaunchUrlFailed => 'Couldn\'t open link';
+
+  @override
+  String get passwordChangeTitle => 'Change Password';
+
+  @override
+  String get passwordChangeCurrent => 'Current Password';
+
+  @override
+  String get passwordChangeNew => 'New Password';
+
+  @override
+  String get passwordChangeConfirm => 'Confirm New Password';
+
+  @override
+  String get passwordChangeCurrentRequired => 'Current password is required';
+
+  @override
+  String get passwordChangeNewRequired => 'New password is required';
+
+  @override
+  String get passwordChangeNewTooShort =>
+      'New password must be at least 8 characters';
+
+  @override
+  String get passwordChangeConfirmRequired =>
+      'Please confirm your new password';
+
+  @override
+  String get passwordChangeConfirmMismatch => 'Passwords don\'t match';
+
+  @override
+  String get passwordChangeSubmit => 'Change Password';
+
+  @override
+  String get passwordChangeSuccess => 'Password changed successfully';
+
+  @override
+  String get passwordChangeError => 'Failed to change password';
+
+  @override
+  String get passwordChangeRequirements =>
+      'Password must be at least 8 characters long.';
 }

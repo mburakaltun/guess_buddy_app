@@ -159,5 +159,20 @@
   "aboutVersionUnavailable": "Unknown",
   "aboutDescription": "About Guess Buddy",
   "aboutCopyright": "© 2023-2024 Guess Buddy. All rights reserved.",
-  "aboutLaunchUrlFailed": "Couldn't open link"
+  "aboutLaunchUrlFailed": "Couldn't open link",
+
+
+  "passwordChangeTitle": "Change Password",
+  "passwordChangeCurrent": "Current Password",
+  "passwordChangeNew": "New Password",
+  "passwordChangeConfirm": "Confirm New Password",
+  "passwordChangeCurrentRequired": "Current password is required",
+  "passwordChangeNewRequired": "New password is required",
+  "passwordChangeNewTooShort": "New password must be at least 8 characters",
+  "passwordChangeConfirmRequired": "Please confirm your new password",
+  "passwordChangeConfirmMismatch": "Passwords don't match",
+  "passwordChangeSubmit": "Change Password",
+  "passwordChangeSuccess": "Password changed successfully",
+  "passwordChangeError": "Failed to change password",
+  "passwordChangeRequirements": "Password must be at least 8 characters long."
 }

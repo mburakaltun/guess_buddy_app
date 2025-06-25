@@ -901,6 +901,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t open link'**
   String get aboutLaunchUrlFailed;
+
+  /// No description provided for @passwordChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get passwordChangeTitle;
+
+  /// No description provided for @passwordChangeCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get passwordChangeCurrent;
+
+  /// No description provided for @passwordChangeNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get passwordChangeNew;
+
+  /// No description provided for @passwordChangeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password'**
+  String get passwordChangeConfirm;
+
+  /// No description provided for @passwordChangeCurrentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password is required'**
+  String get passwordChangeCurrentRequired;
+
+  /// No description provided for @passwordChangeNewRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'New password is required'**
+  String get passwordChangeNewRequired;
+
+  /// No description provided for @passwordChangeNewTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'New password must be at least 8 characters'**
+  String get passwordChangeNewTooShort;
+
+  /// No description provided for @passwordChangeConfirmRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your new password'**
+  String get passwordChangeConfirmRequired;
+
+  /// No description provided for @passwordChangeConfirmMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords don\'t match'**
+  String get passwordChangeConfirmMismatch;
+
+  /// No description provided for @passwordChangeSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get passwordChangeSubmit;
+
+  /// No description provided for @passwordChangeSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get passwordChangeSuccess;
+
+  /// No description provided for @passwordChangeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to change password'**
+  String get passwordChangeError;
+
+  /// No description provided for @passwordChangeRequirements.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters long.'**
+  String get passwordChangeRequirements;
 }
 
 class _AppLocalizationsDelegate
