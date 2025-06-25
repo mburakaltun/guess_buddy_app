@@ -144,6 +144,7 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
           fillColor: const Color(0xFF1E1E1E),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
           labelStyle: const TextStyle(color: lightMagenta),
+          hintStyle: const TextStyle(color: Color(0xFF8A8A8A)),
           prefixIconColor: lightMagenta,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(

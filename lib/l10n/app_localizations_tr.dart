@@ -308,6 +308,58 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileDeleteAccountFailed => 'Hesap silinemedi';
 
   @override
+  String get profileFeedback => 'Geri Bildirim Gönder';
+
+  @override
+  String get feedbackScreenTitle => 'Geri Bildirim Gönder';
+
+  @override
+  String get feedbackIntroText =>
+      'Geri bildiriminizi değerlendiriyoruz! Deneyiminizi nasıl iyileştirebileceğimizi bize bildirin.';
+
+  @override
+  String get feedbackTypeLabel => 'Geri Bildirim Türü';
+
+  @override
+  String get feedbackTypeSuggestion => 'Öneri';
+
+  @override
+  String get feedbackTypeBug => 'Hata Bildirimi';
+
+  @override
+  String get feedbackTypeQuestion => 'Soru';
+
+  @override
+  String get feedbackTypeOther => 'Diğer';
+
+  @override
+  String get feedbackMessageLabel => 'Geri Bildiriminiz';
+
+  @override
+  String get feedbackMessageHint =>
+      'Lütfen geri bildiriminizi detaylı bir şekilde açıklayın...';
+
+  @override
+  String get feedbackMessageRequired => 'Lütfen geri bildiriminizi girin';
+
+  @override
+  String get feedbackMessageTooShort =>
+      'Geri bildirim en az 10 karakter olmalıdır';
+
+  @override
+  String get feedbackSubmitButton => 'Geri Bildirimi Gönder';
+
+  @override
+  String get feedbackSuccessTitle => 'Teşekkürler!';
+
+  @override
+  String get feedbackSuccessMessage =>
+      'Geri bildiriminiz başarıyla gönderildi.';
+
+  @override
+  String get feedbackErrorTitle => 'Geri Bildirim Hatası';
+
+  @override
   String get votePredictionTitle => 'Tahmin için Oy Ver';
 
   @override

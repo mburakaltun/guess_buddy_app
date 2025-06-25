@@ -310,6 +310,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileDeleteAccountFailed => 'Failed to delete account';
 
   @override
+  String get profileFeedback => 'Send Feedback';
+
+  @override
+  String get feedbackScreenTitle => 'Send Feedback';
+
+  @override
+  String get feedbackIntroText =>
+      'We value your feedback! Let us know how we can improve your experience.';
+
+  @override
+  String get feedbackTypeLabel => 'Feedback Type';
+
+  @override
+  String get feedbackTypeSuggestion => 'Suggestion';
+
+  @override
+  String get feedbackTypeBug => 'Bug Report';
+
+  @override
+  String get feedbackTypeQuestion => 'Question';
+
+  @override
+  String get feedbackTypeOther => 'Other';
+
+  @override
+  String get feedbackMessageLabel => 'Your Feedback';
+
+  @override
+  String get feedbackMessageHint =>
+      'Please describe your feedback in detail...';
+
+  @override
+  String get feedbackMessageRequired => 'Please enter your feedback';
+
+  @override
+  String get feedbackMessageTooShort =>
+      'Feedback must be at least 10 characters';
+
+  @override
+  String get feedbackSubmitButton => 'Submit Feedback';
+
+  @override
+  String get feedbackSuccessTitle => 'Thank You!';
+
+  @override
+  String get feedbackSuccessMessage =>
+      'Your feedback has been submitted successfully.';
+
+  @override
+  String get feedbackErrorTitle => 'Feedback Error';
+
+  @override
   String get votePredictionTitle => 'Vote for Prediction';
 
   @override

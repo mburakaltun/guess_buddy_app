@@ -31,6 +31,9 @@ class DialogUtility {
     VoidCallback? onDismiss,
     String? buttonText,
   }) async {
+    final theme = Theme.of(context);
+    final lightMagenta = theme.primaryColor;
+
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -38,33 +41,61 @@ class DialogUtility {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        title: Row(
-          children: [
-            const Icon(
-              Icons.check_circle,
-              color: Colors.green,
-              size: 28,
-            ),
-            const SizedBox(width: 8),
-            Text(title),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
+        contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
+        titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(message),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.green.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                padding: const EdgeInsets.all(12),
+                child: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 32,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyMedium,
+        ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              if (onDismiss != null) {
-                onDismiss();
-              }
-            },
-            child: Text(buttonText ?? context.message.ok),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (onDismiss != null) {
+                  onDismiss();
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                backgroundColor: lightMagenta,
+                foregroundColor: Colors.black,
+              ),
+              child: Text(
+                buttonText ?? context.message.ok,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ],
       ),
@@ -77,28 +108,65 @@ class DialogUtility {
     required String message,
     String? buttonText,
   }) async {
+    final theme = Theme.of(context);
+    final lightMagenta = theme.primaryColor;
+
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        title: Row(
+        contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
+        titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(
-              Icons.error_outline,
-              color: Colors.red,
-              size: 28,
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                padding: const EdgeInsets.all(12),
+                child: const Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 32,
+                ),
+              ),
             ),
-            const SizedBox(width: 8),
-            Text(title),
+            const SizedBox(height: 16),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
-        content: Text(message),
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyMedium,
+        ),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(buttonText ?? context.message.ok),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                backgroundColor: lightMagenta,
+                foregroundColor: Colors.black,
+              ),
+              child: Text(
+                buttonText ?? context.message.ok,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ],
       ),

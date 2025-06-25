@@ -668,6 +668,102 @@ abstract class AppLocalizations {
   /// **'Failed to delete account'**
   String get profileDeleteAccountFailed;
 
+  /// No description provided for @profileFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Feedback'**
+  String get profileFeedback;
+
+  /// No description provided for @feedbackScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Feedback'**
+  String get feedbackScreenTitle;
+
+  /// No description provided for @feedbackIntroText.
+  ///
+  /// In en, this message translates to:
+  /// **'We value your feedback! Let us know how we can improve your experience.'**
+  String get feedbackIntroText;
+
+  /// No description provided for @feedbackTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback Type'**
+  String get feedbackTypeLabel;
+
+  /// No description provided for @feedbackTypeSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion'**
+  String get feedbackTypeSuggestion;
+
+  /// No description provided for @feedbackTypeBug.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug Report'**
+  String get feedbackTypeBug;
+
+  /// No description provided for @feedbackTypeQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get feedbackTypeQuestion;
+
+  /// No description provided for @feedbackTypeOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get feedbackTypeOther;
+
+  /// No description provided for @feedbackMessageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Feedback'**
+  String get feedbackMessageLabel;
+
+  /// No description provided for @feedbackMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Please describe your feedback in detail...'**
+  String get feedbackMessageHint;
+
+  /// No description provided for @feedbackMessageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your feedback'**
+  String get feedbackMessageRequired;
+
+  /// No description provided for @feedbackMessageTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback must be at least 10 characters'**
+  String get feedbackMessageTooShort;
+
+  /// No description provided for @feedbackSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Feedback'**
+  String get feedbackSubmitButton;
+
+  /// No description provided for @feedbackSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank You!'**
+  String get feedbackSuccessTitle;
+
+  /// No description provided for @feedbackSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your feedback has been submitted successfully.'**
+  String get feedbackSuccessMessage;
+
+  /// No description provided for @feedbackErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback Error'**
+  String get feedbackErrorTitle;
+
   /// No description provided for @votePredictionTitle.
   ///
   /// In en, this message translates to:

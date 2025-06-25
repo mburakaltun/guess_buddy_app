@@ -6,6 +6,7 @@ import '../model/request/request_change_username.dart';
 import '../model/request/request_get_user_profile.dart';
 import '../model/response/response_change_password.dart';
 import '../model/response/response_change_username.dart';
+import '../model/response/response_delete_user.dart';
 import '../model/response/response_get_user_profile.dart';
 
 class UserService {
@@ -26,5 +27,9 @@ class UserService {
   Future<ResponseChangePassword> changePassword(RequestChangePassword request) async {
     final responseData = await _apiService.put(endpoint: UserEndpoints.changePassword, body: request.toJson());
     return ResponseChangePassword.fromJson(responseData!);
+  }
+  Future<ResponseDeleteUser> deleteUser() async {
+    final responseData = await _apiService.delete(endpoint: UserEndpoints.deleteUser, body: {});
+    return ResponseDeleteUser.fromJson(responseData!);
   }
 }

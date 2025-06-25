@@ -9,8 +9,8 @@ import 'package:guess_buddy_app/user/model/response/response_get_user_profile.da
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 import '../../common/utility/dialog_utility.dart';
-import 'about_screen.dart';
 import 'change_password_screen.dart';
+import 'feedback_screen.dart';
 import 'language_selection_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -24,6 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   ResponseGetUserProfile? profile;
   bool isLoading = true;
   String? error;
+  final _userService = UserService();
 
   @override
   void initState() {
@@ -117,31 +118,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Add this method to _ProfileScreenState
   void _showDeleteAccountDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.profileDeleteAccountDialogTitle),
-        content: Text(context.message.profileDeleteAccountDialogContent),
-        actions: [
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(context.message.profileDeleteAccountDialogCancel),
+      builder:
+          (context) => AlertDialog(
+            title: Text(context.message.profileDeleteAccountDialogTitle),
+            content: Text(context.message.profileDeleteAccountDialogContent),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.profileDeleteAccountDialogCancel)),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _showDeleteAccountConfirmationDialog();
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent, foregroundColor: Colors.white),
+                child: Text(context.message.profileDeleteAccountDialogProceed),
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _showDeleteAccountConfirmationDialog();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.redAccent,
-              foregroundColor: Colors.white,
-            ),
-            child: Text(context.message.profileDeleteAccountDialogProceed),
-          ),
-        ],
-      ),
     );
   }
 
@@ -151,58 +146,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.message.profileDeleteAccountConfirmationTitle),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(context.message.profileDeleteAccountConfirmationContent),
-            const SizedBox(height: 8),
-            Text(
-              context.message.profileDeleteAccountConfirmationInstruction(confirmationPhrase),
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+      builder:
+          (context) => AlertDialog(
+            title: Text(context.message.profileDeleteAccountConfirmationTitle),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(context.message.profileDeleteAccountConfirmationContent),
+                const SizedBox(height: 8),
+                Text(context.message.profileDeleteAccountConfirmationInstruction(confirmationPhrase), style: const TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: controller,
+                  decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)), hintText: confirmationPhrase),
+                  maxLines: 1,
                 ),
-                hintText: confirmationPhrase,
+              ],
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context), child: Text(context.message.profileDeleteAccountDialogCancel)),
+              ElevatedButton(
+                onPressed: () {
+                  if (controller.text.trim() == confirmationPhrase) {
+                    Navigator.pop(context);
+                    _deleteAccount();
+                  } else {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(context.message.profileDeleteAccountConfirmationError), backgroundColor: Colors.redAccent));
+                  }
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent, foregroundColor: Colors.white),
+                child: Text(context.message.profileDeleteAccountConfirmationSubmit),
               ),
-              maxLines: 1,
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(context.message.profileDeleteAccountDialogCancel),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              if (controller.text.trim() == confirmationPhrase) {
-                Navigator.pop(context);
-                _deleteAccount();
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(context.message.profileDeleteAccountConfirmationError),
-                    backgroundColor: Colors.redAccent,
-                  ),
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.redAccent,
-              foregroundColor: Colors.white,
-            ),
-            child: Text(context.message.profileDeleteAccountConfirmationSubmit),
-          ),
-        ],
-      ),
     );
   }
 
@@ -212,18 +191,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         isLoading = true;
       });
 
-      // Replace with your actual API call
-      // await _userService.deleteAccount();
+      await _userService.deleteUser();
 
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(SharedPreferencesKey.userId);
 
       if (!mounted) return;
-
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const SignInPage()),
-            (Route<dynamic> route) => false,
-      );
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SignInPage()), (Route<dynamic> route) => false);
     } catch (e) {
       if (!mounted) return;
 
@@ -231,15 +205,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         isLoading = false;
       });
 
-      DialogUtility.handleApiError(
-        context: context,
-        error: e,
-        title: context.message.profileDeleteAccountFailed,
-      );
+      DialogUtility.handleApiError(context: context, error: e, title: context.message.profileDeleteAccountFailed);
     }
   }
 
-  // Update the _buildMenuItem section in ProfileScreen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -272,26 +241,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const ChangePasswordScreen()));
                           },
                         ),
-                        _buildMenuItem(icon: Icons.settings, title: context.message.profileSettings, onTap: () {}),
                         _buildMenuItem(
-                          icon: Icons.info_outline,
-                          title: context.message.profileAbout,
+                          icon: Icons.feedback,
+                          title: context.message.profileFeedback,
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AboutScreen(),
-                              ),
-                            );
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const FeedbackScreen()));
                           },
-                        ),                        _buildMenuItem(
+                        ),
+                        _buildMenuItem(
                           icon: Icons.language,
                           title: context.message.profileLanguage,
                           onTap: () async {
                             await Navigator.push<String>(context, MaterialPageRoute(builder: (context) => const LanguageSelectionScreen()));
                           },
                         ),
-                        // Add this before the logout menu item
                         const SizedBox(height: 8),
                         const Divider(indent: 16, endIndent: 16),
                         const SizedBox(height: 8),
