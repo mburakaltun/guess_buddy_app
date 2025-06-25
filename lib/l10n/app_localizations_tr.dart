@@ -383,6 +383,13 @@ class AppLocalizationsTr extends AppLocalizations {
       'Oyunuz işleniyor. Lütfen bekleyin.';
 
   @override
+  String get votePredictionSuccessTitle => 'Oy Verme Başarılı';
+
+  @override
+  String get votePredictionSuccessMessage =>
+      'Oyunuz başarıyla kaydedildi. Tahminin doğruluğunu takip edebilirsiniz.';
+
+  @override
   String get languageSelectionTitle => 'Dil Seçimi';
 
   @override

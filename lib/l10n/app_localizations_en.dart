@@ -385,6 +385,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Your vote is being processed. Please wait.';
 
   @override
+  String get votePredictionSuccessTitle => 'Vote Successful';
+
+  @override
+  String get votePredictionSuccessMessage =>
+      'Your vote has been successfully recorded. Thank you for participating!';
+
+  @override
   String get languageSelectionTitle => 'Language Selection';
 
   @override

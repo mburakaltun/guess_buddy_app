@@ -806,6 +806,18 @@ abstract class AppLocalizations {
   /// **'Your vote is being processed. Please wait.'**
   String get votePredictionVoteInProgress;
 
+  /// No description provided for @votePredictionSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote Successful'**
+  String get votePredictionSuccessTitle;
+
+  /// No description provided for @votePredictionSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your vote has been successfully recorded. Thank you for participating!'**
+  String get votePredictionSuccessMessage;
+
   /// No description provided for @languageSelectionTitle.
   ///
   /// In en, this message translates to:

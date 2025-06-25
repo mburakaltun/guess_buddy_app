@@ -134,6 +134,9 @@
   "votePredictionFailed": "Oy verme başarısız",
   "votePredictionVoteRecorded": "Oyunuz kaydedildi.",
   "votePredictionVoteInProgress": "Oyunuz işleniyor. Lütfen bekleyin.",
+  "votePredictionSuccessTitle": "Oy Verme Başarılı",
+  "votePredictionSuccessMessage": "Oyunuz başarıyla kaydedildi. Tahminin doğruluğunu takip edebilirsiniz.",
+
 
   "languageSelectionTitle": "Dil Seçimi",
   "languageSelectionEnglish": "İngilizce",

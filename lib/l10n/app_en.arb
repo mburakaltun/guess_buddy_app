@@ -133,6 +133,8 @@
   "votePredictionFailed": "Failed to vote",
   "votePredictionVoteRecorded": "Your vote has been recorded.",
   "votePredictionVoteInProgress": "Your vote is being processed. Please wait.",
+  "votePredictionSuccessTitle": "Vote Successful",
+  "votePredictionSuccessMessage": "Your vote has been successfully recorded. Thank you for participating!",
 
   "languageSelectionTitle": "Language Selection",
   "languageSelectionEnglish": "English",

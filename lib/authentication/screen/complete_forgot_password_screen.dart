@@ -57,7 +57,7 @@ class _CompleteForgotPasswordScreenState extends State<CompleteForgotPasswordScr
       DialogUtility.showSuccessDialog(
         context: context,
         title: context.message.forgotPassword,
-        message: "Your password has been successfully reset.",
+        message: context.message.passwordChangeSuccessMessage,
         onDismiss: () => Navigator.pushReplacementNamed(context, Routes.signIn),
       );
     } catch (e) {

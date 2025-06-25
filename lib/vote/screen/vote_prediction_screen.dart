@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
 import 'package:guess_buddy_app/prediction/model/viewmodel/prediction_card_model.dart';
 import 'package:guess_buddy_app/vote/service/vote_service.dart';
 import '../model/request/request_vote_prediction.dart';
@@ -39,14 +40,19 @@ class _VotePredictionScreenState extends State<VotePredictionScreen> {
       setState(() {
         hasVoted = true;
       });
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.votePredictionSuccess)));
-      }
+      if (!mounted) return;
+
+      await DialogUtility.showSuccessDialog(
+        context: context,
+        title: context.message.votePredictionSuccessTitle,
+        message: context.message.votePredictionSuccessMessage,
+        onDismiss: () => Navigator.pop(context),
+      );
     } catch (e) {
       setState(() {
         selectedScore = previousScore;
       });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.message.votePredictionFailed)));
+      DialogUtility.handleApiError(context: context, error: e, title: context.message.votePredictionFailed);
     } finally {
       setState(() {
         isVoting = false;

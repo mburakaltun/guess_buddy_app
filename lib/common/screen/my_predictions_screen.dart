@@ -339,13 +339,13 @@ class _MyPredictionsScreenState extends State<MyPredictionsScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading && predictions.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text("Loading your predictions...")
+            Text(context.message.myPredictionsLoadingPredictions, style: TextStyle(fontSize: 16, color: Theme.of(context).colorScheme.onSurface))
           ],
         ),
       );
