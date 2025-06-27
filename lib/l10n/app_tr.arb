@@ -2,6 +2,7 @@
   "@@locale": "tr",
   "generalError": "Beklenmeyen bir hata oluştu.",
   "generalTryAgain": "Lütfen tekrar deneyin.",
+  "generalCancel": "İptal",
 
   "signIn": "Giriş Yap",
   "signInEmail": "E-posta",
@@ -50,6 +51,14 @@
   "predictionFeedScore": "{score} / 5",
   "predictionFeedNotVotedYet": "Henüz oy kullanılmadı",
   "predictionFeedLoadingPredictions": "Tahminler yükleniyor...",
+  "predictionFeedVoteNow": "Şimdi Oy Ver",
+  "predictionFeedYourRating": "Puanınız: ",
+  "predictionFeedChangeRating": "Puanınızı Değiştirin",
+  "predictionFeedRatePrediction": "Bu Tahmini Puanlayın",
+  "predictionFeedHowLikely": "Bu tahminin gerçekleşme olasılığı nedir?",
+  "predictionFeedNotLikely": "Olası değil",
+  "predictionFeedVeryLikely": "Çok olası",
+  "predictionFeedSubmittingVote": "Oyunuz gönderiliyor...",
 
   "profileEdit": "Profili Düzenle",
   "profileSettings": "Ayarlar",

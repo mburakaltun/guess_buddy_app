@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get generalTryAgain => 'Please try again.';
 
   @override
+  String get generalCancel => 'Cancel';
+
+  @override
   String get signIn => 'Sign In';
 
   @override
@@ -149,6 +152,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get predictionFeedLoadingPredictions => 'Loading predictions...';
+
+  @override
+  String get predictionFeedVoteNow => 'Vote Now';
+
+  @override
+  String get predictionFeedYourRating => 'Your rating: ';
+
+  @override
+  String get predictionFeedChangeRating => 'Change Your Rating';
+
+  @override
+  String get predictionFeedRatePrediction => 'Rate This Prediction';
+
+  @override
+  String get predictionFeedHowLikely =>
+      'How likely do you think this prediction will come true?';
+
+  @override
+  String get predictionFeedNotLikely => 'Not likely';
+
+  @override
+  String get predictionFeedVeryLikely => 'Very likely';
+
+  @override
+  String get predictionFeedSubmittingVote => 'Submitting your vote...';
 
   @override
   String get profileEdit => 'Edit Profile';

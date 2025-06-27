@@ -2,6 +2,7 @@
   "@@locale": "en",
   "generalError": "An unexpected error occurred.",
   "generalTryAgain": "Please try again.",
+  "generalCancel": "Cancel",
 
   "signIn": "Sign In",
   "signInEmail": "Email",
@@ -50,6 +51,14 @@
   "predictionFeedScore": "{score} / 5",
   "predictionFeedNotVotedYet": "Not voted yet",
   "predictionFeedLoadingPredictions": "Loading predictions...",
+  "predictionFeedVoteNow": "Vote Now",
+  "predictionFeedYourRating": "Your rating: ",
+  "predictionFeedChangeRating": "Change Your Rating",
+  "predictionFeedRatePrediction": "Rate This Prediction",
+  "predictionFeedHowLikely": "How likely do you think this prediction will come true?",
+  "predictionFeedNotLikely": "Not likely",
+  "predictionFeedVeryLikely": "Very likely",
+  "predictionFeedSubmittingVote": "Submitting your vote...",
 
   "profileEdit": "Edit Profile",
   "profileSettings": "Settings",

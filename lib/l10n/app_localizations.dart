@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Please try again.'**
   String get generalTryAgain;
 
+  /// No description provided for @generalCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get generalCancel;
+
   /// No description provided for @signIn.
   ///
   /// In en, this message translates to:
@@ -367,6 +373,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loading predictions...'**
   String get predictionFeedLoadingPredictions;
+
+  /// No description provided for @predictionFeedVoteNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote Now'**
+  String get predictionFeedVoteNow;
+
+  /// No description provided for @predictionFeedYourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating: '**
+  String get predictionFeedYourRating;
+
+  /// No description provided for @predictionFeedChangeRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Your Rating'**
+  String get predictionFeedChangeRating;
+
+  /// No description provided for @predictionFeedRatePrediction.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate This Prediction'**
+  String get predictionFeedRatePrediction;
+
+  /// No description provided for @predictionFeedHowLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'How likely do you think this prediction will come true?'**
+  String get predictionFeedHowLikely;
+
+  /// No description provided for @predictionFeedNotLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'Not likely'**
+  String get predictionFeedNotLikely;
+
+  /// No description provided for @predictionFeedVeryLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'Very likely'**
+  String get predictionFeedVeryLikely;
+
+  /// No description provided for @predictionFeedSubmittingVote.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitting your vote...'**
+  String get predictionFeedSubmittingVote;
 
   /// No description provided for @profileEdit.
   ///

@@ -15,6 +15,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get generalTryAgain => 'Lütfen tekrar deneyin.';
 
   @override
+  String get generalCancel => 'İptal';
+
+  @override
   String get signIn => 'Giriş Yap';
 
   @override
@@ -149,6 +152,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get predictionFeedLoadingPredictions => 'Tahminler yükleniyor...';
+
+  @override
+  String get predictionFeedVoteNow => 'Şimdi Oy Ver';
+
+  @override
+  String get predictionFeedYourRating => 'Puanınız: ';
+
+  @override
+  String get predictionFeedChangeRating => 'Puanınızı Değiştirin';
+
+  @override
+  String get predictionFeedRatePrediction => 'Bu Tahmini Puanlayın';
+
+  @override
+  String get predictionFeedHowLikely =>
+      'Bu tahminin gerçekleşme olasılığı nedir?';
+
+  @override
+  String get predictionFeedNotLikely => 'Olası değil';
+
+  @override
+  String get predictionFeedVeryLikely => 'Çok olası';
+
+  @override
+  String get predictionFeedSubmittingVote => 'Oyunuz gönderiliyor...';
 
   @override
   String get profileEdit => 'Profili Düzenle';
