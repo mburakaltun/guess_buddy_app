@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get generalCancel => 'Cancel';
 
   @override
+  String get generalDismiss => 'Dismiss';
+
+  @override
   String get signIn => 'Sign In';
 
   @override
@@ -121,6 +124,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addPredictionFailed => 'Failed to submit prediction.';
+
+  @override
+  String get addPredictionPageTitle => 'Add Prediction';
+
+  @override
+  String get addPredictionIntro =>
+      'Share your prediction about future events with others and see if you were right!';
+
+  @override
+  String get addPredictionTitleRequired => 'Please enter a prediction title';
+
+  @override
+  String get addPredictionTitleTooLong => 'Title exceeds maximum length';
+
+  @override
+  String get addPredictionDescriptionRequired =>
+      'Please enter a prediction description';
+
+  @override
+  String get addPredictionDescriptionTooLong =>
+      'Description exceeds maximum length';
+
+  @override
+  String get addPredictionTipsTitle => 'Tips for Good Predictions';
+
+  @override
+  String get addPredictionTip1 => 'Be specific about what you\'re predicting';
+
+  @override
+  String get addPredictionTip2 =>
+      'Include a timeframe when the prediction can be verified';
+
+  @override
+  String get addPredictionTip3 =>
+      'Make sure your prediction is measurable and verifiable';
+
+  @override
+  String get addPredictionSubmitting => 'Submitting...';
 
   @override
   String get predictionFeedUserNotFound => 'User information not found.';

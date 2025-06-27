@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get generalCancel;
 
+  /// No description provided for @generalDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get generalDismiss;
+
   /// No description provided for @signIn.
   ///
   /// In en, this message translates to:
@@ -319,6 +325,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to submit prediction.'**
   String get addPredictionFailed;
+
+  /// No description provided for @addPredictionPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Prediction'**
+  String get addPredictionPageTitle;
+
+  /// No description provided for @addPredictionIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your prediction about future events with others and see if you were right!'**
+  String get addPredictionIntro;
+
+  /// No description provided for @addPredictionTitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a prediction title'**
+  String get addPredictionTitleRequired;
+
+  /// No description provided for @addPredictionTitleTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Title exceeds maximum length'**
+  String get addPredictionTitleTooLong;
+
+  /// No description provided for @addPredictionDescriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a prediction description'**
+  String get addPredictionDescriptionRequired;
+
+  /// No description provided for @addPredictionDescriptionTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Description exceeds maximum length'**
+  String get addPredictionDescriptionTooLong;
+
+  /// No description provided for @addPredictionTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips for Good Predictions'**
+  String get addPredictionTipsTitle;
+
+  /// No description provided for @addPredictionTip1.
+  ///
+  /// In en, this message translates to:
+  /// **'Be specific about what you\'re predicting'**
+  String get addPredictionTip1;
+
+  /// No description provided for @addPredictionTip2.
+  ///
+  /// In en, this message translates to:
+  /// **'Include a timeframe when the prediction can be verified'**
+  String get addPredictionTip2;
+
+  /// No description provided for @addPredictionTip3.
+  ///
+  /// In en, this message translates to:
+  /// **'Make sure your prediction is measurable and verifiable'**
+  String get addPredictionTip3;
+
+  /// No description provided for @addPredictionSubmitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitting...'**
+  String get addPredictionSubmitting;
 
   /// No description provided for @predictionFeedUserNotFound.
   ///

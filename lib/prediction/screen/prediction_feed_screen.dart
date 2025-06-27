@@ -189,6 +189,19 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
 
       if (!mounted) return;
 
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(context.message.votePredictionSuccess),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.green,
+            action: SnackBarAction(
+              label: context.message.generalDismiss,
+              textColor: Colors.white,
+              onPressed: () {},
+            ),
+          )
+      );
+
     } catch (e) {
       DialogUtility.handleApiError(
           context: context,

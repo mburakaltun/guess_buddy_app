@@ -20,8 +20,28 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
   String _title = '';
   String _description = '';
   bool _isSubmitting = false;
+  int _titleCharCount = 0;
+  int _descriptionCharCount = 0;
+  final int _titleMaxLength = 100;
+  final int _descriptionMaxLength = 500;
 
   final PredictionService predictionService = PredictionService();
+
+  @override
+  void initState() {
+    super.initState();
+    _titleController.addListener(() {
+      setState(() {
+        _titleCharCount = _titleController.text.length;
+      });
+    });
+
+    _descriptionController.addListener(() {
+      setState(() {
+        _descriptionCharCount = _descriptionController.text.length;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -54,6 +74,11 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
             content: Text(context.message.addPredictionSuccess),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.green,
+            action: SnackBarAction(
+              label: context.message.generalDismiss,
+              textColor: Colors.white,
+              onPressed: () {},
+            ),
           )
       );
 
@@ -77,106 +102,233 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Introduction text
                   Text(
-                    context.message.addPredictionTitle,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
+                    context.message.addPredictionIntro,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  SizedBox(height: 8),
+
+                  const SizedBox(height: 32),
+
+                  // Title field
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        context.message.addPredictionTitle,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        '$_titleCharCount/$_titleMaxLength',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: _titleCharCount > _titleMaxLength * 0.8
+                              ? colorScheme.error
+                              : colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
                   TextFormField(
                     controller: _titleController,
+                    maxLength: _titleMaxLength,
                     decoration: InputDecoration(
                       hintText: context.message.addPredictionTitleHint,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: colorScheme.outline),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: colorScheme.primary, width: 2),
                       ),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 16,
                       ),
+                      filled: true,
+                      fillColor: colorScheme.surfaceVariant.withOpacity(0.3),
+                      counterText: '',
+                      prefixIcon: Icon(Icons.title, color: colorScheme.primary.withOpacity(0.7)),
                     ),
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return context.message.addPredictionTitleHint;
+                        return context.message.addPredictionTitleRequired;
+                      }
+                      if (value.length > _titleMaxLength) {
+                        return context.message.addPredictionTitleTooLong;
                       }
                       return null;
                     },
                     onSaved: (value) => _title = value!.trim(),
                   ),
 
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
 
                   // Description field
-                  Text(
-                    context.message.addPredictionDescription,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        context.message.addPredictionDescription,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        '$_descriptionCharCount/$_descriptionMaxLength',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: _descriptionCharCount > _descriptionMaxLength * 0.8
+                              ? colorScheme.error
+                              : colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 12),
                   TextFormField(
                     controller: _descriptionController,
+                    maxLength: _descriptionMaxLength,
                     decoration: InputDecoration(
                       hintText: context.message.addPredictionDescriptionHint,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: colorScheme.outline),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: colorScheme.primary, width: 2),
                       ),
                       contentPadding: const EdgeInsets.all(16),
+                      filled: true,
+                      fillColor: colorScheme.surfaceVariant.withOpacity(0.3),
+                      counterText: '',
+                      alignLabelWithHint: true,
                     ),
-                    maxLines: 5,
+                    maxLines: 7,
+                    minLines: 5,
                     textInputAction: TextInputAction.done,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return context.message.addPredictionDescriptionHint;
+                        return context.message.addPredictionDescriptionRequired;
+                      }
+                      if (value.length > _descriptionMaxLength) {
+                        return context.message.addPredictionDescriptionTooLong;
                       }
                       return null;
                     },
                     onSaved: (value) => _description = value!.trim(),
                   ),
 
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 40),
+
+                  // Guidelines section
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: colorScheme.surfaceVariant.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: colorScheme.outlineVariant),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.tips_and_updates, color: colorScheme.primary),
+                            const SizedBox(width: 8),
+                            Text(
+                              context.message.addPredictionTipsTitle,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: colorScheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        _buildTipItem(context.message.addPredictionTip1, colorScheme),
+                        _buildTipItem(context.message.addPredictionTip2, colorScheme),
+                        _buildTipItem(context.message.addPredictionTip3, colorScheme),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
 
                   // Submit button
                   ElevatedButton(
                     onPressed: _isSubmitting ? null : _submitPrediction,
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      minimumSize: const Size(double.infinity, 50),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      minimumSize: const Size(double.infinity, 56),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                       elevation: 2,
+                      backgroundColor: colorScheme.primary,
+                      foregroundColor: colorScheme.onPrimary,
+                      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
                     ),
                     child: _isSubmitting
-                        ? const SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2.5,
-                      ),
+                        ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            color: colorScheme.onPrimary,
+                            strokeWidth: 2.5,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          context.message.addPredictionSubmitting,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     )
-                        : Text(
-                      context.message.addPredictionSubmit,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
+                        : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.send, size: 20),
+                        const SizedBox(width: 12),
+                        Text(
+                          context.message.addPredictionSubmit,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -184,6 +336,28 @@ class _AddPredictionPageState extends State<AddPredictionScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTipItem(String text, ColorScheme colorScheme) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.check_circle, size: 16, color: colorScheme.primary),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 14,
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

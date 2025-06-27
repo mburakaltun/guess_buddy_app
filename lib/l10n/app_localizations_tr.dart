@@ -18,6 +18,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get generalCancel => 'İptal';
 
   @override
+  String get generalDismiss => 'Kapat';
+
+  @override
   String get signIn => 'Giriş Yap';
 
   @override
@@ -121,6 +124,44 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get addPredictionFailed => 'Tahmin kaydedilemedi.';
+
+  @override
+  String get addPredictionPageTitle => 'Tahmin Ekle';
+
+  @override
+  String get addPredictionIntro =>
+      'Gelecekteki olaylar hakkındaki tahminini diğerleriyle paylaş ve haklı olup olmadığını gör!';
+
+  @override
+  String get addPredictionTitleRequired => 'Lütfen bir tahmin başlığı girin';
+
+  @override
+  String get addPredictionTitleTooLong => 'Başlık maksimum uzunluğu aşıyor';
+
+  @override
+  String get addPredictionDescriptionRequired =>
+      'Lütfen bir tahmin açıklaması girin';
+
+  @override
+  String get addPredictionDescriptionTooLong =>
+      'Açıklama maksimum uzunluğu aşıyor';
+
+  @override
+  String get addPredictionTipsTitle => 'İyi Tahminler İçin İpuçları';
+
+  @override
+  String get addPredictionTip1 => 'Ne tahmin ettiğiniz konusunda spesifik olun';
+
+  @override
+  String get addPredictionTip2 =>
+      'Tahminin doğrulanabileceği bir zaman çerçevesi ekleyin';
+
+  @override
+  String get addPredictionTip3 =>
+      'Tahmininizin ölçülebilir ve doğrulanabilir olduğundan emin olun';
+
+  @override
+  String get addPredictionSubmitting => 'Gönderiliyor...';
 
   @override
   String get predictionFeedUserNotFound => 'Kullanıcı bilgisi bulunamadı.';
