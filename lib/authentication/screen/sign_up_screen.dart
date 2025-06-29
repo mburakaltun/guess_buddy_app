@@ -70,40 +70,28 @@ class _SignUpPageState extends State<SignUpPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(context.message.termsOfUseTitle ?? 'Terms of Use'),
+          title: Text(context.message.termsOfUseTitle),
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  context.message.termsOfUseContentHeader ?? 'Zero Tolerance Policy',
+                  context.message.termsOfUseContentHeader,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  context.message.termsOfUseContent ??
-                      'Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. '
-                          'This includes but is not limited to:\n\n'
-                          '• Harassment or bullying of other users\n'
-                          '• Hate speech or discriminatory content\n'
-                          '• Sexually explicit or violent material\n'
-                          '• Content that violates privacy or intellectual property rights\n'
-                          '• Spam or misleading information\n\n'
-                          'Violations of these terms may result in content removal, temporary suspension, '
-                          'or permanent banning of your account without prior notice.\n\n'
-                          'By using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.',
+                  context.message.termsOfUseContent,
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  context.message.privacyPolicyHeader ?? 'Privacy Policy',
+                  context.message.privacyPolicyHeader,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                    context.message.privacyPolicyContent ??
-                        'We collect and process certain personal information to provide and improve our services. '
-                            'Your data is handled securely and in accordance with our privacy practices.'
+                    context.message.privacyPolicyContent
                 ),
               ],
             ),
@@ -111,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(context.message.closeButton ?? 'Close'),
+              child: Text(context.message.closeButton),
             ),
           ],
         );
@@ -125,8 +113,8 @@ class _SignUpPageState extends State<SignUpPage> {
     if (!_termsAccepted) {
       DialogUtility.showErrorDialog(
         context: context,
-        title: context.message.termsNotAcceptedTitle ?? 'Terms Not Accepted',
-        message: context.message.termsNotAcceptedMessage ?? 'You must accept the Terms of Use to continue.',
+        title: context.message.termsNotAcceptedTitle,
+        message: context.message.termsNotAcceptedMessage,
       );
       return;
     }
@@ -346,13 +334,13 @@ class _SignUpPageState extends State<SignUpPage> {
                               style: TextStyle(color: Colors.grey[600], fontSize: 14),
                               children: [
                                 TextSpan(
-                                  text: context.message.termsAgreementText ?? 'By signing up, you agree to our ',
+                                  text: context.message.termsAgreementText,
                                 ),
                                 WidgetSpan(
                                   child: InkWell(
                                     onTap: _showTermsDialog,
                                     child: Text(
-                                      context.message.termsOfUse ?? 'Terms of Use',
+                                      context.message.termsOfUse,
                                       style: TextStyle(
                                         color: Theme.of(context).primaryColor,
                                         fontWeight: FontWeight.bold,
