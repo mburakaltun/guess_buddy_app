@@ -1237,6 +1237,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your profile has been updated successfully.'**
   String get profileUpdateSuccessMessage;
+
+  /// No description provided for @termsOfUseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get termsOfUseTitle;
+
+  /// No description provided for @termsOfUseContentHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Zero Tolerance Policy'**
+  String get termsOfUseContentHeader;
+
+  /// No description provided for @termsOfUseContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. This includes but is not limited to:\n\n• Harassment or bullying of other users\n• Hate speech or discriminatory content\n• Sexually explicit or violent material\n• Content that violates privacy or intellectual property rights\n• Spam or misleading information\n\nViolations of these terms may result in content removal, temporary suspension, or permanent banning of your account without prior notice.\n\nBy using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.'**
+  String get termsOfUseContent;
+
+  /// No description provided for @privacyPolicyHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyHeader;
+
+  /// No description provided for @privacyPolicyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We collect and process certain personal information to provide and improve our services. Your data is handled securely and in accordance with our privacy practices.'**
+  String get privacyPolicyContent;
+
+  /// No description provided for @closeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get closeButton;
+
+  /// No description provided for @termsNotAcceptedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms Not Accepted'**
+  String get termsNotAcceptedTitle;
+
+  /// No description provided for @termsNotAcceptedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You must accept the Terms of Use to continue.'**
+  String get termsNotAcceptedMessage;
+
+  /// No description provided for @termsAgreementText.
+  ///
+  /// In en, this message translates to:
+  /// **'By signing up, you agree to our '**
+  String get termsAgreementText;
+
+  /// No description provided for @termsOfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get termsOfUse;
 }
 
 class _AppLocalizationsDelegate

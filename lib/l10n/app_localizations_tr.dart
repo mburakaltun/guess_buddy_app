@@ -614,4 +614,37 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get profileUpdateSuccessMessage =>
       'Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi.';
+
+  @override
+  String get termsOfUseTitle => 'Kullanım Koşulları';
+
+  @override
+  String get termsOfUseContentHeader => 'Sıfır Tolerans Politikası';
+
+  @override
+  String get termsOfUseContent =>
+      'Guess Buddy, sakıncalı içerik ve kötüye kullanım davranışlarına karşı sıfır tolerans politikasına sahiptir. Bu, aşağıdakileri içerir ancak bunlarla sınırlı değildir:\n\n• Diğer kullanıcılara taciz veya zorbalık\n• Nefret söylemi veya ayrımcı içerik\n• Cinsel açıdan açık veya şiddet içeren materyal\n• Gizlilik veya fikri mülkiyet haklarını ihlal eden içerik\n• Spam veya yanıltıcı bilgiler\n\nBu koşulların ihlali, içeriğin kaldırılmasına, hesabınızın geçici olarak askıya alınmasına veya önceden bildirim yapılmadan kalıcı olarak yasaklanmasına neden olabilir.\n\nGuess Buddy\'yi kullanarak, bu koşullara uymayı kabul ediyor ve bunları ihlal etmenin sonuçlarını anlıyorsunuz.';
+
+  @override
+  String get privacyPolicyHeader => 'Gizlilik Politikası';
+
+  @override
+  String get privacyPolicyContent =>
+      'Hizmetlerimizi sağlamak ve geliştirmek için belirli kişisel bilgileri topluyor ve işliyoruz. Verileriniz güvenli bir şekilde ve gizlilik uygulamalarımıza uygun olarak işlenir.';
+
+  @override
+  String get closeButton => 'Kapat';
+
+  @override
+  String get termsNotAcceptedTitle => 'Koşullar Kabul Edilmedi';
+
+  @override
+  String get termsNotAcceptedMessage =>
+      'Devam etmek için Kullanım Koşullarını kabul etmelisiniz.';
+
+  @override
+  String get termsAgreementText => 'Kaydolarak, ';
+
+  @override
+  String get termsOfUse => 'Kullanım Koşullarını kabul ediyorsunuz';
 }

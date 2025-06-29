@@ -219,5 +219,16 @@
   "passwordChangeSuccessTitle": "Şifre Değiştirme Başarılı",
   "passwordChangeSuccessMessage": "Şifreniz başarıyla değiştirildi. Yeni şifrenizle giriş yapabilirsiniz.",
   "profileUpdateSuccessTitle": "Profil Güncelleme Başarılı",
-  "profileUpdateSuccessMessage": "Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi."
+  "profileUpdateSuccessMessage": "Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi.",
+
+  "termsOfUseTitle": "Kullanım Koşulları",
+  "termsOfUseContentHeader": "Sıfır Tolerans Politikası",
+  "termsOfUseContent": "Guess Buddy, sakıncalı içerik ve kötüye kullanım davranışlarına karşı sıfır tolerans politikasına sahiptir. Bu, aşağıdakileri içerir ancak bunlarla sınırlı değildir:\n\n• Diğer kullanıcılara taciz veya zorbalık\n• Nefret söylemi veya ayrımcı içerik\n• Cinsel açıdan açık veya şiddet içeren materyal\n• Gizlilik veya fikri mülkiyet haklarını ihlal eden içerik\n• Spam veya yanıltıcı bilgiler\n\nBu koşulların ihlali, içeriğin kaldırılmasına, hesabınızın geçici olarak askıya alınmasına veya önceden bildirim yapılmadan kalıcı olarak yasaklanmasına neden olabilir.\n\nGuess Buddy'yi kullanarak, bu koşullara uymayı kabul ediyor ve bunları ihlal etmenin sonuçlarını anlıyorsunuz.",
+  "privacyPolicyHeader": "Gizlilik Politikası",
+  "privacyPolicyContent": "Hizmetlerimizi sağlamak ve geliştirmek için belirli kişisel bilgileri topluyor ve işliyoruz. Verileriniz güvenli bir şekilde ve gizlilik uygulamalarımıza uygun olarak işlenir.",
+  "closeButton": "Kapat",
+  "termsNotAcceptedTitle": "Koşullar Kabul Edilmedi",
+  "termsNotAcceptedMessage": "Devam etmek için Kullanım Koşullarını kabul etmelisiniz.",
+  "termsAgreementText": "Kaydolarak, ",
+  "termsOfUse": "Kullanım Koşullarını kabul ediyorsunuz"
 }

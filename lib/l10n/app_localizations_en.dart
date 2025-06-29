@@ -616,4 +616,37 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get profileUpdateSuccessMessage =>
       'Your profile has been updated successfully.';
+
+  @override
+  String get termsOfUseTitle => 'Terms of Use';
+
+  @override
+  String get termsOfUseContentHeader => 'Zero Tolerance Policy';
+
+  @override
+  String get termsOfUseContent =>
+      'Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. This includes but is not limited to:\n\n• Harassment or bullying of other users\n• Hate speech or discriminatory content\n• Sexually explicit or violent material\n• Content that violates privacy or intellectual property rights\n• Spam or misleading information\n\nViolations of these terms may result in content removal, temporary suspension, or permanent banning of your account without prior notice.\n\nBy using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.';
+
+  @override
+  String get privacyPolicyHeader => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyContent =>
+      'We collect and process certain personal information to provide and improve our services. Your data is handled securely and in accordance with our privacy practices.';
+
+  @override
+  String get closeButton => 'Close';
+
+  @override
+  String get termsNotAcceptedTitle => 'Terms Not Accepted';
+
+  @override
+  String get termsNotAcceptedMessage =>
+      'You must accept the Terms of Use to continue.';
+
+  @override
+  String get termsAgreementText => 'By signing up, you agree to our ';
+
+  @override
+  String get termsOfUse => 'Terms of Use';
 }

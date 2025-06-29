@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_create_prediction.dart';
 import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
-import '../../common/model/exception/api_exception.dart';
 import '../../common/utility/dialog_utility.dart';
 
 class AddPredictionScreen extends StatefulWidget {

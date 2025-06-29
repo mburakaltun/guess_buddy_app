@@ -218,5 +218,16 @@
   "passwordChangeSuccessTitle": "Password Changed Successfully",
   "passwordChangeSuccessMessage": "Your password has been changed successfully. You can now log in with your new password.",
   "profileUpdateSuccessTitle": "Profile Updated Successfully",
-  "profileUpdateSuccessMessage": "Your profile has been updated successfully."
+  "profileUpdateSuccessMessage": "Your profile has been updated successfully.",
+
+  "termsOfUseTitle": "Terms of Use",
+  "termsOfUseContentHeader": "Zero Tolerance Policy",
+  "termsOfUseContent": "Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. This includes but is not limited to:\n\n• Harassment or bullying of other users\n• Hate speech or discriminatory content\n• Sexually explicit or violent material\n• Content that violates privacy or intellectual property rights\n• Spam or misleading information\n\nViolations of these terms may result in content removal, temporary suspension, or permanent banning of your account without prior notice.\n\nBy using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.",
+  "privacyPolicyHeader": "Privacy Policy",
+  "privacyPolicyContent": "We collect and process certain personal information to provide and improve our services. Your data is handled securely and in accordance with our privacy practices.",
+  "closeButton": "Close",
+  "termsNotAcceptedTitle": "Terms Not Accepted",
+  "termsNotAcceptedMessage": "You must accept the Terms of Use to continue.",
+  "termsAgreementText": "By signing up, you agree to our ",
+  "termsOfUse": "Terms of Use"
 }
