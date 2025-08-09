@@ -670,4 +670,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Terms of Use';
+
+  @override
+  String get profileBlockedUsers => 'Blocked Users';
+
+  @override
+  String get blockedUsersTitle => 'Blocked Users';
+
+  @override
+  String get blockedUsersEmpty => 'No blocked users';
+
+  @override
+  String get blockedUsersEmptyDescription => 'You haven\'t blocked any users yet. Blocked users won\'t be able to interact with you.';
+
+  @override
+  String get blockedUsersLoadFailed => 'Failed to load blocked users. Please try again.';
+
+  @override
+  String get blockedUsersUnblock => 'Unblock';
+
+  @override
+  String get blockedUsersUnblockDialogTitle => 'Unblock User';
+
+  @override
+  String blockedUsersUnblockDialogContent(String username) {
+    return 'Are you sure you want to unblock $username? They will be able to interact with you again.';
+  }
+
+  @override
+  String get blockedUsersUnblockSuccess => 'User unblocked successfully';
+
+  @override
+  String get blockedUsersUnblockFailed => 'Failed to Unblock User';
+
+  @override
+  String blockedUsersBlockedOn(String date) {
+    return 'Blocked on $date';
+  }
 }

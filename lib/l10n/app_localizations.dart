@@ -1396,6 +1396,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms of Use'**
   String get termsOfUse;
+
+  /// No description provided for @profileBlockedUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked Users'**
+  String get profileBlockedUsers;
+
+  /// No description provided for @blockedUsersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked Users'**
+  String get blockedUsersTitle;
+
+  /// No description provided for @blockedUsersEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No blocked users'**
+  String get blockedUsersEmpty;
+
+  /// No description provided for @blockedUsersEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t blocked any users yet. Blocked users won\'t be able to interact with you.'**
+  String get blockedUsersEmptyDescription;
+
+  /// No description provided for @blockedUsersLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load blocked users. Please try again.'**
+  String get blockedUsersLoadFailed;
+
+  /// No description provided for @blockedUsersUnblock.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock'**
+  String get blockedUsersUnblock;
+
+  /// No description provided for @blockedUsersUnblockDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock User'**
+  String get blockedUsersUnblockDialogTitle;
+
+  /// No description provided for @blockedUsersUnblockDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to unblock {username}? They will be able to interact with you again.'**
+  String blockedUsersUnblockDialogContent(String username);
+
+  /// No description provided for @blockedUsersUnblockSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'User unblocked successfully'**
+  String get blockedUsersUnblockSuccess;
+
+  /// No description provided for @blockedUsersUnblockFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Unblock User'**
+  String get blockedUsersUnblockFailed;
+
+  /// No description provided for @blockedUsersBlockedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked on {date}'**
+  String blockedUsersBlockedOn(String date);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

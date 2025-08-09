@@ -670,4 +670,41 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Kullanım Koşullarını kabul ediyorsunuz';
+
+  @override
+  String get profileBlockedUsers => 'Engellenen Kullanıcılar';
+
+  @override
+  String get blockedUsersTitle => 'Engellenen Kullanıcılar';
+
+  @override
+  String get blockedUsersEmpty => 'Engellenen kullanıcı yok';
+
+  @override
+  String get blockedUsersEmptyDescription => 'Henüz hiçbir kullanıcıyı engellemediniz. Engellenen kullanıcılar sizinle etkileşim kuramaz.';
+
+  @override
+  String get blockedUsersLoadFailed => 'Engellenen kullanıcılar yüklenemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get blockedUsersUnblock => 'Engeli Kaldır';
+
+  @override
+  String get blockedUsersUnblockDialogTitle => 'Kullanıcının Engelini Kaldır';
+
+  @override
+  String blockedUsersUnblockDialogContent(String username) {
+    return '$username kullanıcısının engelini kaldırmak istediğinizden emin misiniz? Tekrar sizinle etkileşim kurabilecek.';
+  }
+
+  @override
+  String get blockedUsersUnblockSuccess => 'Kullanıcının engeli başarıyla kaldırıldı';
+
+  @override
+  String get blockedUsersUnblockFailed => 'Kullanıcının Engeli Kaldırılamadı';
+
+  @override
+  String blockedUsersBlockedOn(String date) {
+    return '$date tarihinde engellendi';
+  }
 }

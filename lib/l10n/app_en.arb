@@ -246,5 +246,32 @@
   "termsNotAcceptedTitle": "Terms Not Accepted",
   "termsNotAcceptedMessage": "You must accept the Terms of Use to continue.",
   "termsAgreementText": "By signing up, you agree to our ",
-  "termsOfUse": "Terms of Use"
+  "termsOfUse": "Terms of Use",
+
+  "profileBlockedUsers": "Blocked Users",
+
+  "blockedUsersTitle": "Blocked Users",
+  "blockedUsersEmpty": "No blocked users",
+  "blockedUsersEmptyDescription": "You haven't blocked any users yet. Blocked users won't be able to interact with you.",
+  "blockedUsersLoadFailed": "Failed to load blocked users. Please try again.",
+  "blockedUsersUnblock": "Unblock",
+  "blockedUsersUnblockDialogTitle": "Unblock User",
+  "blockedUsersUnblockDialogContent": "Are you sure you want to unblock {username}? They will be able to interact with you again.",
+  "@blockedUsersUnblockDialogContent": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedUsersUnblockSuccess": "User unblocked successfully",
+  "blockedUsersUnblockFailed": "Failed to Unblock User",
+  "blockedUsersBlockedOn": "Blocked on {date}",
+  "@blockedUsersBlockedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

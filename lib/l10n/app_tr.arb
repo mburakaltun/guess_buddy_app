@@ -247,5 +247,32 @@
   "termsNotAcceptedTitle": "Koşullar Kabul Edilmedi",
   "termsNotAcceptedMessage": "Devam etmek için Kullanım Koşullarını kabul etmelisiniz.",
   "termsAgreementText": "Kaydolarak, ",
-  "termsOfUse": "Kullanım Koşullarını kabul ediyorsunuz"
+  "termsOfUse": "Kullanım Koşullarını kabul ediyorsunuz",
+
+  "profileBlockedUsers": "Engellenen Kullanıcılar",
+
+  "blockedUsersTitle": "Engellenen Kullanıcılar",
+  "blockedUsersEmpty": "Engellenen kullanıcı yok",
+  "blockedUsersEmptyDescription": "Henüz hiçbir kullanıcıyı engellemediniz. Engellenen kullanıcılar sizinle etkileşim kuramaz.",
+  "blockedUsersLoadFailed": "Engellenen kullanıcılar yüklenemedi. Lütfen tekrar deneyin.",
+  "blockedUsersUnblock": "Engeli Kaldır",
+  "blockedUsersUnblockDialogTitle": "Kullanıcının Engelini Kaldır",
+  "blockedUsersUnblockDialogContent": "{username} kullanıcısının engelini kaldırmak istediğinizden emin misiniz? Tekrar sizinle etkileşim kurabilecek.",
+  "@blockedUsersUnblockDialogContent": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedUsersUnblockSuccess": "Kullanıcının engeli başarıyla kaldırıldı",
+  "blockedUsersUnblockFailed": "Kullanıcının Engeli Kaldırılamadı",
+  "blockedUsersBlockedOn": "{date} tarihinde engellendi",
+  "@blockedUsersBlockedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

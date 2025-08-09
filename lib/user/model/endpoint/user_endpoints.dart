@@ -6,4 +6,5 @@ class UserEndpoints {
   static const String deleteUser = '$base';
   static const String blockUser = '$base/block';
   static const String unblockUser = '$base/unblock';
+  static const String getBlockedUsers = '$base/blocked-users';
 }

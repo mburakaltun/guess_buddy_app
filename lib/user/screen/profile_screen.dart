@@ -9,6 +9,7 @@ import 'package:guess_buddy_app/user/model/response/response_get_user_profile.da
 import 'package:guess_buddy_app/common/extension/localization_extension.dart';
 
 import '../../common/utility/dialog_utility.dart';
+import 'blocked_users_screen.dart';
 import 'change_password_screen.dart';
 import 'feedback_screen.dart';
 import 'language_selection_screen.dart';
@@ -230,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onTap: () async {
                             final updated = await Navigator.push<bool>(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
                             if (updated == true) {
-                              _loadProfile(); // Reload profile if updated
+                              _loadProfile();
                             }
                           },
                         ),
@@ -246,6 +247,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           title: context.message.profileFeedback,
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const FeedbackScreen()));
+                          },
+                        ),
+                        _buildMenuItem(
+                          icon: Icons.block,
+                          title: context.message.profileBlockedUsers,
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const BlockedUsersScreen()));
                           },
                         ),
                         _buildMenuItem(

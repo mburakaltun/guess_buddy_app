@@ -10,6 +10,7 @@ import '../model/response/response_block_user.dart';
 import '../model/response/response_change_password.dart';
 import '../model/response/response_change_username.dart';
 import '../model/response/response_delete_user.dart';
+import '../model/response/response_get_blocked_users.dart';
 import '../model/response/response_get_user_profile.dart';
 import '../model/response/response_unblock_user.dart';
 
@@ -45,5 +46,10 @@ class UserService {
   Future<ResponseUnblockUser> unblockUser(RequestUnblockUser request) async {
     final responseData = await _apiService.post(endpoint: UserEndpoints.unblockUser, body: request.toJson());
     return ResponseUnblockUser.fromJson(responseData!);
+  }
+
+  Future<ResponseGetBlockedUsers> getBlockedUsers() async {
+    final responseData = await _apiService.get(endpoint: UserEndpoints.getBlockedUsers);
+    return ResponseGetBlockedUsers.fromJson(responseData!);
   }
 }
