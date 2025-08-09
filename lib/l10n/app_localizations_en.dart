@@ -57,8 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signUpUsername => 'Username';
 
   @override
-  String get signUpUsernameHint =>
-      'Username must be between 3 and 32 characters.';
+  String get signUpUsernameHint => 'Username must be between 3 and 32 characters.';
 
   @override
   String get signUpPassword => 'Password';
@@ -82,8 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signUpSuccessTitle => 'Sign Up Successful';
 
   @override
-  String get signUpSuccessMessage =>
-      'Your account has been created successfully. You can now sign in.';
+  String get signUpSuccessMessage => 'Your account has been created successfully. You can now sign in.';
 
   @override
   String get goToSignIn => 'Go to Sign In';
@@ -113,8 +111,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPredictionDescription => 'Description';
 
   @override
-  String get addPredictionDescriptionHint =>
-      'Describe your prediction in detail';
+  String get addPredictionDescriptionHint => 'Describe your prediction in detail';
 
   @override
   String get addPredictionSubmit => 'Submit Prediction';
@@ -129,8 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPredictionPageTitle => 'Add Prediction';
 
   @override
-  String get addPredictionIntro =>
-      'Share your prediction about future events with others and see if you were right!';
+  String get addPredictionIntro => 'Share your prediction about future events with others and see if you were right!';
 
   @override
   String get addPredictionTitleRequired => 'Please enter a prediction title';
@@ -139,12 +135,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPredictionTitleTooLong => 'Title exceeds maximum length';
 
   @override
-  String get addPredictionDescriptionRequired =>
-      'Please enter a prediction description';
+  String get addPredictionDescriptionRequired => 'Please enter a prediction description';
 
   @override
-  String get addPredictionDescriptionTooLong =>
-      'Description exceeds maximum length';
+  String get addPredictionDescriptionTooLong => 'Description exceeds maximum length';
 
   @override
   String get addPredictionTipsTitle => 'Tips for Good Predictions';
@@ -153,12 +147,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPredictionTip1 => 'Be specific about what you\'re predicting';
 
   @override
-  String get addPredictionTip2 =>
-      'Include a timeframe when the prediction can be verified';
+  String get addPredictionTip2 => 'Include a timeframe when the prediction can be verified';
 
   @override
-  String get addPredictionTip3 =>
-      'Make sure your prediction is measurable and verifiable';
+  String get addPredictionTip3 => 'Make sure your prediction is measurable and verifiable';
 
   @override
   String get addPredictionSubmitting => 'Submitting...';
@@ -207,8 +199,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get predictionFeedRatePrediction => 'Rate This Prediction';
 
   @override
-  String get predictionFeedHowLikely =>
-      'How likely do you think this prediction will come true?';
+  String get predictionFeedHowLikely => 'How likely do you think this prediction will come true?';
 
   @override
   String get predictionFeedNotLikely => 'Not likely';
@@ -218,6 +209,59 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get predictionFeedSubmittingVote => 'Submitting your vote...';
+
+  @override
+  String get predictionFeedFlagPrediction => 'Flag Prediction';
+
+  @override
+  String get predictionFeedBlockUser => 'Block User';
+
+  @override
+  String get predictionFeedFlagPredictionDescription => 'Help us keep the community safe by reporting content that violates our guidelines.';
+
+  @override
+  String get predictionFeedFlagSelectReason => 'Select a reason:';
+
+  @override
+  String get predictionFeedFlagReasonSpam => 'Spam or fake content';
+
+  @override
+  String get predictionFeedFlagReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get predictionFeedFlagReasonMisinformation => 'Misinformation';
+
+  @override
+  String get predictionFeedFlagReasonHarassment => 'Harassment or bullying';
+
+  @override
+  String get predictionFeedFlagReasonOther => 'Other';
+
+  @override
+  String get predictionFeedFlagSubmit => 'Submit Report';
+
+  @override
+  String get predictionFeedFlagSuccess => 'Prediction flagged successfully';
+
+  @override
+  String get predictionFeedFlagFailed => 'Failed to Flag Prediction';
+
+  @override
+  String get predictionFeedBlockUserDescription1 => 'Are you sure you want to block ';
+
+  @override
+  String get predictionFeedBlockUserDescription2 => '? You won\'t see their predictions or be able to interact with them.';
+
+  @override
+  String get predictionFeedBlockConfirm => 'Block User';
+
+  @override
+  String predictionFeedBlockSuccess(Object username) {
+    return '@$username has been blocked successfully';
+  }
+
+  @override
+  String get predictionFeedBlockFailed => 'Failed to Block User';
 
   @override
   String get profileEdit => 'Edit Profile';
@@ -235,8 +279,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSignOutDialogTitle => 'Sign Out';
 
   @override
-  String get profileSignOutDialogContent =>
-      'Are you sure you want to sign out?';
+  String get profileSignOutDialogContent => 'Are you sure you want to sign out?';
 
   @override
   String get profileSignOutDialogCancel => 'Cancel';
@@ -260,8 +303,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUsernameRequired => 'Username is required';
 
   @override
-  String get profileUsernameTooShort =>
-      'Username must be at least 3 characters';
+  String get profileUsernameTooShort => 'Username must be at least 3 characters';
 
   @override
   String get profileSave => 'Save Changes';
@@ -312,8 +354,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileNewPasswordRequired => 'New password is required';
 
   @override
-  String get profilePasswordTooShort =>
-      'Password must be at least 8 characters';
+  String get profilePasswordTooShort => 'Password must be at least 8 characters';
 
   @override
   String get profileConfirmPassword => 'Confirm Password';
@@ -343,8 +384,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileDeleteAccountDialogTitle => 'Delete Account?';
 
   @override
-  String get profileDeleteAccountDialogContent =>
-      'Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.';
+  String get profileDeleteAccountDialogContent => 'Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.';
 
   @override
   String get profileDeleteAccountDialogCancel => 'Cancel';
@@ -356,8 +396,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileDeleteAccountConfirmationTitle => 'Final Confirmation';
 
   @override
-  String get profileDeleteAccountConfirmationContent =>
-      'This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.';
+  String get profileDeleteAccountConfirmationContent => 'This action is permanent and cannot be reversed. All your data, including profile information and activity history, will be permanently deleted.';
 
   @override
   String get profileDeleteAccountConfirmationPhrase => 'DELETE MY ACCOUNT';
@@ -368,8 +407,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get profileDeleteAccountConfirmationError =>
-      'The confirmation text doesn\'t match';
+  String get profileDeleteAccountConfirmationError => 'The confirmation text doesn\'t match';
 
   @override
   String get profileDeleteAccountConfirmationSubmit => 'Delete Account';
@@ -384,8 +422,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackScreenTitle => 'Send Feedback';
 
   @override
-  String get feedbackIntroText =>
-      'We value your feedback! Let us know how we can improve your experience.';
+  String get feedbackIntroText => 'We value your feedback! Let us know how we can improve your experience.';
 
   @override
   String get feedbackTypeLabel => 'Feedback Type';
@@ -406,15 +443,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackMessageLabel => 'Your Feedback';
 
   @override
-  String get feedbackMessageHint =>
-      'Please describe your feedback in detail...';
+  String get feedbackMessageHint => 'Please describe your feedback in detail...';
 
   @override
   String get feedbackMessageRequired => 'Please enter your feedback';
 
   @override
-  String get feedbackMessageTooShort =>
-      'Feedback must be at least 10 characters';
+  String get feedbackMessageTooShort => 'Feedback must be at least 10 characters';
 
   @override
   String get feedbackSubmitButton => 'Submit Feedback';
@@ -423,8 +458,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackSuccessTitle => 'Thank You!';
 
   @override
-  String get feedbackSuccessMessage =>
-      'Your feedback has been submitted successfully.';
+  String get feedbackSuccessMessage => 'Your feedback has been submitted successfully.';
 
   @override
   String get feedbackErrorTitle => 'Feedback Error';
@@ -450,15 +484,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get votePredictionVoteRecorded => 'Your vote has been recorded.';
 
   @override
-  String get votePredictionVoteInProgress =>
-      'Your vote is being processed. Please wait.';
+  String get votePredictionVoteInProgress => 'Your vote is being processed. Please wait.';
 
   @override
   String get votePredictionSuccessTitle => 'Vote Successful';
 
   @override
-  String get votePredictionSuccessMessage =>
-      'Your vote has been successfully recorded. Thank you for participating!';
+  String get votePredictionSuccessMessage => 'Your vote has been successfully recorded. Thank you for participating!';
 
   @override
   String get languageSelectionTitle => 'Language Selection';
@@ -503,8 +535,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPasswordTitle => 'Reset Your Password';
 
   @override
-  String get forgotPasswordDescription =>
-      'Enter your email address and we\'ll send you a link to reset your password.';
+  String get forgotPasswordDescription => 'Enter your email address and we\'ll send you a link to reset your password.';
 
   @override
   String get forgotPasswordEmail => 'Email';
@@ -519,8 +550,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPasswordFailed => 'Password Reset Failed';
 
   @override
-  String get forgotPasswordResetLinkSent =>
-      'If your email exists in our system, a password reset link has been sent.';
+  String get forgotPasswordResetLinkSent => 'If your email exists in our system, a password reset link has been sent.';
 
   @override
   String get forgotPasswordRemembered => 'Remembered your password?';
@@ -534,8 +564,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get aboutDescriptionContent =>
-      'Guess Buddy is a social prediction platform where users can make predictions about future events and vote on others\' predictions. Track your accuracy over time and see how you compare to other users.';
+  String get aboutDescriptionContent => 'Guess Buddy is a social prediction platform where users can make predictions about future events and vote on others\' predictions. Track your accuracy over time and see how you compare to other users.';
 
   @override
   String get aboutLinks => 'Links';
@@ -580,12 +609,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordChangeNewRequired => 'New password is required';
 
   @override
-  String get passwordChangeNewTooShort =>
-      'New password must be at least 8 characters';
+  String get passwordChangeNewTooShort => 'New password must be at least 8 characters';
 
   @override
-  String get passwordChangeConfirmRequired =>
-      'Please confirm your new password';
+  String get passwordChangeConfirmRequired => 'Please confirm your new password';
 
   @override
   String get passwordChangeConfirmMismatch => 'Passwords don\'t match';
@@ -600,22 +627,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordChangeError => 'Failed to change password';
 
   @override
-  String get passwordChangeRequirements =>
-      'Password must be at least 8 characters long.';
+  String get passwordChangeRequirements => 'Password must be at least 8 characters long.';
 
   @override
   String get passwordChangeSuccessTitle => 'Password Changed Successfully';
 
   @override
-  String get passwordChangeSuccessMessage =>
-      'Your password has been changed successfully. You can now log in with your new password.';
+  String get passwordChangeSuccessMessage => 'Your password has been changed successfully. You can now log in with your new password.';
 
   @override
   String get profileUpdateSuccessTitle => 'Profile Updated Successfully';
 
   @override
-  String get profileUpdateSuccessMessage =>
-      'Your profile has been updated successfully.';
+  String get profileUpdateSuccessMessage => 'Your profile has been updated successfully.';
 
   @override
   String get termsOfUseTitle => 'Terms of Use';
@@ -624,15 +648,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsOfUseContentHeader => 'Zero Tolerance Policy';
 
   @override
-  String get termsOfUseContent =>
-      'Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. This includes but is not limited to:\n\n• Harassment or bullying of other users\n• Hate speech or discriminatory content\n• Sexually explicit or violent material\n• Content that violates privacy or intellectual property rights\n• Spam or misleading information\n\nViolations of these terms may result in content removal, temporary suspension, or permanent banning of your account without prior notice.\n\nBy using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.';
+  String get termsOfUseContent => 'Guess Buddy has a zero tolerance policy for objectionable content and abusive behavior. This includes but is not limited to:\n\n• Harassment or bullying of other users\n• Hate speech or discriminatory content\n• Sexually explicit or violent material\n• Content that violates privacy or intellectual property rights\n• Spam or misleading information\n\nViolations of these terms may result in content removal, temporary suspension, or permanent banning of your account without prior notice.\n\nBy using Guess Buddy, you agree to abide by these terms and understand the consequences of violating them.';
 
   @override
   String get privacyPolicyHeader => 'Privacy Policy';
 
   @override
-  String get privacyPolicyContent =>
-      'We collect and process certain personal information to provide and improve our services. Your data is handled securely and in accordance with our privacy practices.';
+  String get privacyPolicyContent => 'We collect and process certain personal information to provide and improve our services. Your data is handled securely and in accordance with our privacy practices.';
 
   @override
   String get closeButton => 'Close';
@@ -641,8 +663,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsNotAcceptedTitle => 'Terms Not Accepted';
 
   @override
-  String get termsNotAcceptedMessage =>
-      'You must accept the Terms of Use to continue.';
+  String get termsNotAcceptedMessage => 'You must accept the Terms of Use to continue.';
 
   @override
   String get termsAgreementText => 'By signing up, you agree to our ';

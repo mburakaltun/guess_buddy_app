@@ -1,13 +1,17 @@
 import 'package:guess_buddy_app/user/model/endpoint/user_endpoints.dart';
 
 import '../../common/service/api_service.dart';
+import '../model/request/request_block_user.dart';
 import '../model/request/request_change_password.dart';
 import '../model/request/request_change_username.dart';
 import '../model/request/request_get_user_profile.dart';
+import '../model/request/request_unblock_user.dart';
+import '../model/response/response_block_user.dart';
 import '../model/response/response_change_password.dart';
 import '../model/response/response_change_username.dart';
 import '../model/response/response_delete_user.dart';
 import '../model/response/response_get_user_profile.dart';
+import '../model/response/response_unblock_user.dart';
 
 class UserService {
   final ApiService _apiService;
@@ -31,5 +35,15 @@ class UserService {
   Future<ResponseDeleteUser> deleteUser() async {
     final responseData = await _apiService.delete(endpoint: UserEndpoints.deleteUser, body: {});
     return ResponseDeleteUser.fromJson(responseData!);
+  }
+
+  Future<ResponseBlockUser> blockUser(RequestBlockUser request) async {
+    final responseData = await _apiService.post(endpoint: UserEndpoints.blockUser, body: request.toJson());
+    return ResponseBlockUser.fromJson(responseData!);
+  }
+
+  Future<ResponseUnblockUser> unblockUser(RequestUnblockUser request) async {
+    final responseData = await _apiService.post(endpoint: UserEndpoints.unblockUser, body: request.toJson());
+    return ResponseUnblockUser.fromJson(responseData!);
   }
 }

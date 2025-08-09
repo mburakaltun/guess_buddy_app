@@ -5,12 +5,15 @@ import 'package:guess_buddy_app/prediction/service/prediction_service.dart';
 import 'package:guess_buddy_app/prediction/model/request/request_get_predictions.dart';
 import 'package:guess_buddy_app/common/model/exception/api_exception.dart';
 import 'package:guess_buddy_app/common/utility/dialog_utility.dart';
+import 'package:guess_buddy_app/user/service/user_service.dart';
 import 'package:guess_buddy_app/vote/service/vote_service.dart';
 import 'package:guess_buddy_app/vote/model/request/request_vote_prediction.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../common/model/shared_preferences/shared_preferences_key.dart';
+import '../../user/model/request/request_block_user.dart';
 import '../model/dto/prediction_dto.dart';
+import '../model/request/request_flag_prediction.dart';
 
 class PredictionFeedScreen extends StatefulWidget {
   const PredictionFeedScreen({super.key});
@@ -22,6 +25,7 @@ class PredictionFeedScreen extends StatefulWidget {
 class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
   final PredictionService _predictionService = PredictionService();
   final VoteService _voteService = VoteService();
+  final UserService _userService = UserService();
   final ScrollController _scrollController = ScrollController();
 
   List<PredictionCardModel> predictions = [];
@@ -243,6 +247,277 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
     }
   }
 
+  void _showPredictionOptionsMenu(BuildContext context, PredictionCardModel prediction) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => Container(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Handle bar
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: colorScheme.outline,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Header
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: colorScheme.primary.withOpacity(0.2),
+                    radius: 16,
+                    child: Text(
+                      prediction.creatorUsername.isNotEmpty ? prediction.creatorUsername[0].toUpperCase() : '?',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: colorScheme.primary, fontSize: 14),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    '@${prediction.creatorUsername}',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: colorScheme.onSurface,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Options
+            ListTile(
+              leading: Icon(Icons.flag_outlined, color: colorScheme.error),
+              title: Text(
+                context.message.predictionFeedFlagPrediction,
+                style: TextStyle(color: colorScheme.error),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                _showFlagPredictionDialog(prediction);
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.block, color: colorScheme.error),
+              title: Text(
+                context.message.predictionFeedBlockUser,
+                style: TextStyle(color: colorScheme.error),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                _showBlockUserDialog(prediction);
+              },
+            ),
+
+            const SizedBox(height: 10),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showFlagPredictionDialog(PredictionCardModel prediction) {
+    final colorScheme = Theme.of(context).colorScheme;
+    String? selectedReason;
+
+    final reasons = [
+      context.message.predictionFeedFlagReasonSpam,
+      context.message.predictionFeedFlagReasonInappropriate,
+      context.message.predictionFeedFlagReasonMisinformation,
+      context.message.predictionFeedFlagReasonHarassment,
+      context.message.predictionFeedFlagReasonOther,
+    ];
+
+    showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Row(
+            children: [
+              Icon(Icons.flag_outlined, color: colorScheme.error),
+              const SizedBox(width: 8),
+              Text(context.message.predictionFeedFlagPrediction),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                context.message.predictionFeedFlagPredictionDescription,
+                style: TextStyle(color: colorScheme.onSurface.withOpacity(0.7)),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                context.message.predictionFeedFlagSelectReason,
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 8),
+              ...reasons.map((reason) => RadioListTile<String>(
+                title: Text(reason, style: const TextStyle(fontSize: 14)),
+                value: reason,
+                groupValue: selectedReason,
+                onChanged: (value) => setDialogState(() => selectedReason = value),
+                contentPadding: EdgeInsets.zero,
+              )),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(context.message.generalCancel),
+            ),
+            ElevatedButton(
+              onPressed: selectedReason != null
+                  ? () {
+                Navigator.pop(context);
+                _flagPrediction(prediction.id, selectedReason!);
+              }
+                  : null,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: colorScheme.error,
+                foregroundColor: colorScheme.onError,
+              ),
+              child: Text(context.message.predictionFeedFlagSubmit),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showBlockUserDialog(PredictionCardModel prediction) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(
+          children: [
+            Icon(Icons.block, color: colorScheme.error),
+            const SizedBox(width: 8),
+            Text(context.message.predictionFeedBlockUser),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: colorScheme.onSurface.withOpacity(0.7)),
+                children: [
+                  TextSpan(text: context.message.predictionFeedBlockUserDescription1),
+                  TextSpan(
+                    text: '@${prediction.creatorUsername}',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: context.message.predictionFeedBlockUserDescription2),
+                ],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.message.generalCancel),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _blockUser(prediction.creatorUserId, prediction.creatorUsername);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: colorScheme.error,
+              foregroundColor: colorScheme.onError,
+            ),
+            child: Text(context.message.predictionFeedBlockConfirm),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _flagPrediction(int predictionId, String reason) async {
+    try {
+      final requestFlagPrediction = RequestFlagPrediction(
+        predictionId: predictionId.toString(),
+        reason: reason,
+      );
+      await _predictionService.flagPrediction(requestFlagPrediction: requestFlagPrediction);
+
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.message.predictionFeedFlagSuccess),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.green,
+          action: SnackBarAction(
+            label: context.message.generalDismiss,
+            textColor: Colors.white,
+            onPressed: () {},
+          ),
+        ),
+      );
+    } catch (e) {
+      DialogUtility.handleApiError(
+        context: context,
+        error: e,
+        title: context.message.predictionFeedFlagFailed,
+      );
+    }
+  }
+
+  Future<void> _blockUser(int userId, String username) async {
+    try {
+      final requestBlockUser = RequestBlockUser(blockedUserId: userId);
+      await _userService.blockUser(requestBlockUser);
+      setState(() {
+        predictions.removeWhere((prediction) => prediction.creatorUserId == userId);
+      });
+
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.message.predictionFeedBlockSuccess(username)),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.green,
+          action: SnackBarAction(
+            label: context.message.generalDismiss,
+            textColor: Colors.white,
+            onPressed: () {},
+          ),
+        ),
+      );
+    } catch (e) {
+      DialogUtility.handleApiError(
+        context: context,
+        error: e,
+        title: context.message.predictionFeedBlockFailed,
+      );
+    }
+  }
+
   Widget _buildPredictionCard(PredictionCardModel prediction, bool isOtherUser) {
     final bool hasVotes = prediction.voteCount > 0;
     final bool isPositive = prediction.averageScore >= 2.5;
@@ -296,10 +571,25 @@ class _PredictionFeedScreenState extends State<PredictionFeedScreen> {
                 ),
 
                 // Vote now badge or user's score
-                if (isOtherUser)
+                if (isOtherUser) ...[
                   prediction.userScore != null
                       ? _buildUserRatingBadge(prediction.userScore!.toInt(), colorScheme)
                       : _buildVoteNowBadge(colorScheme),
+                  const SizedBox(width: 8),
+                  // Three dots menu for other users' predictions
+                  InkWell(
+                    onTap: () => _showPredictionOptionsMenu(context, prediction),
+                    borderRadius: BorderRadius.circular(20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Icon(
+                        Icons.more_vert,
+                        size: 20,
+                        color: colorScheme.onSurface.withOpacity(0.6),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

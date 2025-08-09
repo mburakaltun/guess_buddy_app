@@ -62,8 +62,7 @@ import 'app_localizations_tr.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,18 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('tr'),
+    Locale('tr')
   ];
 
   /// No description provided for @generalError.
@@ -493,6 +490,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Submitting your vote...'**
   String get predictionFeedSubmittingVote;
+
+  /// No description provided for @predictionFeedFlagPrediction.
+  ///
+  /// In en, this message translates to:
+  /// **'Flag Prediction'**
+  String get predictionFeedFlagPrediction;
+
+  /// No description provided for @predictionFeedBlockUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Block User'**
+  String get predictionFeedBlockUser;
+
+  /// No description provided for @predictionFeedFlagPredictionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Help us keep the community safe by reporting content that violates our guidelines.'**
+  String get predictionFeedFlagPredictionDescription;
+
+  /// No description provided for @predictionFeedFlagSelectReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a reason:'**
+  String get predictionFeedFlagSelectReason;
+
+  /// No description provided for @predictionFeedFlagReasonSpam.
+  ///
+  /// In en, this message translates to:
+  /// **'Spam or fake content'**
+  String get predictionFeedFlagReasonSpam;
+
+  /// No description provided for @predictionFeedFlagReasonInappropriate.
+  ///
+  /// In en, this message translates to:
+  /// **'Inappropriate content'**
+  String get predictionFeedFlagReasonInappropriate;
+
+  /// No description provided for @predictionFeedFlagReasonMisinformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Misinformation'**
+  String get predictionFeedFlagReasonMisinformation;
+
+  /// No description provided for @predictionFeedFlagReasonHarassment.
+  ///
+  /// In en, this message translates to:
+  /// **'Harassment or bullying'**
+  String get predictionFeedFlagReasonHarassment;
+
+  /// No description provided for @predictionFeedFlagReasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get predictionFeedFlagReasonOther;
+
+  /// No description provided for @predictionFeedFlagSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Report'**
+  String get predictionFeedFlagSubmit;
+
+  /// No description provided for @predictionFeedFlagSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Prediction flagged successfully'**
+  String get predictionFeedFlagSuccess;
+
+  /// No description provided for @predictionFeedFlagFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Flag Prediction'**
+  String get predictionFeedFlagFailed;
+
+  /// No description provided for @predictionFeedBlockUserDescription1.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to block '**
+  String get predictionFeedBlockUserDescription1;
+
+  /// No description provided for @predictionFeedBlockUserDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'? You won\'t see their predictions or be able to interact with them.'**
+  String get predictionFeedBlockUserDescription2;
+
+  /// No description provided for @predictionFeedBlockConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Block User'**
+  String get predictionFeedBlockConfirm;
+
+  /// No description provided for @predictionFeedBlockSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'@{username} has been blocked successfully'**
+  String predictionFeedBlockSuccess(Object username);
+
+  /// No description provided for @predictionFeedBlockFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Block User'**
+  String get predictionFeedBlockFailed;
 
   /// No description provided for @profileEdit.
   ///
@@ -1299,8 +1398,7 @@ abstract class AppLocalizations {
   String get termsOfUse;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1309,26 +1407,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'tr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'tr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'tr':
-      return AppLocalizationsTr();
+    case 'en': return AppLocalizationsEn();
+    case 'tr': return AppLocalizationsTr();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

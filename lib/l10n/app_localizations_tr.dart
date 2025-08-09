@@ -57,8 +57,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get signUpUsername => 'Kullanıcı Adı';
 
   @override
-  String get signUpUsernameHint =>
-      'Kullanıcı Adı 3 ile 32 karakter arasında olmalı.';
+  String get signUpUsernameHint => 'Kullanıcı Adı 3 ile 32 karakter arasında olmalı.';
 
   @override
   String get signUpPassword => 'Şifre';
@@ -82,8 +81,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get signUpSuccessTitle => 'Kayıt Başarılı';
 
   @override
-  String get signUpSuccessMessage =>
-      'Hesabınız başarıyla oluşturuldu. Artık giriş yapabilirsiniz.';
+  String get signUpSuccessMessage => 'Hesabınız başarıyla oluşturuldu. Artık giriş yapabilirsiniz.';
 
   @override
   String get goToSignIn => 'Giriş Yap\'a Git';
@@ -113,8 +111,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addPredictionDescription => 'Açıklama';
 
   @override
-  String get addPredictionDescriptionHint =>
-      'Tahmininizi ayrıntılı olarak açıklayın';
+  String get addPredictionDescriptionHint => 'Tahmininizi ayrıntılı olarak açıklayın';
 
   @override
   String get addPredictionSubmit => 'Tahmini Gönder';
@@ -129,8 +126,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addPredictionPageTitle => 'Tahmin Ekle';
 
   @override
-  String get addPredictionIntro =>
-      'Gelecekteki olaylar hakkındaki tahminini diğerleriyle paylaş ve haklı olup olmadığını gör!';
+  String get addPredictionIntro => 'Gelecekteki olaylar hakkındaki tahminini diğerleriyle paylaş ve haklı olup olmadığını gör!';
 
   @override
   String get addPredictionTitleRequired => 'Lütfen bir tahmin başlığı girin';
@@ -139,12 +135,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addPredictionTitleTooLong => 'Başlık maksimum uzunluğu aşıyor';
 
   @override
-  String get addPredictionDescriptionRequired =>
-      'Lütfen bir tahmin açıklaması girin';
+  String get addPredictionDescriptionRequired => 'Lütfen bir tahmin açıklaması girin';
 
   @override
-  String get addPredictionDescriptionTooLong =>
-      'Açıklama maksimum uzunluğu aşıyor';
+  String get addPredictionDescriptionTooLong => 'Açıklama maksimum uzunluğu aşıyor';
 
   @override
   String get addPredictionTipsTitle => 'İyi Tahminler İçin İpuçları';
@@ -153,12 +147,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addPredictionTip1 => 'Ne tahmin ettiğiniz konusunda spesifik olun';
 
   @override
-  String get addPredictionTip2 =>
-      'Tahminin doğrulanabileceği bir zaman çerçevesi ekleyin';
+  String get addPredictionTip2 => 'Tahminin doğrulanabileceği bir zaman çerçevesi ekleyin';
 
   @override
-  String get addPredictionTip3 =>
-      'Tahmininizin ölçülebilir ve doğrulanabilir olduğundan emin olun';
+  String get addPredictionTip3 => 'Tahmininizin ölçülebilir ve doğrulanabilir olduğundan emin olun';
 
   @override
   String get addPredictionSubmitting => 'Gönderiliyor...';
@@ -207,8 +199,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get predictionFeedRatePrediction => 'Bu Tahmini Puanlayın';
 
   @override
-  String get predictionFeedHowLikely =>
-      'Bu tahminin gerçekleşme olasılığı nedir?';
+  String get predictionFeedHowLikely => 'Bu tahminin gerçekleşme olasılığı nedir?';
 
   @override
   String get predictionFeedNotLikely => 'Olası değil';
@@ -218,6 +209,59 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get predictionFeedSubmittingVote => 'Oyunuz gönderiliyor...';
+
+  @override
+  String get predictionFeedFlagPrediction => 'Tahmini Bayrakla';
+
+  @override
+  String get predictionFeedBlockUser => 'Kullanıcıyı Engelle';
+
+  @override
+  String get predictionFeedFlagPredictionDescription => 'Topluluk kurallarını ihlal eden içerikleri bildirerek güvenli bir ortam oluşturmamıza yardımcı olun.';
+
+  @override
+  String get predictionFeedFlagSelectReason => 'Bir sebep seçin:';
+
+  @override
+  String get predictionFeedFlagReasonSpam => 'Spam veya sahte içerik';
+
+  @override
+  String get predictionFeedFlagReasonInappropriate => 'Uygunsuz içerik';
+
+  @override
+  String get predictionFeedFlagReasonMisinformation => 'Yanlış bilgi';
+
+  @override
+  String get predictionFeedFlagReasonHarassment => 'Taciz veya zorbalık';
+
+  @override
+  String get predictionFeedFlagReasonOther => 'Diğer';
+
+  @override
+  String get predictionFeedFlagSubmit => 'Raporu Gönder';
+
+  @override
+  String get predictionFeedFlagSuccess => 'Tahmin başarıyla bayraklandı';
+
+  @override
+  String get predictionFeedFlagFailed => 'Tahmin Bayraklanamadı';
+
+  @override
+  String get predictionFeedBlockUserDescription1 => '';
+
+  @override
+  String get predictionFeedBlockUserDescription2 => ' kullanıcısını engellemek istediğinizden emin misiniz? Artık tahminlerini göremeyecek ve onlarla etkileşime geçemeyeceksiniz.';
+
+  @override
+  String get predictionFeedBlockConfirm => 'Kullanıcıyı Engelle';
+
+  @override
+  String predictionFeedBlockSuccess(Object username) {
+    return '@$username başarıyla engellendi';
+  }
+
+  @override
+  String get predictionFeedBlockFailed => 'Kullanıcı Engellenemedi';
 
   @override
   String get profileEdit => 'Profili Düzenle';
@@ -235,8 +279,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileSignOutDialogTitle => 'Çıkış Yap';
 
   @override
-  String get profileSignOutDialogContent =>
-      'Çıkış yapmak istediğinizden emin misiniz?';
+  String get profileSignOutDialogContent => 'Çıkış yapmak istediğinizden emin misiniz?';
 
   @override
   String get profileSignOutDialogCancel => 'İptal';
@@ -260,8 +303,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileUsernameRequired => 'Kullanıcı adı gereklidir';
 
   @override
-  String get profileUsernameTooShort =>
-      'Kullanıcı adı en az 3 karakter olmalıdır';
+  String get profileUsernameTooShort => 'Kullanıcı adı en az 3 karakter olmalıdır';
 
   @override
   String get profileSave => 'Değişiklikleri Kaydet';
@@ -342,8 +384,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileDeleteAccountDialogTitle => 'Hesap Silinsin mi?';
 
   @override
-  String get profileDeleteAccountDialogContent =>
-      'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinecektir.';
+  String get profileDeleteAccountDialogContent => 'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinecektir.';
 
   @override
   String get profileDeleteAccountDialogCancel => 'İptal';
@@ -355,8 +396,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileDeleteAccountConfirmationTitle => 'Son Onaylama';
 
   @override
-  String get profileDeleteAccountConfirmationContent =>
-      'Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.';
+  String get profileDeleteAccountConfirmationContent => 'Bu işlem kalıcıdır ve geri alınamaz. Profil bilgileriniz ve etkinlik geçmişiniz dahil tüm verileriniz kalıcı olarak silinecektir.';
 
   @override
   String get profileDeleteAccountConfirmationPhrase => 'HESABIMI SİL';
@@ -382,8 +422,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackScreenTitle => 'Geri Bildirim Gönder';
 
   @override
-  String get feedbackIntroText =>
-      'Geri bildiriminizi değerlendiriyoruz! Deneyiminizi nasıl iyileştirebileceğimizi bize bildirin.';
+  String get feedbackIntroText => 'Geri bildiriminizi değerlendiriyoruz! Deneyiminizi nasıl iyileştirebileceğimizi bize bildirin.';
 
   @override
   String get feedbackTypeLabel => 'Geri Bildirim Türü';
@@ -404,15 +443,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackMessageLabel => 'Geri Bildiriminiz';
 
   @override
-  String get feedbackMessageHint =>
-      'Lütfen geri bildiriminizi detaylı bir şekilde açıklayın...';
+  String get feedbackMessageHint => 'Lütfen geri bildiriminizi detaylı bir şekilde açıklayın...';
 
   @override
   String get feedbackMessageRequired => 'Lütfen geri bildiriminizi girin';
 
   @override
-  String get feedbackMessageTooShort =>
-      'Geri bildirim en az 10 karakter olmalıdır';
+  String get feedbackMessageTooShort => 'Geri bildirim en az 10 karakter olmalıdır';
 
   @override
   String get feedbackSubmitButton => 'Geri Bildirimi Gönder';
@@ -421,8 +458,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackSuccessTitle => 'Teşekkürler!';
 
   @override
-  String get feedbackSuccessMessage =>
-      'Geri bildiriminiz başarıyla gönderildi.';
+  String get feedbackSuccessMessage => 'Geri bildiriminiz başarıyla gönderildi.';
 
   @override
   String get feedbackErrorTitle => 'Geri Bildirim Hatası';
@@ -448,15 +484,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get votePredictionVoteRecorded => 'Oyunuz kaydedildi.';
 
   @override
-  String get votePredictionVoteInProgress =>
-      'Oyunuz işleniyor. Lütfen bekleyin.';
+  String get votePredictionVoteInProgress => 'Oyunuz işleniyor. Lütfen bekleyin.';
 
   @override
   String get votePredictionSuccessTitle => 'Oy Verme Başarılı';
 
   @override
-  String get votePredictionSuccessMessage =>
-      'Oyunuz başarıyla kaydedildi. Tahminin doğruluğunu takip edebilirsiniz.';
+  String get votePredictionSuccessMessage => 'Oyunuz başarıyla kaydedildi. Tahminin doğruluğunu takip edebilirsiniz.';
 
   @override
   String get languageSelectionTitle => 'Dil Seçimi';
@@ -501,15 +535,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get forgotPasswordTitle => 'Şifreni Sıfırla';
 
   @override
-  String get forgotPasswordDescription =>
-      'E-posta adresini gir ve sana şifre sıfırlama bağlantısı gönderelim.';
+  String get forgotPasswordDescription => 'E-posta adresini gir ve sana şifre sıfırlama bağlantısı gönderelim.';
 
   @override
   String get forgotPasswordEmail => 'E-posta';
 
   @override
-  String get forgotPasswordEmailHint =>
-      'Lütfen geçerli bir e-posta adresi girin';
+  String get forgotPasswordEmailHint => 'Lütfen geçerli bir e-posta adresi girin';
 
   @override
   String get forgotPasswordSubmit => 'Sıfırlama Bağlantısı Gönder';
@@ -518,8 +550,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get forgotPasswordFailed => 'Şifre Sıfırlama Başarısız';
 
   @override
-  String get forgotPasswordResetLinkSent =>
-      'E-posta adresiniz sistemimizde mevcutsa, şifre sıfırlama bağlantısı gönderilmiştir.';
+  String get forgotPasswordResetLinkSent => 'E-posta adresiniz sistemimizde mevcutsa, şifre sıfırlama bağlantısı gönderilmiştir.';
 
   @override
   String get forgotPasswordRemembered => 'Şifreni hatırladın mı?';
@@ -533,8 +564,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get aboutDescriptionContent =>
-      'Guess Buddy, kullanıcıların gelecekteki olaylar hakkında tahminlerde bulunabilecekleri ve başkalarının tahminlerine oy verebilecekleri bir sosyal tahmin platformudur. Zaman içindeki doğruluğunuzu takip edin ve diğer kullanıcılarla nasıl karşılaştırıldığınızı görün.';
+  String get aboutDescriptionContent => 'Guess Buddy, kullanıcıların gelecekteki olaylar hakkında tahminlerde bulunabilecekleri ve başkalarının tahminlerine oy verebilecekleri bir sosyal tahmin platformudur. Zaman içindeki doğruluğunuzu takip edin ve diğer kullanıcılarla nasıl karşılaştırıldığınızı görün.';
 
   @override
   String get aboutLinks => 'Bağlantılar';
@@ -579,8 +609,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get passwordChangeNewRequired => 'Yeni şifre gerekli';
 
   @override
-  String get passwordChangeNewTooShort =>
-      'Yeni şifre en az 8 karakter olmalıdır';
+  String get passwordChangeNewTooShort => 'Yeni şifre en az 8 karakter olmalıdır';
 
   @override
   String get passwordChangeConfirmRequired => 'Lütfen yeni şifrenizi onaylayın';
@@ -598,22 +627,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get passwordChangeError => 'Şifre değiştirilemedi';
 
   @override
-  String get passwordChangeRequirements =>
-      'Şifre en az 8 karakter uzunluğunda olmalıdır.';
+  String get passwordChangeRequirements => 'Şifre en az 8 karakter uzunluğunda olmalıdır.';
 
   @override
   String get passwordChangeSuccessTitle => 'Şifre Değiştirme Başarılı';
 
   @override
-  String get passwordChangeSuccessMessage =>
-      'Şifreniz başarıyla değiştirildi. Yeni şifrenizle giriş yapabilirsiniz.';
+  String get passwordChangeSuccessMessage => 'Şifreniz başarıyla değiştirildi. Yeni şifrenizle giriş yapabilirsiniz.';
 
   @override
   String get profileUpdateSuccessTitle => 'Profil Güncelleme Başarılı';
 
   @override
-  String get profileUpdateSuccessMessage =>
-      'Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi.';
+  String get profileUpdateSuccessMessage => 'Profiliniz başarıyla güncellendi. Değişiklikler kaydedildi.';
 
   @override
   String get termsOfUseTitle => 'Kullanım Koşulları';
@@ -622,15 +648,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get termsOfUseContentHeader => 'Sıfır Tolerans Politikası';
 
   @override
-  String get termsOfUseContent =>
-      'Guess Buddy, sakıncalı içerik ve kötüye kullanım davranışlarına karşı sıfır tolerans politikasına sahiptir. Bu, aşağıdakileri içerir ancak bunlarla sınırlı değildir:\n\n• Diğer kullanıcılara taciz veya zorbalık\n• Nefret söylemi veya ayrımcı içerik\n• Cinsel açıdan açık veya şiddet içeren materyal\n• Gizlilik veya fikri mülkiyet haklarını ihlal eden içerik\n• Spam veya yanıltıcı bilgiler\n\nBu koşulların ihlali, içeriğin kaldırılmasına, hesabınızın geçici olarak askıya alınmasına veya önceden bildirim yapılmadan kalıcı olarak yasaklanmasına neden olabilir.\n\nGuess Buddy\'yi kullanarak, bu koşullara uymayı kabul ediyor ve bunları ihlal etmenin sonuçlarını anlıyorsunuz.';
+  String get termsOfUseContent => 'Guess Buddy, sakıncalı içerik ve kötüye kullanım davranışlarına karşı sıfır tolerans politikasına sahiptir. Bu, aşağıdakileri içerir ancak bunlarla sınırlı değildir:\n\n• Diğer kullanıcılara taciz veya zorbalık\n• Nefret söylemi veya ayrımcı içerik\n• Cinsel açıdan açık veya şiddet içeren materyal\n• Gizlilik veya fikri mülkiyet haklarını ihlal eden içerik\n• Spam veya yanıltıcı bilgiler\n\nBu koşulların ihlali, içeriğin kaldırılmasına, hesabınızın geçici olarak askıya alınmasına veya önceden bildirim yapılmadan kalıcı olarak yasaklanmasına neden olabilir.\n\nGuess Buddy\'yi kullanarak, bu koşullara uymayı kabul ediyor ve bunları ihlal etmenin sonuçlarını anlıyorsunuz.';
 
   @override
   String get privacyPolicyHeader => 'Gizlilik Politikası';
 
   @override
-  String get privacyPolicyContent =>
-      'Hizmetlerimizi sağlamak ve geliştirmek için belirli kişisel bilgileri topluyor ve işliyoruz. Verileriniz güvenli bir şekilde ve gizlilik uygulamalarımıza uygun olarak işlenir.';
+  String get privacyPolicyContent => 'Hizmetlerimizi sağlamak ve geliştirmek için belirli kişisel bilgileri topluyor ve işliyoruz. Verileriniz güvenli bir şekilde ve gizlilik uygulamalarımıza uygun olarak işlenir.';
 
   @override
   String get closeButton => 'Kapat';
@@ -639,8 +663,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get termsNotAcceptedTitle => 'Koşullar Kabul Edilmedi';
 
   @override
-  String get termsNotAcceptedMessage =>
-      'Devam etmek için Kullanım Koşullarını kabul etmelisiniz.';
+  String get termsNotAcceptedMessage => 'Devam etmek için Kullanım Koşullarını kabul etmelisiniz.';
 
   @override
   String get termsAgreementText => 'Kaydolarak, ';

@@ -6,7 +6,9 @@ import 'package:guess_buddy_app/prediction/model/response/response_get_user_pred
 import 'package:guess_buddy_app/prediction/model/response/response_get_user_predictions.dart';
 import '../../common/service/api_service.dart';
 import '../model/request/request_create_prediction.dart';
+import '../model/request/request_flag_prediction.dart';
 import '../model/request/request_get_predictions.dart';
+import '../model/response/response_flag_prediction.dart';
 import '../model/response/response_get_predictions.dart';
 
 class PredictionService {
@@ -44,5 +46,13 @@ class PredictionService {
       params: requestGetUserPredictions.toJson(),
     );
     return ResponseGetUserPredictions.fromJson(response!);
+  }
+
+  Future<ResponseFlagPrediction> flagPrediction({required RequestFlagPrediction requestFlagPrediction}) async {
+    final response = await _apiService.post(
+      endpoint: PredictionEndpoints.flagPrediction,
+      body: requestFlagPrediction.toJson(),
+    );
+    return ResponseFlagPrediction.fromJson(response!);
   }
 }

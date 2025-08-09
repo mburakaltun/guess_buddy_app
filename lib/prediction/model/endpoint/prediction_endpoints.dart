@@ -4,4 +4,5 @@ class PredictionEndpoints {
   static const String getPredictions = '$base';
   static const String getUserPredictionRates = '$base/user-hit-rates';
   static const String getUserPredictions = '$base/my-predictions';
+  static const String flagPrediction = '$base/flag';
 }
