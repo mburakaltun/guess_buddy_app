@@ -30,6 +30,7 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
   bool _isLoadingUserRooms = false;
   ResponseGetUserRooms? _userRooms;
   String? _userRoomsError;
+  String? _joiningRoomPasscode;
 
   @override
   void initState() {
@@ -128,7 +129,9 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
   }
 
   Future<void> _joinRoomById(String passcode) async {
-    setState(() => _isJoiningRoom = true);
+    setState(() {
+      _joiningRoomPasscode = passcode;
+    });
 
     try {
       await _roomService.joinRoom(
@@ -146,7 +149,9 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
       );
     } finally {
       if (mounted) {
-        setState(() => _isJoiningRoom = false);
+        setState(() {
+          _joiningRoomPasscode = null;
+        });
       }
     }
   }
@@ -337,7 +342,7 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
             const Divider(),
             const SizedBox(height: 16),
 
-            // Your Rooms Section - Made flexible to fill remaining space
+            // Your Rooms Section
             if (_isLoadingUserRooms)
               const Center(child: CircularProgressIndicator())
             else if (_userRoomsError != null)
@@ -360,12 +365,14 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
                 const SizedBox(height: 12),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.only(bottom: 20), // Add bottom padding
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: _userRooms!.userRooms.length,
                       itemBuilder: (context, index) {
                         final room = _userRooms!.userRooms[index];
+                        final isThisRoomLoading = _joiningRoomPasscode == room.passcode;
+
                         return Card(
                           margin: const EdgeInsets.only(bottom: 8),
                           child: ListTile(
@@ -378,8 +385,14 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with SingleTi
                               room.isHost ? context.message.host : context.message.member,
                             ),
                             trailing: ElevatedButton(
-                              onPressed: _isJoiningRoom ? null : () => _joinRoomById(room.passcode),
-                              child: Text(context.message.join),
+                              onPressed: isThisRoomLoading ? null : () => _joinRoomById(room.passcode),
+                              child: isThisRoomLoading
+                                  ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              )
+                                  : Text(context.message.join),
                             ),
                           ),
                         );
