@@ -70,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
         await authenticationService.signIn(RequestSignInUser(email: _email, password: _password));
 
         if (!mounted) return;
-        Navigator.pushReplacementNamed(context, Routes.dashboard);
+        Navigator.pushReplacementNamed(context, Routes.roomSelection);
       } catch (e) {
         if (!mounted) return;
         DialogUtility.handleApiError(

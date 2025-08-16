@@ -1462,6 +1462,492 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Blocked on {date}'**
   String blockedUsersBlockedOn(String date);
+
+  /// No description provided for @selectRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Room'**
+  String get selectRoom;
+
+  /// No description provided for @createRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Room'**
+  String get createRoom;
+
+  /// No description provided for @joinRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Room'**
+  String get joinRoom;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @roomCreationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Creation Failed'**
+  String get roomCreationFailed;
+
+  /// No description provided for @roomJoinFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Join Room'**
+  String get roomJoinFailed;
+
+  /// No description provided for @roomCreatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Created!'**
+  String get roomCreatedSuccessfully;
+
+  /// No description provided for @roomPasscodeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Your room passcode is:'**
+  String get roomPasscodeInfo;
+
+  /// No description provided for @roomPasscodeShareInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Share this passcode with your friends to let them join your room.'**
+  String get roomPasscodeShareInfo;
+
+  /// No description provided for @continueToRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Room'**
+  String get continueToRoom;
+
+  /// No description provided for @createRoomTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Room'**
+  String get createRoomTitle;
+
+  /// No description provided for @createRoomDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new prediction room and invite your friends to join.'**
+  String get createRoomDescription;
+
+  /// No description provided for @roomTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Title'**
+  String get roomTitleLabel;
+
+  /// No description provided for @roomTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name for your room'**
+  String get roomTitleHint;
+
+  /// No description provided for @roomTitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a room title'**
+  String get roomTitleRequired;
+
+  /// No description provided for @roomTitleTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Room title cannot exceed 50 characters'**
+  String get roomTitleTooLong;
+
+  /// No description provided for @createRoomButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Room'**
+  String get createRoomButton;
+
+  /// No description provided for @joinRoomTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Existing Room'**
+  String get joinRoomTitle;
+
+  /// No description provided for @joinRoomDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit passcode shared by your friend to join their room.'**
+  String get joinRoomDescription;
+
+  /// No description provided for @passcodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Passcode'**
+  String get passcodeLabel;
+
+  /// No description provided for @passcodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 6-digit passcode'**
+  String get passcodeHint;
+
+  /// No description provided for @passcodeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the room passcode'**
+  String get passcodeRequired;
+
+  /// No description provided for @passcodeInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Passcode must be exactly 6 characters'**
+  String get passcodeInvalid;
+
+  /// No description provided for @joinRoomButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Room'**
+  String get joinRoomButton;
+
+  /// No description provided for @copyPasscode.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Passcode'**
+  String get copyPasscode;
+
+  /// No description provided for @passcodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Passcode copied to clipboard'**
+  String get passcodeCopied;
+
+  /// No description provided for @sharePasscodeWithFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Share this passcode with your friends'**
+  String get sharePasscodeWithFriends;
+
+  /// No description provided for @createRoomSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new prediction room and invite your friends'**
+  String get createRoomSubtitle;
+
+  /// No description provided for @roomTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Title'**
+  String get roomTitle;
+
+  /// No description provided for @roomTitleTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Room title must be at least 3 characters'**
+  String get roomTitleTooShort;
+
+  /// No description provided for @joinRoomSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the passcode shared by your friend'**
+  String get joinRoomSubtitle;
+
+  /// No description provided for @roomPasscode.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Passcode'**
+  String get roomPasscode;
+
+  /// No description provided for @passcodeInvalidLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Passcode must be exactly 6 characters'**
+  String get passcodeInvalidLength;
+
+  /// No description provided for @yourRooms.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rooms'**
+  String get yourRooms;
+
+  /// No description provided for @host.
+  ///
+  /// In en, this message translates to:
+  /// **'Host'**
+  String get host;
+
+  /// No description provided for @member.
+  ///
+  /// In en, this message translates to:
+  /// **'Member'**
+  String get member;
+
+  /// No description provided for @join.
+  ///
+  /// In en, this message translates to:
+  /// **'Join'**
+  String get join;
+
+  /// No description provided for @joinByPasscode.
+  ///
+  /// In en, this message translates to:
+  /// **'Join by Passcode'**
+  String get joinByPasscode;
+
+  /// No description provided for @failedToLoadUserRooms.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load your rooms'**
+  String get failedToLoadUserRooms;
+
+  /// No description provided for @profileLeaveRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room'**
+  String get profileLeaveRoom;
+
+  /// No description provided for @profileCloseRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Room'**
+  String get profileCloseRoom;
+
+  /// No description provided for @profileLeaveRoomDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room'**
+  String get profileLeaveRoomDialogTitle;
+
+  /// No description provided for @profileLeaveRoomDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to leave the room \"{roomTitle}\"? You will no longer be able to participate in this room.'**
+  String profileLeaveRoomDialogContent(String roomTitle);
+
+  /// No description provided for @profileLeaveRoomDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileLeaveRoomDialogCancel;
+
+  /// No description provided for @profileLeaveRoomDialogProceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room'**
+  String get profileLeaveRoomDialogProceed;
+
+  /// No description provided for @profileLeaveRoomConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Leave Room'**
+  String get profileLeaveRoomConfirmationTitle;
+
+  /// No description provided for @profileLeaveRoomConfirmationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone. You will permanently leave this room.'**
+  String get profileLeaveRoomConfirmationContent;
+
+  /// No description provided for @profileLeaveRoomConfirmationPhrase.
+  ///
+  /// In en, this message translates to:
+  /// **'LEAVE ROOM'**
+  String get profileLeaveRoomConfirmationPhrase;
+
+  /// No description provided for @profileLeaveRoomConfirmationInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Type \"{phrase}\" to confirm:'**
+  String profileLeaveRoomConfirmationInstruction(String phrase);
+
+  /// No description provided for @profileLeaveRoomConfirmationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation text doesn\'t match'**
+  String get profileLeaveRoomConfirmationError;
+
+  /// No description provided for @profileLeaveRoomConfirmationSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room'**
+  String get profileLeaveRoomConfirmationSubmit;
+
+  /// No description provided for @profileLeaveRoomFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Leave Room'**
+  String get profileLeaveRoomFailed;
+
+  /// No description provided for @profileCloseRoomDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Room'**
+  String get profileCloseRoomDialogTitle;
+
+  /// No description provided for @profileCloseRoomDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to close the room \"{roomTitle}\"? This will permanently delete the room and remove all members.'**
+  String profileCloseRoomDialogContent(String roomTitle);
+
+  /// No description provided for @profileCloseRoomDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileCloseRoomDialogCancel;
+
+  /// No description provided for @profileCloseRoomDialogProceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Room'**
+  String get profileCloseRoomDialogProceed;
+
+  /// No description provided for @profileCloseRoomConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Close Room'**
+  String get profileCloseRoomConfirmationTitle;
+
+  /// No description provided for @profileCloseRoomConfirmationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone. The room will be permanently deleted and all members will be removed.'**
+  String get profileCloseRoomConfirmationContent;
+
+  /// No description provided for @profileCloseRoomConfirmationPhrase.
+  ///
+  /// In en, this message translates to:
+  /// **'CLOSE ROOM'**
+  String get profileCloseRoomConfirmationPhrase;
+
+  /// No description provided for @profileCloseRoomConfirmationInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Type \"{phrase}\" to confirm:'**
+  String profileCloseRoomConfirmationInstruction(String phrase);
+
+  /// No description provided for @profileCloseRoomConfirmationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation text doesn\'t match'**
+  String get profileCloseRoomConfirmationError;
+
+  /// No description provided for @profileCloseRoomConfirmationSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Room'**
+  String get profileCloseRoomConfirmationSubmit;
+
+  /// No description provided for @profileCloseRoomFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Close Room'**
+  String get profileCloseRoomFailed;
+
+  /// No description provided for @profileExitRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Room'**
+  String get profileExitRoom;
+
+  /// No description provided for @profileExitRoomDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Room'**
+  String get profileExitRoomDialogTitle;
+
+  /// No description provided for @profileExitRoomDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to exit \'{roomTitle}\'? You can rejoin anytime and continue where you left off.'**
+  String profileExitRoomDialogContent(String roomTitle);
+
+  /// No description provided for @profileExitRoomDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileExitRoomDialogCancel;
+
+  /// No description provided for @profileExitRoomDialogConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Room'**
+  String get profileExitRoomDialogConfirm;
+
+  /// No description provided for @profileExitRoomFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Exit Room'**
+  String get profileExitRoomFailed;
+
+  /// No description provided for @profileLeaveRoomPermanently.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room Permanently'**
+  String get profileLeaveRoomPermanently;
+
+  /// No description provided for @profileLeaveRoomPermanentlyDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Room Permanently'**
+  String get profileLeaveRoomPermanentlyDialogTitle;
+
+  /// No description provided for @profileLeaveRoomPermanentlyDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently leave \'{roomTitle}\'? This action will delete all your data from this room and cannot be undone.'**
+  String profileLeaveRoomPermanentlyDialogContent(String roomTitle);
+
+  /// No description provided for @profileLeaveRoomPermanentlyDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileLeaveRoomPermanentlyDialogCancel;
+
+  /// No description provided for @profileLeaveRoomPermanentlyDialogProceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed'**
+  String get profileLeaveRoomPermanentlyDialogProceed;
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Permanent Leave'**
+  String get profileLeaveRoomPermanentlyConfirmationTitle;
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This action will permanently delete all your room data and cannot be undone.'**
+  String get profileLeaveRoomPermanentlyConfirmationContent;
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationPhrase.
+  ///
+  /// In en, this message translates to:
+  /// **'DELETE MY DATA'**
+  String get profileLeaveRoomPermanentlyConfirmationPhrase;
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Type \'{phrase}\' to confirm:'**
+  String profileLeaveRoomPermanentlyConfirmationInstruction(String phrase);
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please type the exact phrase to confirm'**
+  String get profileLeaveRoomPermanentlyConfirmationError;
+
+  /// No description provided for @profileLeaveRoomPermanentlyConfirmationSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Data'**
+  String get profileLeaveRoomPermanentlyConfirmationSubmit;
+
+  /// No description provided for @profileLeaveRoomPermanentlyFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Leave Room Permanently'**
+  String get profileLeaveRoomPermanentlyFailed;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

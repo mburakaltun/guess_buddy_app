@@ -274,5 +274,136 @@
         "type": "String"
       }
     }
-  }
+  },
+  "selectRoom": "Oda Seç",
+  "createRoom": "Oda Oluştur",
+  "joinRoom": "Odaya Katıl",
+  "signOut": "Çıkış Yap",
+  "roomCreationFailed": "Oda Oluşturma Başarısız",
+  "roomJoinFailed": "Odaya Katılma Başarısız",
+  "roomCreatedSuccessfully": "Oda Oluşturuldu!",
+  "roomPasscodeInfo": "Odanızın şifresi:",
+  "roomPasscodeShareInfo": "Bu şifreyi arkadaşlarınızla paylaşarak odanıza katılmalarını sağlayın.",
+  "continueToRoom": "Odaya Devam Et",
+  "createRoomTitle": "Yeni Oda Oluştur",
+  "createRoomDescription": "Yeni bir tahmin odası oluşturun ve arkadaşlarınızı katılmaya davet edin.",
+  "roomTitleLabel": "Oda Başlığı",
+  "roomTitleHint": "Odanız için bir isim girin",
+  "roomTitleRequired": "Lütfen bir oda başlığı girin",
+  "roomTitleTooLong": "Oda başlığı 50 karakteri geçemez",
+  "createRoomButton": "Oda Oluştur",
+  "joinRoomTitle": "Mevcut Odaya Katıl",
+  "joinRoomDescription": "Arkadaşınızın paylaştığı 6 haneli şifreyi girerek odasına katılın.",
+  "passcodeLabel": "Oda Şifresi",
+  "passcodeHint": "6 haneli şifreyi girin",
+  "passcodeRequired": "Lütfen oda şifresini girin",
+  "passcodeInvalid": "Şifre tam olarak 6 karakter olmalıdır",
+  "joinRoomButton": "Odaya Katıl",
+  "copyPasscode": "Şifreyi Kopyala",
+  "passcodeCopied": "Şifre panoya kopyalandı",
+  "sharePasscodeWithFriends": "Bu şifreyi arkadaşlarınızla paylaşın",
+  "createRoomSubtitle": "Yeni bir tahmin odası oluşturun ve arkadaşlarınızı davet edin",
+  "roomTitle": "Oda Başlığı",
+  "roomTitleTooShort": "Oda başlığı en az 3 karakter olmalıdır",
+  "joinRoomSubtitle": "Arkadaşınızın paylaştığı şifreyi girin",
+  "roomPasscode": "Oda Şifresi",
+  "passcodeInvalidLength": "Şifre tam olarak 6 karakter olmalıdır",
+  "yourRooms": "Odalarınız",
+  "host": "Ev Sahibi",
+  "member": "Üye",
+  "join": "Katıl",
+  "joinByPasscode": "Şifre ile Katıl",
+  "failedToLoadUserRooms": "Odalarınız yüklenemedi",
+  "profileLeaveRoom": "Odadan Ayrıl",
+  "profileCloseRoom": "Odayı Kapat",
+  "profileLeaveRoomDialogTitle": "Odadan Ayrıl",
+  "profileLeaveRoomDialogContent": "\"{roomTitle}\" odasından ayrılmak istediğinizden emin misiniz? Bu odaya artık katılamayacaksınız.",
+  "@profileLeaveRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomDialogCancel": "İptal",
+  "profileLeaveRoomDialogProceed": "Odadan Ayrıl",
+  "profileLeaveRoomConfirmationTitle": "Odadan Ayrılmayı Onayla",
+  "profileLeaveRoomConfirmationContent": "Bu işlem geri alınamaz. Bu odadan kalıcı olarak ayrılacaksınız.",
+  "profileLeaveRoomConfirmationPhrase": "ODADAN AYRIL",
+  "profileLeaveRoomConfirmationInstruction": "Onaylamak için \"{phrase}\" yazın:",
+  "@profileLeaveRoomConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomConfirmationError": "Onay metni eşleşmiyor",
+  "profileLeaveRoomConfirmationSubmit": "Odadan Ayrıl",
+  "profileLeaveRoomFailed": "Odadan Ayrılma Başarısız",
+  "profileCloseRoomDialogTitle": "Odayı Kapat",
+  "profileCloseRoomDialogContent": "\"{roomTitle}\" odasını kapatmak istediğinizden emin misiniz? Bu işlem odayı kalıcı olarak silecek ve tüm üyeleri çıkaracaktır.",
+  "@profileCloseRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileCloseRoomDialogCancel": "İptal",
+  "profileCloseRoomDialogProceed": "Odayı Kapat",
+  "profileCloseRoomConfirmationTitle": "Oda Kapatmayı Onayla",
+  "profileCloseRoomConfirmationContent": "Bu işlem geri alınamaz. Oda kalıcı olarak silinecek ve tüm üyeler çıkarılacaktır.",
+  "profileCloseRoomConfirmationPhrase": "ODAYI KAPAT",
+  "profileCloseRoomConfirmationInstruction": "Onaylamak için \"{phrase}\" yazın:",
+  "@profileCloseRoomConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileCloseRoomConfirmationError": "Onay metni eşleşmiyor",
+  "profileCloseRoomConfirmationSubmit": "Odayı Kapat",
+  "profileCloseRoomFailed": "Oda Kapatma Başarısız",
+  "profileExitRoom": "Odadan Çık",
+  "profileExitRoomDialogTitle": "Odadan Çık",
+  "profileExitRoomDialogContent": "'{roomTitle}' odasından çıkmak istediğinizden emin misiniz? İstediğiniz zaman tekrar katılabilir ve kaldığınız yerden devam edebilirsiniz.",
+  "@profileExitRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileExitRoomDialogCancel": "İptal",
+  "profileExitRoomDialogConfirm": "Odadan Çık",
+  "profileExitRoomFailed": "Odadan Çıkma Başarısız",
+
+  "profileLeaveRoomPermanently": "Odayı Kalıcı Olarak Terk Et",
+  "profileLeaveRoomPermanentlyDialogTitle": "Odayı Kalıcı Olarak Terk Et",
+  "profileLeaveRoomPermanentlyDialogContent": "'{roomTitle}' odasını kalıcı olarak terk etmek istediğinizden emin misiniz? Bu işlem bu odadaki tüm verilerinizi silecek ve geri alınamaz.",
+  "@profileLeaveRoomPermanentlyDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomPermanentlyDialogCancel": "İptal",
+  "profileLeaveRoomPermanentlyDialogProceed": "Devam Et",
+  "profileLeaveRoomPermanentlyConfirmationTitle": "Kalıcı Ayrılmayı Onayla",
+  "profileLeaveRoomPermanentlyConfirmationContent": "Bu işlem tüm oda verilerinizi kalıcı olarak silecek ve geri alınamaz.",
+  "profileLeaveRoomPermanentlyConfirmationPhrase": "VERİLERİMİ SİL",
+  "profileLeaveRoomPermanentlyConfirmationInstruction": "Onaylamak için '{phrase}' yazın:",
+  "@profileLeaveRoomPermanentlyConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomPermanentlyConfirmationError": "Lütfen onaylamak için tam ifadeyi yazın",
+  "profileLeaveRoomPermanentlyConfirmationSubmit": "Verileri Sil",
+  "profileLeaveRoomPermanentlyFailed": "Odayı Kalıcı Olarak Terk Etme Başarısız"
 }

@@ -16,6 +16,7 @@ class DialogUtility {
         message: error.errorMessage,
       );
     } else {
+      print('Error: $error');
       return showErrorDialog(
         context: context,
         title: title,

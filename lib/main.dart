@@ -10,6 +10,7 @@ import 'package:guess_buddy_app/authentication/screen/sign_up_success_screen.dar
 import 'package:guess_buddy_app/common/utility/language_utility.dart';
 import 'package:guess_buddy_app/prediction/screen/add_prediction_screen.dart';
 import 'package:app_links/app_links.dart';
+import 'package:guess_buddy_app/room/screen/room_selection_screen.dart';
 import 'dart:async';
 
 import 'authentication/screen/start_forgot_password_screen.dart';
@@ -166,6 +167,7 @@ class _GuessBuddyAppState extends State<GuessBuddyApp> {
         Routes.signUpSuccess: (context) => const SignUpSuccessScreen(),
         Routes.addPrediction: (context) => const AddPredictionScreen(),
         Routes.forgotPassword: (context) => const StartForgotPasswordScreen(),
+        Routes.roomSelection: (context) => const RoomSelectionScreen(),
         '/reset-password': (context) {
           final args = ModalRoute.of(context)!.settings.arguments as Map<String, String>?;
           final token = args?['token'] ?? '';

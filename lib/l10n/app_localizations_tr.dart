@@ -707,4 +707,261 @@ class AppLocalizationsTr extends AppLocalizations {
   String blockedUsersBlockedOn(String date) {
     return '$date tarihinde engellendi';
   }
+
+  @override
+  String get selectRoom => 'Oda Seç';
+
+  @override
+  String get createRoom => 'Oda Oluştur';
+
+  @override
+  String get joinRoom => 'Odaya Katıl';
+
+  @override
+  String get signOut => 'Çıkış Yap';
+
+  @override
+  String get roomCreationFailed => 'Oda Oluşturma Başarısız';
+
+  @override
+  String get roomJoinFailed => 'Odaya Katılma Başarısız';
+
+  @override
+  String get roomCreatedSuccessfully => 'Oda Oluşturuldu!';
+
+  @override
+  String get roomPasscodeInfo => 'Odanızın şifresi:';
+
+  @override
+  String get roomPasscodeShareInfo => 'Bu şifreyi arkadaşlarınızla paylaşarak odanıza katılmalarını sağlayın.';
+
+  @override
+  String get continueToRoom => 'Odaya Devam Et';
+
+  @override
+  String get createRoomTitle => 'Yeni Oda Oluştur';
+
+  @override
+  String get createRoomDescription => 'Yeni bir tahmin odası oluşturun ve arkadaşlarınızı katılmaya davet edin.';
+
+  @override
+  String get roomTitleLabel => 'Oda Başlığı';
+
+  @override
+  String get roomTitleHint => 'Odanız için bir isim girin';
+
+  @override
+  String get roomTitleRequired => 'Lütfen bir oda başlığı girin';
+
+  @override
+  String get roomTitleTooLong => 'Oda başlığı 50 karakteri geçemez';
+
+  @override
+  String get createRoomButton => 'Oda Oluştur';
+
+  @override
+  String get joinRoomTitle => 'Mevcut Odaya Katıl';
+
+  @override
+  String get joinRoomDescription => 'Arkadaşınızın paylaştığı 6 haneli şifreyi girerek odasına katılın.';
+
+  @override
+  String get passcodeLabel => 'Oda Şifresi';
+
+  @override
+  String get passcodeHint => '6 haneli şifreyi girin';
+
+  @override
+  String get passcodeRequired => 'Lütfen oda şifresini girin';
+
+  @override
+  String get passcodeInvalid => 'Şifre tam olarak 6 karakter olmalıdır';
+
+  @override
+  String get joinRoomButton => 'Odaya Katıl';
+
+  @override
+  String get copyPasscode => 'Şifreyi Kopyala';
+
+  @override
+  String get passcodeCopied => 'Şifre panoya kopyalandı';
+
+  @override
+  String get sharePasscodeWithFriends => 'Bu şifreyi arkadaşlarınızla paylaşın';
+
+  @override
+  String get createRoomSubtitle => 'Yeni bir tahmin odası oluşturun ve arkadaşlarınızı davet edin';
+
+  @override
+  String get roomTitle => 'Oda Başlığı';
+
+  @override
+  String get roomTitleTooShort => 'Oda başlığı en az 3 karakter olmalıdır';
+
+  @override
+  String get joinRoomSubtitle => 'Arkadaşınızın paylaştığı şifreyi girin';
+
+  @override
+  String get roomPasscode => 'Oda Şifresi';
+
+  @override
+  String get passcodeInvalidLength => 'Şifre tam olarak 6 karakter olmalıdır';
+
+  @override
+  String get yourRooms => 'Odalarınız';
+
+  @override
+  String get host => 'Ev Sahibi';
+
+  @override
+  String get member => 'Üye';
+
+  @override
+  String get join => 'Katıl';
+
+  @override
+  String get joinByPasscode => 'Şifre ile Katıl';
+
+  @override
+  String get failedToLoadUserRooms => 'Odalarınız yüklenemedi';
+
+  @override
+  String get profileLeaveRoom => 'Odadan Ayrıl';
+
+  @override
+  String get profileCloseRoom => 'Odayı Kapat';
+
+  @override
+  String get profileLeaveRoomDialogTitle => 'Odadan Ayrıl';
+
+  @override
+  String profileLeaveRoomDialogContent(String roomTitle) {
+    return '\"$roomTitle\" odasından ayrılmak istediğinizden emin misiniz? Bu odaya artık katılamayacaksınız.';
+  }
+
+  @override
+  String get profileLeaveRoomDialogCancel => 'İptal';
+
+  @override
+  String get profileLeaveRoomDialogProceed => 'Odadan Ayrıl';
+
+  @override
+  String get profileLeaveRoomConfirmationTitle => 'Odadan Ayrılmayı Onayla';
+
+  @override
+  String get profileLeaveRoomConfirmationContent => 'Bu işlem geri alınamaz. Bu odadan kalıcı olarak ayrılacaksınız.';
+
+  @override
+  String get profileLeaveRoomConfirmationPhrase => 'ODADAN AYRIL';
+
+  @override
+  String profileLeaveRoomConfirmationInstruction(String phrase) {
+    return 'Onaylamak için \"$phrase\" yazın:';
+  }
+
+  @override
+  String get profileLeaveRoomConfirmationError => 'Onay metni eşleşmiyor';
+
+  @override
+  String get profileLeaveRoomConfirmationSubmit => 'Odadan Ayrıl';
+
+  @override
+  String get profileLeaveRoomFailed => 'Odadan Ayrılma Başarısız';
+
+  @override
+  String get profileCloseRoomDialogTitle => 'Odayı Kapat';
+
+  @override
+  String profileCloseRoomDialogContent(String roomTitle) {
+    return '\"$roomTitle\" odasını kapatmak istediğinizden emin misiniz? Bu işlem odayı kalıcı olarak silecek ve tüm üyeleri çıkaracaktır.';
+  }
+
+  @override
+  String get profileCloseRoomDialogCancel => 'İptal';
+
+  @override
+  String get profileCloseRoomDialogProceed => 'Odayı Kapat';
+
+  @override
+  String get profileCloseRoomConfirmationTitle => 'Oda Kapatmayı Onayla';
+
+  @override
+  String get profileCloseRoomConfirmationContent => 'Bu işlem geri alınamaz. Oda kalıcı olarak silinecek ve tüm üyeler çıkarılacaktır.';
+
+  @override
+  String get profileCloseRoomConfirmationPhrase => 'ODAYI KAPAT';
+
+  @override
+  String profileCloseRoomConfirmationInstruction(String phrase) {
+    return 'Onaylamak için \"$phrase\" yazın:';
+  }
+
+  @override
+  String get profileCloseRoomConfirmationError => 'Onay metni eşleşmiyor';
+
+  @override
+  String get profileCloseRoomConfirmationSubmit => 'Odayı Kapat';
+
+  @override
+  String get profileCloseRoomFailed => 'Oda Kapatma Başarısız';
+
+  @override
+  String get profileExitRoom => 'Odadan Çık';
+
+  @override
+  String get profileExitRoomDialogTitle => 'Odadan Çık';
+
+  @override
+  String profileExitRoomDialogContent(String roomTitle) {
+    return '\'$roomTitle\' odasından çıkmak istediğinizden emin misiniz? İstediğiniz zaman tekrar katılabilir ve kaldığınız yerden devam edebilirsiniz.';
+  }
+
+  @override
+  String get profileExitRoomDialogCancel => 'İptal';
+
+  @override
+  String get profileExitRoomDialogConfirm => 'Odadan Çık';
+
+  @override
+  String get profileExitRoomFailed => 'Odadan Çıkma Başarısız';
+
+  @override
+  String get profileLeaveRoomPermanently => 'Odayı Kalıcı Olarak Terk Et';
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogTitle => 'Odayı Kalıcı Olarak Terk Et';
+
+  @override
+  String profileLeaveRoomPermanentlyDialogContent(String roomTitle) {
+    return '\'$roomTitle\' odasını kalıcı olarak terk etmek istediğinizden emin misiniz? Bu işlem bu odadaki tüm verilerinizi silecek ve geri alınamaz.';
+  }
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogCancel => 'İptal';
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogProceed => 'Devam Et';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationTitle => 'Kalıcı Ayrılmayı Onayla';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationContent => 'Bu işlem tüm oda verilerinizi kalıcı olarak silecek ve geri alınamaz.';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationPhrase => 'VERİLERİMİ SİL';
+
+  @override
+  String profileLeaveRoomPermanentlyConfirmationInstruction(String phrase) {
+    return 'Onaylamak için \'$phrase\' yazın:';
+  }
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationError => 'Lütfen onaylamak için tam ifadeyi yazın';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationSubmit => 'Verileri Sil';
+
+  @override
+  String get profileLeaveRoomPermanentlyFailed => 'Odayı Kalıcı Olarak Terk Etme Başarısız';
 }

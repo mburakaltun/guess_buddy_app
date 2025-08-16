@@ -273,5 +273,137 @@
         "type": "String"
       }
     }
-  }
+  },
+
+  "selectRoom": "Select Room",
+  "createRoom": "Create Room",
+  "joinRoom": "Join Room",
+  "signOut": "Sign Out",
+  "roomCreationFailed": "Room Creation Failed",
+  "roomJoinFailed": "Failed to Join Room",
+  "roomCreatedSuccessfully": "Room Created!",
+  "roomPasscodeInfo": "Your room passcode is:",
+  "roomPasscodeShareInfo": "Share this passcode with your friends to let them join your room.",
+  "continueToRoom": "Continue to Room",
+  "createRoomTitle": "Create New Room",
+  "createRoomDescription": "Create a new prediction room and invite your friends to join.",
+  "roomTitleLabel": "Room Title",
+  "roomTitleHint": "Enter a name for your room",
+  "roomTitleRequired": "Please enter a room title",
+  "roomTitleTooLong": "Room title cannot exceed 50 characters",
+  "createRoomButton": "Create Room",
+  "joinRoomTitle": "Join Existing Room",
+  "joinRoomDescription": "Enter the 6-digit passcode shared by your friend to join their room.",
+  "passcodeLabel": "Room Passcode",
+  "passcodeHint": "Enter 6-digit passcode",
+  "passcodeRequired": "Please enter the room passcode",
+  "passcodeInvalid": "Passcode must be exactly 6 characters",
+  "joinRoomButton": "Join Room",
+  "copyPasscode": "Copy Passcode",
+  "passcodeCopied": "Passcode copied to clipboard",
+  "sharePasscodeWithFriends": "Share this passcode with your friends",
+  "createRoomSubtitle": "Create a new prediction room and invite your friends",
+  "roomTitle": "Room Title",
+  "roomTitleTooShort": "Room title must be at least 3 characters",
+  "joinRoomSubtitle": "Enter the passcode shared by your friend",
+  "roomPasscode": "Room Passcode",
+  "passcodeInvalidLength": "Passcode must be exactly 6 characters",
+  "yourRooms": "Your Rooms",
+  "host": "Host",
+  "member": "Member",
+  "join": "Join",
+  "joinByPasscode": "Join by Passcode",
+  "failedToLoadUserRooms": "Failed to load your rooms",
+  "profileLeaveRoom": "Leave Room",
+  "profileCloseRoom": "Close Room",
+  "profileLeaveRoomDialogTitle": "Leave Room",
+  "profileLeaveRoomDialogContent": "Are you sure you want to leave the room \"{roomTitle}\"? You will no longer be able to participate in this room.",
+  "@profileLeaveRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomDialogCancel": "Cancel",
+  "profileLeaveRoomDialogProceed": "Leave Room",
+  "profileLeaveRoomConfirmationTitle": "Confirm Leave Room",
+  "profileLeaveRoomConfirmationContent": "This action cannot be undone. You will permanently leave this room.",
+  "profileLeaveRoomConfirmationPhrase": "LEAVE ROOM",
+  "profileLeaveRoomConfirmationInstruction": "Type \"{phrase}\" to confirm:",
+  "@profileLeaveRoomConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomConfirmationError": "Confirmation text doesn't match",
+  "profileLeaveRoomConfirmationSubmit": "Leave Room",
+  "profileLeaveRoomFailed": "Failed to Leave Room",
+  "profileCloseRoomDialogTitle": "Close Room",
+  "profileCloseRoomDialogContent": "Are you sure you want to close the room \"{roomTitle}\"? This will permanently delete the room and remove all members.",
+  "@profileCloseRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileCloseRoomDialogCancel": "Cancel",
+  "profileCloseRoomDialogProceed": "Close Room",
+  "profileCloseRoomConfirmationTitle": "Confirm Close Room",
+  "profileCloseRoomConfirmationContent": "This action cannot be undone. The room will be permanently deleted and all members will be removed.",
+  "profileCloseRoomConfirmationPhrase": "CLOSE ROOM",
+  "profileCloseRoomConfirmationInstruction": "Type \"{phrase}\" to confirm:",
+  "@profileCloseRoomConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileCloseRoomConfirmationError": "Confirmation text doesn't match",
+  "profileCloseRoomConfirmationSubmit": "Close Room",
+  "profileCloseRoomFailed": "Failed to Close Room",
+  "profileExitRoom": "Exit Room",
+  "profileExitRoomDialogTitle": "Exit Room",
+  "profileExitRoomDialogContent": "Are you sure you want to exit '{roomTitle}'? You can rejoin anytime and continue where you left off.",
+  "@profileExitRoomDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileExitRoomDialogCancel": "Cancel",
+  "profileExitRoomDialogConfirm": "Exit Room",
+  "profileExitRoomFailed": "Failed to Exit Room",
+
+  "profileLeaveRoomPermanently": "Leave Room Permanently",
+  "profileLeaveRoomPermanentlyDialogTitle": "Leave Room Permanently",
+  "profileLeaveRoomPermanentlyDialogContent": "Are you sure you want to permanently leave '{roomTitle}'? This action will delete all your data from this room and cannot be undone.",
+  "@profileLeaveRoomPermanentlyDialogContent": {
+    "placeholders": {
+      "roomTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomPermanentlyDialogCancel": "Cancel",
+  "profileLeaveRoomPermanentlyDialogProceed": "Proceed",
+  "profileLeaveRoomPermanentlyConfirmationTitle": "Confirm Permanent Leave",
+  "profileLeaveRoomPermanentlyConfirmationContent": "This action will permanently delete all your room data and cannot be undone.",
+  "profileLeaveRoomPermanentlyConfirmationPhrase": "DELETE MY DATA",
+  "profileLeaveRoomPermanentlyConfirmationInstruction": "Type '{phrase}' to confirm:",
+  "@profileLeaveRoomPermanentlyConfirmationInstruction": {
+    "placeholders": {
+      "phrase": {
+        "type": "String"
+      }
+    }
+  },
+  "profileLeaveRoomPermanentlyConfirmationError": "Please type the exact phrase to confirm",
+  "profileLeaveRoomPermanentlyConfirmationSubmit": "Delete Data",
+  "profileLeaveRoomPermanentlyFailed": "Failed to Leave Room Permanently"
 }

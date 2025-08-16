@@ -707,4 +707,261 @@ class AppLocalizationsEn extends AppLocalizations {
   String blockedUsersBlockedOn(String date) {
     return 'Blocked on $date';
   }
+
+  @override
+  String get selectRoom => 'Select Room';
+
+  @override
+  String get createRoom => 'Create Room';
+
+  @override
+  String get joinRoom => 'Join Room';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get roomCreationFailed => 'Room Creation Failed';
+
+  @override
+  String get roomJoinFailed => 'Failed to Join Room';
+
+  @override
+  String get roomCreatedSuccessfully => 'Room Created!';
+
+  @override
+  String get roomPasscodeInfo => 'Your room passcode is:';
+
+  @override
+  String get roomPasscodeShareInfo => 'Share this passcode with your friends to let them join your room.';
+
+  @override
+  String get continueToRoom => 'Continue to Room';
+
+  @override
+  String get createRoomTitle => 'Create New Room';
+
+  @override
+  String get createRoomDescription => 'Create a new prediction room and invite your friends to join.';
+
+  @override
+  String get roomTitleLabel => 'Room Title';
+
+  @override
+  String get roomTitleHint => 'Enter a name for your room';
+
+  @override
+  String get roomTitleRequired => 'Please enter a room title';
+
+  @override
+  String get roomTitleTooLong => 'Room title cannot exceed 50 characters';
+
+  @override
+  String get createRoomButton => 'Create Room';
+
+  @override
+  String get joinRoomTitle => 'Join Existing Room';
+
+  @override
+  String get joinRoomDescription => 'Enter the 6-digit passcode shared by your friend to join their room.';
+
+  @override
+  String get passcodeLabel => 'Room Passcode';
+
+  @override
+  String get passcodeHint => 'Enter 6-digit passcode';
+
+  @override
+  String get passcodeRequired => 'Please enter the room passcode';
+
+  @override
+  String get passcodeInvalid => 'Passcode must be exactly 6 characters';
+
+  @override
+  String get joinRoomButton => 'Join Room';
+
+  @override
+  String get copyPasscode => 'Copy Passcode';
+
+  @override
+  String get passcodeCopied => 'Passcode copied to clipboard';
+
+  @override
+  String get sharePasscodeWithFriends => 'Share this passcode with your friends';
+
+  @override
+  String get createRoomSubtitle => 'Create a new prediction room and invite your friends';
+
+  @override
+  String get roomTitle => 'Room Title';
+
+  @override
+  String get roomTitleTooShort => 'Room title must be at least 3 characters';
+
+  @override
+  String get joinRoomSubtitle => 'Enter the passcode shared by your friend';
+
+  @override
+  String get roomPasscode => 'Room Passcode';
+
+  @override
+  String get passcodeInvalidLength => 'Passcode must be exactly 6 characters';
+
+  @override
+  String get yourRooms => 'Your Rooms';
+
+  @override
+  String get host => 'Host';
+
+  @override
+  String get member => 'Member';
+
+  @override
+  String get join => 'Join';
+
+  @override
+  String get joinByPasscode => 'Join by Passcode';
+
+  @override
+  String get failedToLoadUserRooms => 'Failed to load your rooms';
+
+  @override
+  String get profileLeaveRoom => 'Leave Room';
+
+  @override
+  String get profileCloseRoom => 'Close Room';
+
+  @override
+  String get profileLeaveRoomDialogTitle => 'Leave Room';
+
+  @override
+  String profileLeaveRoomDialogContent(String roomTitle) {
+    return 'Are you sure you want to leave the room \"$roomTitle\"? You will no longer be able to participate in this room.';
+  }
+
+  @override
+  String get profileLeaveRoomDialogCancel => 'Cancel';
+
+  @override
+  String get profileLeaveRoomDialogProceed => 'Leave Room';
+
+  @override
+  String get profileLeaveRoomConfirmationTitle => 'Confirm Leave Room';
+
+  @override
+  String get profileLeaveRoomConfirmationContent => 'This action cannot be undone. You will permanently leave this room.';
+
+  @override
+  String get profileLeaveRoomConfirmationPhrase => 'LEAVE ROOM';
+
+  @override
+  String profileLeaveRoomConfirmationInstruction(String phrase) {
+    return 'Type \"$phrase\" to confirm:';
+  }
+
+  @override
+  String get profileLeaveRoomConfirmationError => 'Confirmation text doesn\'t match';
+
+  @override
+  String get profileLeaveRoomConfirmationSubmit => 'Leave Room';
+
+  @override
+  String get profileLeaveRoomFailed => 'Failed to Leave Room';
+
+  @override
+  String get profileCloseRoomDialogTitle => 'Close Room';
+
+  @override
+  String profileCloseRoomDialogContent(String roomTitle) {
+    return 'Are you sure you want to close the room \"$roomTitle\"? This will permanently delete the room and remove all members.';
+  }
+
+  @override
+  String get profileCloseRoomDialogCancel => 'Cancel';
+
+  @override
+  String get profileCloseRoomDialogProceed => 'Close Room';
+
+  @override
+  String get profileCloseRoomConfirmationTitle => 'Confirm Close Room';
+
+  @override
+  String get profileCloseRoomConfirmationContent => 'This action cannot be undone. The room will be permanently deleted and all members will be removed.';
+
+  @override
+  String get profileCloseRoomConfirmationPhrase => 'CLOSE ROOM';
+
+  @override
+  String profileCloseRoomConfirmationInstruction(String phrase) {
+    return 'Type \"$phrase\" to confirm:';
+  }
+
+  @override
+  String get profileCloseRoomConfirmationError => 'Confirmation text doesn\'t match';
+
+  @override
+  String get profileCloseRoomConfirmationSubmit => 'Close Room';
+
+  @override
+  String get profileCloseRoomFailed => 'Failed to Close Room';
+
+  @override
+  String get profileExitRoom => 'Exit Room';
+
+  @override
+  String get profileExitRoomDialogTitle => 'Exit Room';
+
+  @override
+  String profileExitRoomDialogContent(String roomTitle) {
+    return 'Are you sure you want to exit \'$roomTitle\'? You can rejoin anytime and continue where you left off.';
+  }
+
+  @override
+  String get profileExitRoomDialogCancel => 'Cancel';
+
+  @override
+  String get profileExitRoomDialogConfirm => 'Exit Room';
+
+  @override
+  String get profileExitRoomFailed => 'Failed to Exit Room';
+
+  @override
+  String get profileLeaveRoomPermanently => 'Leave Room Permanently';
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogTitle => 'Leave Room Permanently';
+
+  @override
+  String profileLeaveRoomPermanentlyDialogContent(String roomTitle) {
+    return 'Are you sure you want to permanently leave \'$roomTitle\'? This action will delete all your data from this room and cannot be undone.';
+  }
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogCancel => 'Cancel';
+
+  @override
+  String get profileLeaveRoomPermanentlyDialogProceed => 'Proceed';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationTitle => 'Confirm Permanent Leave';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationContent => 'This action will permanently delete all your room data and cannot be undone.';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationPhrase => 'DELETE MY DATA';
+
+  @override
+  String profileLeaveRoomPermanentlyConfirmationInstruction(String phrase) {
+    return 'Type \'$phrase\' to confirm:';
+  }
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationError => 'Please type the exact phrase to confirm';
+
+  @override
+  String get profileLeaveRoomPermanentlyConfirmationSubmit => 'Delete Data';
+
+  @override
+  String get profileLeaveRoomPermanentlyFailed => 'Failed to Leave Room Permanently';
 }
